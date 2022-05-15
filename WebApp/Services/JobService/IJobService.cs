@@ -11,7 +11,7 @@ namespace WebApp.Services.JobService
         Task<Job> GetById(int id);
         Task<IEnumerable<Job>> GetJobAppliedByEmployeeId(string employeeId);
         Task<IEnumerable<Job>> GetJobCreateddByEmployerId(string employerId);
-        Task<bool> CreateJob(JobRequest request);
+        Task<bool> CreateJob(JobCreateRequest request);
         Task<bool> DeleteJob(int id);
     }
 }

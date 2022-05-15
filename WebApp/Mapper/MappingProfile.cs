@@ -8,8 +8,8 @@ namespace WebApp.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<User, UserRegisterRequest>().ReverseMap();   
-            CreateMap<Job,JobRequest>().ReverseMap();   
+            CreateMap<User, EmployeeRegisterRequest>().ReverseMap();   
+            CreateMap<Job,JobCreateRequest>().ReverseMap();   
         }
     }
 }

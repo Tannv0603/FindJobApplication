@@ -1,4 +1,5 @@
-﻿using DAL.Entities;
+﻿using AutoMapper;
+using DAL.Entities;
 using DAL.Repository.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -11,16 +12,17 @@ namespace WebApp.Services.JobService
     {
         private readonly IJobRepository _jobRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
         public JobService(IJobRepository jobRepository, IUnitOfWork unitOfWork)
         {
             _jobRepository = jobRepository;
             _unitOfWork = unitOfWork;
         }
 
-        public Task<bool> CreateJob(JobRequest request)
+        public async Task<bool> CreateJob(JobCreateRequest request)
         {
-            throw new System.NotImplementedException();
-        }
+            return  true;
+        }   
 
         public Task<bool> DeleteJob(int id)
         {
