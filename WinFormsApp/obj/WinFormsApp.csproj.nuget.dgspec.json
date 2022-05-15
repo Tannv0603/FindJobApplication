@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WinFormsApp\\WinFormsApp.csproj": {}
+    "\\\\Mac\\Home\\Desktop\\FindJobApplication\\WinFormsApp\\WinFormsApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj": {
+    "\\\\Mac\\Home\\Desktop\\FindJobApplication\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj",
+        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\tan nguyen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\obj\\",
+        "projectPath": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\phongphu.official\\.nuget\\packages\\",
+        "outputPath": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\DAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tan nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\phongphu.official\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,24 +80,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WinFormsApp\\WinFormsApp.csproj": {
+    "\\\\Mac\\Home\\Desktop\\FindJobApplication\\WinFormsApp\\WinFormsApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WinFormsApp\\WinFormsApp.csproj",
+        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\WinFormsApp\\WinFormsApp.csproj",
         "projectName": "WinFormsApp",
-        "projectPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WinFormsApp\\WinFormsApp.csproj",
-        "packagesPath": "C:\\Users\\tan nguyen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WinFormsApp\\obj\\",
+        "projectPath": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\WinFormsApp\\WinFormsApp.csproj",
+        "packagesPath": "C:\\Users\\phongphu.official\\.nuget\\packages\\",
+        "outputPath": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\WinFormsApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tan nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\phongphu.official\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -114,8 +108,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj"
+              "\\\\Mac\\Home\\Desktop\\FindJobApplication\\DAL\\DAL.csproj": {
+                "projectPath": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\DAL\\DAL.csproj"
               }
             }
           }
@@ -173,7 +167,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
         }
       }
     }
