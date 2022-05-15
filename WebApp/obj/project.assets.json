@@ -6705,23 +6705,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tan nguyen\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\phongphu.official\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WebApp\\WebApp.csproj",
-      "packagesPath": "C:\\Users\\tan nguyen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WebApp\\obj\\",
+      "projectPath": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\WebApp\\WebApp.csproj",
+      "packagesPath": "C:\\Users\\phongphu.official\\.nuget\\packages\\",
+      "outputPath": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\tan nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\phongphu.official\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6735,8 +6731,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj"
+            "\\\\Mac\\Home\\Desktop\\FindJobApplication\\DAL\\DAL.csproj": {
+              "projectPath": "\\\\Mac\\Home\\Desktop\\FindJobApplication\\DAL\\DAL.csproj"
             }
           }
         }
@@ -6802,7 +6798,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }
