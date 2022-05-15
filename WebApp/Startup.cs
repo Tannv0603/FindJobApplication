@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAL.Entities;
+using DAL.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApp
 {
@@ -24,6 +27,7 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<FindingJobContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultDB"), b => b.MigrationsAssembly("DAL")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

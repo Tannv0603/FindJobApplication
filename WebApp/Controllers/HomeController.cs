@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models;
+using DAL.Repository;
 
 namespace WebApp.Controllers
 {
@@ -13,13 +14,14 @@ namespace WebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, CityRepository _cityRepository)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
