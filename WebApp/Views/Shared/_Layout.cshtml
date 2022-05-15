@@ -3,25 +3,26 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Job board HTML-5 Template </title>
+    <title>Finding Job</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="~/web/img/favicon.ico">
-
+    <link rel="shortcut icon" type="image/x-icon" href="/web/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS here -->
-    <link rel="stylesheet" href="~/web/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/web/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/web/css/flaticon.css">
-    <link rel="stylesheet" href="~/web/css/price_rangs.css">
-    <link rel="stylesheet" href="~/web/css/slicknav.css">
-    <link rel="stylesheet" href="~/web/css/animate.min.css">
-    <link rel="stylesheet" href="~/web/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/web/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/web/css/themify-icons.css">
-    <link rel="stylesheet" href="~/web/css/slick.css">
-    <link rel="stylesheet" href="~/web/css/nice-select.css">
-    <link rel="stylesheet" href="~/web/css/style.css">
+    <link rel="stylesheet" href="/web/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/web/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/web/css/flaticon.css">
+    <link rel="stylesheet" href="/web/css/price_rangs.css">
+    <link rel="stylesheet" href="/web/css/slicknav.css">
+    <link rel="stylesheet" href="/web/css/animate.min.css">
+    <link rel="stylesheet" href="/web/css/magnific-popup.css">
+    <link rel="stylesheet" href="/web/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/web/css/themify-icons.css">
+    <link rel="stylesheet" href="/web/css/slick.css">
+    <link rel="stylesheet" href="/web/css/nice-select.css">
+    <link rel="stylesheet" href="/web/css/style.css">
+    <link rel="stylesheet" href="~/web/css/post.css">
 </head>
 
 <body>
@@ -31,7 +32,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="~/web/img/logo/logo.png" alt="">
+                    <img src="/web/img/logo/loadinglogo.png" alt="">
                 </div>
             </div>
         </div>
@@ -46,7 +47,7 @@
                         <div class="col-lg-3 col-md-2">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="index.html"><img src="~/web/img/logo/logo.png" alt=""></a>
+                                <a href="/"><img src="/web/img/logo/logo3.png" style="width:280px" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
@@ -55,19 +56,19 @@
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="job_listing.html">Find a Jobs </a></li>
-                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="@Url.Action("JobListing","Home")">Find a Jobs </a></li>
+                                            <li><a href="@Url.Action("About","Home")">About</a></li>
                                             <li>
                                                 <a href="#">Page</a>
                                                 <ul class="submenu">
                                                     <li><a href="blog.html">Blog</a></li>
                                                     <li><a href="single-blog.html">Blog Details</a></li>
                                                     <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
+                                                    <li><a href="@Url.Action("HRPost","Employer")">Add New Job</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -157,7 +158,7 @@
                                             <div class="form-icon">
                                                 <button type="submit" name="submit" id="newsletter-submit"
                                                         class="email_icon newsletter-submit button-contactForm">
-                                                    <img src="~/web/img/icon/form.png" alt="">
+                                                    <img src="/web/img/icon/form.png" alt="">
                                                 </button>
                                             </div>
                                             <div class="mt-10 info"></div>
@@ -173,7 +174,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <!-- logo -->
                         <div class="footer-logo mb-20">
-                            <a href="index.html"><img src="~/web/img/logo/logo2_footer.png" alt=""></a>
+                            <a href="index.html"><img src="/web/img/logo/logo2_footer.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
@@ -230,39 +231,39 @@
 
     <!-- JS here -->
     <!-- All JS Custom Plugins Link Here here -->
-    <script src="~/web/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/web/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
-    <script src="~/web//js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="~/web//js/popper.min.js"></script>
-    <script src="~/web//js/bootstrap.min.js"></script>
+    <script src="/web//js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/web//js/popper.min.js"></script>
+    <script src="/web//js/bootstrap.min.js"></script>
     <!-- Jquery Mobile Menu -->
-    <script src="~/web//js/jquery.slicknav.min.js"></script>
+    <script src="/web//js/jquery.slicknav.min.js"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="~/web//js/owl.carousel.min.js"></script>
-    <script src="~/web//js/slick.min.js"></script>
-    <script src="~/web//js/price_rangs.js"></script>
+    <script src="/web//js/owl.carousel.min.js"></script>
+    <script src="/web//js/slick.min.js"></script>
+    <script src="/web//js/price_rangs.js"></script>
 
     <!-- One Page, Animated-HeadLin -->
-    <script src="~/web//js/wow.min.js"></script>
-    <script src="~/web//js/animated.headline.js"></script>
-    <script src="~/web//js/jquery.magnific-popup.js"></script>
+    <script src="/web//js/wow.min.js"></script>
+    <script src="/web//js/animated.headline.js"></script>
+    <script src="/web//js/jquery.magnific-popup.js"></script>
 
     <!-- Scrollup, nice-select, sticky -->
-    <script src="~/web//js/jquery.scrollUp.min.js"></script>
-    <script src="~/web//js/jquery.nice-select.min.js"></script>
-    <script src="~/web//js/jquery.sticky.js"></script>
+    <script src="/web//js/jquery.scrollUp.min.js"></script>
+    <script src="/web//js/jquery.nice-select.min.js"></script>
+    <script src="/web//js/jquery.sticky.js"></script>
 
     <!-- contact js -->
-    <script src="~/web//js/contact.js"></script>
-    <script src="~/web//js/jquery.form.js"></script>
-    <script src="~/web//js/jquery.validate.min.js"></script>
-    <script src="~/web//js/mail-script.js"></script>
-    <script src="~/web//js/jquery.ajaxchimp.min.js"></script>
+    <script src="/web//js/contact.js"></script>
+    <script src="/web//js/jquery.form.js"></script>
+    <script src="/web//js/jquery.validate.min.js"></script>
+    <script src="/web//js/mail-script.js"></script>
+    <script src="/web//js/jquery.ajaxchimp.min.js"></script>
 
     <!-- Jquery Plugins, main Jquery -->
-    <script src="~/web//js/plugins.js"></script>
-    <script src="~/web//js/main.js"></script>
+    <script src="/web//js/plugins.js"></script>
+    <script src="/web//js/main.js"></script>
 
 </body>
 </html>
