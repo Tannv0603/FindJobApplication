@@ -1944,6 +1944,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.15",
+          "Microsoft.EntityFrameworkCore": "5.0.15",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.0"
         },
         "compile": {
@@ -6697,30 +6698,30 @@
       "DAL >= 1.0.0",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.15",
+      "Microsoft.EntityFrameworkCore >= 5.0.15",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.15"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\tan nguyen\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FindJobApplication\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "D:\\FindJobApplication\\WebApp\\WebApp.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\FindJobApplication\\WebApp\\obj\\",
+      "projectPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WebApp\\WebApp.csproj",
+      "packagesPath": "C:\\Users\\tan nguyen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\tan nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6734,8 +6735,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\FindJobApplication\\DAL\\DAL.csproj": {
-              "projectPath": "D:\\FindJobApplication\\DAL\\DAL.csproj"
+            "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\tan nguyen\\source\\repos\\FindJobApplication\\DAL\\DAL.csproj"
             }
           }
         }
@@ -6759,6 +6760,10 @@
             "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.15, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.15, )"
           },
@@ -6797,7 +6802,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
