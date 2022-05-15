@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using DAL.Entities;
 using DAL.Repository;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Services.CityService;
+using WebApp.Services.JobService;
+using DAL.Repository.Abstractions;
 
 namespace WebApp
 {
@@ -28,6 +31,17 @@ namespace WebApp
         {
             services.AddControllersWithViews();
             services.AddDbContext<FindingJobContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultDB"), b => b.MigrationsAssembly("DAL")));
+
+            //add repository
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IJobRepository, JobRepository>();
+
+            //add services
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IJobService, JobService>();
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

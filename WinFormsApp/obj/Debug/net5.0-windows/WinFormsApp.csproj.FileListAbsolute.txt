@@ -1,9 +1,20 @@
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.AssemblyReference.cache
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.DashBoard.resources
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.LoginForm.resources
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.RegisterForm.resources
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.GenerateResource.cache
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.AssemblyInfoInputs.cache
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.AssemblyInfo.cs
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.CoreCompileInputs.cache
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.exe
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.dll.config
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.deps.json
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.runtimeconfig.json
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.runtimeconfig.dev.json
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.pdb
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Humanizer.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Authentication.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Authentication.Abstractions.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Authentication.Cookies.dll
@@ -24,6 +35,7 @@ C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Data.SqlClient.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
@@ -65,106 +77,9 @@ C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\DAL.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\DAL.pdb
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.AssemblyReference.cache
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.GenerateResource.cache
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.AssemblyInfoInputs.cache
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.AssemblyInfo.cs
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.CoreCompileInputs.cache
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.CopyComplete
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\refint\WinFormsApp.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.pdb
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.genruntimeconfig.cache
 C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\ref\WinFormsApp.dll
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.DashBoard.resources
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.LoginForm.resources
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.RegisterForm.resources
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.dll.config
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Humanizer.dll
-C:\Users\tan nguyen\source\repos\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Design.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.exe
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.dll.config
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.deps.json
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.runtimeconfig.json
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.runtimeconfig.dev.json
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\ref\WinFormsApp.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\WinFormsApp.pdb
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Humanizer.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Authentication.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Authentication.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Authentication.Cookies.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Authentication.Core.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.DataProtection.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.DataProtection.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Hosting.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Extensions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Http.Features.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Identity.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.AspNetCore.WebUtilities.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Data.SqlClient.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Design.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Caching.Memory.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Identity.Core.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Identity.Stores.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.ObjectPool.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Options.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.Primitives.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Extensions.WebEncoders.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Identity.Client.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Logging.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Protocols.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Tokens.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Microsoft.Net.Http.Headers.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\System.Diagnostics.DiagnosticSource.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\System.IdentityModel.Tokens.Jwt.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\System.Runtime.Caching.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\DAL.dll
-D:\FindJobApplication\WinFormsApp\bin\Debug\net5.0-windows\DAL.pdb
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.AssemblyReference.cache
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.DashBoard.resources
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.LoginForm.resources
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.UI.RegisterForm.resources
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.GenerateResource.cache
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.GeneratedMSBuildEditorConfig.editorconfig
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.AssemblyInfoInputs.cache
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.AssemblyInfo.cs
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.CoreCompileInputs.cache
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.csproj.CopyComplete
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.dll
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\ref\WinFormsApp.dll
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.pdb
-D:\FindJobApplication\WinFormsApp\obj\Debug\net5.0-windows\WinFormsApp.genruntimeconfig.cache

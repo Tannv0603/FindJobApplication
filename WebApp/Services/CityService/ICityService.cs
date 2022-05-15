@@ -8,6 +8,5 @@ namespace WebApp.Services.CityService
     {
         Task<City> GetById(int id);
         Task<IEnumerable<City>> GetAll();
-
     }
 }

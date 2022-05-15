@@ -8,7 +8,7 @@ using DAL.Repository.Abstractions;
 
 namespace DAL.Repository
 {
-    public class EmployerRepository : GenericRepository<Employee>, IEmployerRepository
+    public class EmployerRepository : GenericRepository<Employer>, IEmployerRepository
     {
         public EmployerRepository(FindingJobContext context) : base(context)
         {
