@@ -76,3 +76,9 @@ C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\DAL.
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\DAL.pdb
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Humanizer.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

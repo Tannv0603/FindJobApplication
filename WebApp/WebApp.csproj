@@ -9,15 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mapper\" />
     <Folder Include="Models\ViewModel\" />
-    <Folder Include="Models\RequestModel\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\Employer\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.15">
