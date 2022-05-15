@@ -14,7 +14,7 @@ namespace WebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, CityRepository _cityRepository)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
