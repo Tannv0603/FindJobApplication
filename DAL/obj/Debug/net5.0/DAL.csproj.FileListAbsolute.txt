@@ -13,3 +13,18 @@ C:\Users\tan nguyen\source\repos\FindJobApplication\DAL\obj\Debug\net5.0\refint\
 C:\Users\tan nguyen\source\repos\FindJobApplication\DAL\obj\Debug\net5.0\DAL.pdb
 C:\Users\tan nguyen\source\repos\FindJobApplication\DAL\obj\Debug\net5.0\DAL.genruntimeconfig.cache
 C:\Users\tan nguyen\source\repos\FindJobApplication\DAL\obj\Debug\net5.0\ref\DAL.dll
+D:\FindJobApplication\DAL\bin\Debug\net5.0\DAL.deps.json
+D:\FindJobApplication\DAL\bin\Debug\net5.0\DAL.runtimeconfig.json
+D:\FindJobApplication\DAL\bin\Debug\net5.0\DAL.runtimeconfig.dev.json
+D:\FindJobApplication\DAL\bin\Debug\net5.0\DAL.dll
+D:\FindJobApplication\DAL\bin\Debug\net5.0\ref\DAL.dll
+D:\FindJobApplication\DAL\bin\Debug\net5.0\DAL.pdb
+D:\FindJobApplication\DAL\obj\Debug\net5.0\DAL.csproj.AssemblyReference.cache
+D:\FindJobApplication\DAL\obj\Debug\net5.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\FindJobApplication\DAL\obj\Debug\net5.0\DAL.AssemblyInfoInputs.cache
+D:\FindJobApplication\DAL\obj\Debug\net5.0\DAL.AssemblyInfo.cs
+D:\FindJobApplication\DAL\obj\Debug\net5.0\DAL.csproj.CoreCompileInputs.cache
+D:\FindJobApplication\DAL\obj\Debug\net5.0\DAL.dll
+D:\FindJobApplication\DAL\obj\Debug\net5.0\ref\DAL.dll
+D:\FindJobApplication\DAL\obj\Debug\net5.0\DAL.pdb
+D:\FindJobApplication\DAL\obj\Debug\net5.0\DAL.genruntimeconfig.cache

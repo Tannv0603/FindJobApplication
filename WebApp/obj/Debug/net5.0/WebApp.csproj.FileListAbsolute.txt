@@ -76,9 +76,90 @@ C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\DAL.
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\DAL.pdb
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Humanizer.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+<<<<<<< HEAD
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\tan nguyen\source\repos\FindJobApplication\WebApp\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+=======
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\appsettings.Development.json
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\appsettings.json
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\WebApp.exe
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\WebApp.deps.json
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\WebApp.runtimeconfig.json
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\WebApp.runtimeconfig.dev.json
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\WebApp.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\ref\WebApp.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\WebApp.pdb
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\WebApp.Views.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\WebApp.Views.pdb
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Humanizer.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\System.Runtime.Caching.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\DAL.dll
+D:\FindJobApplication\WebApp\bin\Debug\net5.0\DAL.pdb
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.csproj.AssemblyReference.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.AssemblyInfoInputs.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.AssemblyInfo.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.csproj.CoreCompileInputs.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.MvcApplicationPartsAssemblyInfo.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.RazorAssemblyInfo.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.RazorAssemblyInfo.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\scopedcss\bundle\WebApp.styles.css
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\staticwebassets\WebApp.StaticWebAssets.Manifest.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.TagHelpers.input.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.TagHelpers.output.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.RazorCoreGenerate.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.RazorTargetAssemblyInfo.cache
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.RazorTargetAssemblyInfo.cs
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.Views.pdb
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.csproj.CopyComplete
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.dll
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\ref\WebApp.dll
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.pdb
+D:\FindJobApplication\WebApp\obj\Debug\net5.0\WebApp.genruntimeconfig.cache
+>>>>>>> 9743d7fd15edf73a9ad71f2b6b21d70b82ca8990
