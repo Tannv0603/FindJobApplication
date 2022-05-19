@@ -34,7 +34,8 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<FindingJobContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultDB"), b => b.MigrationsAssembly("DAL")));
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<FindingJobContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultDB"), b => b.MigrationsAssembly("DAL")));
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<FindingJobContext>()
                 .AddDefaultTokenProviders();
