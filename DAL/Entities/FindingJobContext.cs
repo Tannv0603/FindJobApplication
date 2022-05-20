@@ -10,6 +10,10 @@ namespace DAL.Entities
 {
     public partial class FindingJobContext : IdentityDbContext<User>
     {
+        public FindingJobContext()
+        {
+        }
+
         //private string _connectionString;
         //public FindingJobContext(string connectionString)
         //{
