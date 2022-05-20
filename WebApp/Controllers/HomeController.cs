@@ -7,13 +7,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models;
 using DAL.Repository;
+using DAL.Entities;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private FindingJobContext _context = new FindingJobContext();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -21,8 +22,15 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
+            JobRepository jobRepository = new(_context);
+            IEnumerable<Job> jobs = jobRepository.DbSet.ToList();
+            //IEnumerable<Job> jobs = jobRepository.FindJobBySkill("PHP");
+            foreach (var job in jobs)
+            {
+                _context.Entry(job).Reference(j => j.City).Load();
+                _context.Entry(job).Reference(j => j.JobTitle).Load();
+            }
+            return View(jobs);
         }
 
         public IActionResult Privacy()
