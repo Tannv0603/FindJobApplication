@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApp.Models.RequestModel;
+using WebApp.Models.ViewModel;
 
 namespace WebApp.Services.JobService
 {
