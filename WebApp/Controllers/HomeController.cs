@@ -14,19 +14,16 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly JobService _jobService;
-        public HomeController (ILogger<HomeController> logger)
-            //JobService jobService)
+        private readonly IJobService _jobService;
+        public HomeController (IJobService jobService)
         {
-            //_logger = logger;
-            //_jobService = jobService;
+            _jobService = jobService;
         }
 
         public async Task<IActionResult> Index()
         {
-            //var jobs = await _jobService.GetAll();
-            return View(/*jobs*/);
+            var jobs = await _jobService.GetAll();
+            return View(jobs);
         }
 
         public IActionResult Privacy()

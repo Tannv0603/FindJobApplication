@@ -3,9 +3,10 @@
     public class DisplayConstant
     {
         #region Errors
+        public const string ERROR_LOADFAIL = "Fail to load DataSet";
         public const string ERROR_CREATED = "Failed creation";
         public const string ERROR_REMOVED = "Failed delete";
-        public const string ERROR_INSTANCE_NONEXIST = "Instance non-existent";
+        public const string ERROR_INSTANCE_NOT_FOUND = "Instance non-existent";
         public const string ERROR_INSTANCE_EXISTED = "Instance already existed";
         public const string ERROR_PASSWORD_REQUIRED = "Please input password";
         public const string ERROR_USERNAME_REQUIRED = "Please input Username";
@@ -14,6 +15,7 @@
         #region Success
         public const string SUCCESS_CREATED = "Success Created!";
         public const string SUCCESS_REMOVED = "Success Removed!";
+        public const string SUCCESS = "Sucess!";
         #endregion
     }
 }

@@ -38,8 +38,7 @@ namespace WebApp.Services.AppliedService
                 {
                     Cvid = cvId,
                     JobId = jobId,
-                    Date = DateTime.Now,                                      
-                    Job = await _jobService.GetById(jobId)
+                    Date = DateTime.Now
                 };
                var result =  await _repository.DbSet.AddAsync(Applying);
                 _unitOfWork.SaveChanges();
@@ -53,15 +52,24 @@ namespace WebApp.Services.AppliedService
 
         }
 
-        public async Task<IEnumerable<EmployeeAppliedForJob>> GetAppliedByEmployee(string id)
+        public async Task<Response<EmployeeAppliedForJob>> GetAppliedByEmployee(string id)
         {
-            return await _repository.DbSet.Where(job => job.Cv.EmployeeId == id).ToListAsync();
-           
+            var jobs =await _repository.DbSet.Where(job => job.Cv.EmployeeId == id).ToListAsync();
+            if(jobs == null)
+            {
+                return new Response<EmployeeAppliedForJob>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
+            }
+            return new Response<EmployeeAppliedForJob>(true, dataset: jobs, DisplayConstant.SUCCESS);
         }
 
-        public async Task<IEnumerable<EmployeeAppliedForJob>> GetAppliedByJob(int id)
+        public async Task<Response<EmployeeAppliedForJob>> GetAppliedByJob(int id)
         {
-            return await _repository.DbSet.Where(job => job.JobId == id).ToListAsync();
+            var emps = await _repository.DbSet.Where(job => job.JobId == id).ToListAsync();
+            if (emps == null)
+            {
+                return new Response<EmployeeAppliedForJob>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
+            }
+            return new Response<EmployeeAppliedForJob>(true, dataset: emps, DisplayConstant.SUCCESS);
         }
 
         public async Task<Response<EmployeeAppliedForJob>> UnapplyForJob(int jobId, string employeeId)
@@ -70,7 +78,7 @@ namespace WebApp.Services.AppliedService
                 .AsNoTracking()
                 .FirstOrDefaultAsync(app => app.JobId == jobId && app.Cv.EmployeeId == employeeId);
             if (IsApplied != null)
-                return new Response<EmployeeAppliedForJob>(false, IsApplied, DisplayConstant.ERROR_INSTANCE_NONEXIST);
+                return new Response<EmployeeAppliedForJob>(false, IsApplied, DisplayConstant.ERROR_INSTANCE_NOT_FOUND);
             try
             {
                 _repository.DbSet.Remove(IsApplied);
@@ -80,7 +88,6 @@ namespace WebApp.Services.AppliedService
             catch
             {
                 return new Response<EmployeeAppliedForJob>(false, IsApplied, DisplayConstant.ERROR_REMOVED);
-
             }
         }
     }

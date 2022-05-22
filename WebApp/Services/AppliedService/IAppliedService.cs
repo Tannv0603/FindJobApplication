@@ -7,8 +7,8 @@ namespace WebApp.Services.AppliedService
 {
     public interface IAppliedService
     {
-        Task<IEnumerable<EmployeeAppliedForJob>> GetAppliedByEmployee(string id);
-        Task<IEnumerable<EmployeeAppliedForJob>> GetAppliedByJob(int id);
+        Task<Response<EmployeeAppliedForJob>> GetAppliedByEmployee(string id);
+        Task<Response<EmployeeAppliedForJob>> GetAppliedByJob(int id);
         Task<Response<EmployeeAppliedForJob>> ApplyForJob(int cvId, int jobId);
         Task<Response<EmployeeAppliedForJob>> UnapplyForJob(int jobId, string employeeId);
     }

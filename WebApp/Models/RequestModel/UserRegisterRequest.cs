@@ -5,6 +5,7 @@ namespace WebApp.Models.RequestModel
 {
     public class UserRegisterRequest
     {
+
         [Required(ErrorMessage = DisplayConstant.ERROR_PASSWORD_REQUIRED)]
         public string UserName { get; set; }
         [Required(ErrorMessage = DisplayConstant.ERROR_PASSWORD_REQUIRED)]

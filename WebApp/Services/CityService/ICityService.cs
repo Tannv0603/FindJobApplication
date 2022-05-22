@@ -1,12 +1,13 @@
 ﻿using DAL.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebApp.Models.Response;
 
 namespace WebApp.Services.CityService
 {
     public interface ICityService
     {
-        Task<City> GetById(int id);
-        Task<IEnumerable<City>> GetAll();
+        Task<Response<City>> GetById(int id);
+        Task<Response<City>> GetAll();
     }
 }

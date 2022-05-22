@@ -3,6 +3,8 @@ using DAL.Repository.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebApp.Constant;
+using WebApp.Models.Response;
 
 namespace WebApp.Services.CityService
 {
@@ -16,14 +18,24 @@ namespace WebApp.Services.CityService
             _cityRepository = cityRepository;
             _unitOfWork = unitOfWork;
         }
-        public async Task<IEnumerable<City>> GetAll()
+        public async Task<Response<City>> GetAll()
         {
-          return await _cityRepository.DbSet.ToListAsync();
+          var cities = await _cityRepository.DbSet.ToListAsync();
+            if(cities == null)
+            {
+                return new Response<City>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
+            }
+         return new Response<City>(true,cities,DisplayConstant.SUCCESS);
         }
 
-        public async Task<City> GetById(int id)
+        public async Task<Response<City>> GetById(int id)
         {
-           return await _cityRepository.DbSet.FindAsync(id);
+            var city = await _cityRepository.DbSet.FirstOrDefaultAsync(c => c.CityId==id);
+            if (city == null)
+            {
+                return new Response<City>(false, data: null, DisplayConstant.ERROR_LOADFAIL);
+            }
+            return new Response<City>(true, city, DisplayConstant.SUCCESS);
         }
     }
 }
