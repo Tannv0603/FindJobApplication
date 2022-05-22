@@ -14,11 +14,11 @@ namespace WebApp.Services.AppliedService
 {
     public class AppliedService : IAppliedService
     {
-        private readonly EmployeeAppliedForJobRepository _repository;
+        private readonly IEmployeeAppliedForJobRepository _repository;
         private readonly IJobService _jobService;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AppliedService(EmployeeAppliedForJobRepository repository, UnitOfWork unitOfWork, IJobService jobService)
+        public AppliedService(IEmployeeAppliedForJobRepository repository, IUnitOfWork unitOfWork, IJobService jobService)
         {
             _repository = repository;
             _jobService = jobService;
@@ -27,7 +27,9 @@ namespace WebApp.Services.AppliedService
 
         public async Task<Response<EmployeeAppliedForJob>> ApplyForJob(int cvId, int jobId)
         {
-            var IsApplied = await _repository.DbSet.FirstOrDefaultAsync(app => app.JobId == jobId && app.Cvid == cvId);
+            var IsApplied = await _repository.DbSet
+                .AsNoTracking()
+                .FirstOrDefaultAsync(app => app.JobId == jobId && app.Cvid == cvId);
             if (IsApplied == null)
                 return new Response<EmployeeAppliedForJob>(false,IsApplied,DisplayConstant.ERROR_INSTANCE_EXISTED);
             try
@@ -60,6 +62,26 @@ namespace WebApp.Services.AppliedService
         public async Task<IEnumerable<EmployeeAppliedForJob>> GetAppliedByJob(int id)
         {
             return await _repository.DbSet.Where(job => job.JobId == id).ToListAsync();
+        }
+
+        public async Task<Response<EmployeeAppliedForJob>> UnapplyForJob(int jobId, string employeeId)
+        {
+            var IsApplied = await _repository.DbSet
+                .AsNoTracking()
+                .FirstOrDefaultAsync(app => app.JobId == jobId && app.Cv.EmployeeId == employeeId);
+            if (IsApplied != null)
+                return new Response<EmployeeAppliedForJob>(false, IsApplied, DisplayConstant.ERROR_INSTANCE_NONEXIST);
+            try
+            {
+                _repository.DbSet.Remove(IsApplied);
+                _unitOfWork.SaveChanges();
+                return new Response<EmployeeAppliedForJob>(true, data:null, DisplayConstant.SUCCESS_REMOVED);
+            }
+            catch
+            {
+                return new Response<EmployeeAppliedForJob>(false, IsApplied, DisplayConstant.ERROR_REMOVED);
+
+            }
         }
     }
 }

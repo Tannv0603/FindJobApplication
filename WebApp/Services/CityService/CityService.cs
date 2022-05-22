@@ -9,9 +9,12 @@ namespace WebApp.Services.CityService
     public class CityService : ICityService
     {
         private readonly ICityRepository _cityRepository;
-        public CityService(ICityRepository cityRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public CityService(ICityRepository cityRepository
+            , IUnitOfWork unitOfWork)
         {
             _cityRepository = cityRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<IEnumerable<City>> GetAll()
         {

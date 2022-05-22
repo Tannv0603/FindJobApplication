@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using WebApp.Services.AppliedService;
 
 namespace WebApp
 {
@@ -45,16 +46,19 @@ namespace WebApp
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
+            
             //add repository
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IJobRepository, JobRepository>();
-            services.AddTransient<IUserRepository, UserRepository>();
-
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IEmployeeAppliedForJobRepository, EmployeeAppliedForJobRepository>();
+            //
             //add services
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IJobService, JobService>();
+            services.AddScoped<IAppliedService, AppliedService>();
+
 
             //config identity
             services.Configure<IdentityOptions>(options =>

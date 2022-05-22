@@ -10,5 +10,6 @@ namespace WebApp.Services.AppliedService
         Task<IEnumerable<EmployeeAppliedForJob>> GetAppliedByEmployee(string id);
         Task<IEnumerable<EmployeeAppliedForJob>> GetAppliedByJob(int id);
         Task<Response<EmployeeAppliedForJob>> ApplyForJob(int cvId, int jobId);
+        Task<Response<EmployeeAppliedForJob>> UnapplyForJob(int jobId, string employeeId);
     }
 }
