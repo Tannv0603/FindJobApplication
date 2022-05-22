@@ -8,28 +8,23 @@ using System.Threading.Tasks;
 using WebApp.Models;
 using DAL.Repository;
 using DAL.Entities;
+using WebApp.Services.JobService;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private FindingJobContext _context = new FindingJobContext();
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IJobService _jobService;
+        public HomeController(ILogger<HomeController> logger, IJobService jobService)
         {
+            _jobService = jobService;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            JobRepository jobRepository = new(_context);
-            IEnumerable<Job> jobs = jobRepository.DbSet.ToList();
-            //IEnumerable<Job> jobs = jobRepository.FindJobBySkill("PHP");
-            foreach (var job in jobs)
-            {
-                _context.Entry(job).Reference(j => j.City).Load();
-                _context.Entry(job).Reference(j => j.JobTitle).Load();
-            }
+            var jobs = _jobService.GetAll();
             return View(jobs);
         }
 
