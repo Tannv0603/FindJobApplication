@@ -1,6 +1,6 @@
 ﻿namespace WebApp.Models.RequestModel
 {
-    public class JobCreateRequest
+    public class JobRequest
     {
         public string JobName { get; set; }
         public string JobImage { get; set; }

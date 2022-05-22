@@ -9,7 +9,7 @@ namespace WebApp.Mapper
         public MappingProfile()
         {
             CreateMap<User, EmployeeRegisterRequest>().ReverseMap();   
-            CreateMap<Job,JobCreateRequest>().ReverseMap();   
+            CreateMap<Job,JobRequest>().ReverseMap();   
         }
     }
 }

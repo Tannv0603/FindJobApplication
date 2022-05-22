@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
-using WebApp.Models.DTOs;
+using WebApp.Constant;
 using WebApp.Models.RequestModel;
 using WebApp.Models.Response;
 
@@ -30,9 +30,14 @@ namespace WebApp.Services.UserService
             _mapper= mapper;
             _contextAccessor= contextAccessor;
         }
-        public async Task<User> GetCurrentUserAsync()
+        public async Task<Response<User>> GetCurrentUserAsync()
         {
-            return await _userManager.GetUserAsync(_contextAccessor.HttpContext.User);
+            var user = await _userManager.GetUserAsync(_contextAccessor.HttpContext.User);
+            if (user == null)
+            {
+                return new Response<User>(false, data: null, DisplayConstant.ERROR_UNAUTHENTICATED);
+            }
+            return new Response<User>(true, user,DisplayConstant.SUCCESS);
         }
        
     }

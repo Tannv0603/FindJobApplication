@@ -41,7 +41,7 @@ namespace WebApp.Services.AppliedService
                     Date = DateTime.Now
                 };
                var result =  await _repository.DbSet.AddAsync(Applying);
-                _unitOfWork.SaveChanges();
+               await _unitOfWork.SaveChangesAsync();
                 return new Response<EmployeeAppliedForJob>(true, Applying, DisplayConstant.SUCCESS_CREATED);
             }
             catch
@@ -82,7 +82,7 @@ namespace WebApp.Services.AppliedService
             try
             {
                 _repository.DbSet.Remove(IsApplied);
-                _unitOfWork.SaveChanges();
+                await _unitOfWork.SaveChangesAsync();
                 return new Response<EmployeeAppliedForJob>(true, data:null, DisplayConstant.SUCCESS_REMOVED);
             }
             catch

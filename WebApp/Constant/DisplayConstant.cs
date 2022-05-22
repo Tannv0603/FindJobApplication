@@ -3,6 +3,10 @@
     public class DisplayConstant
     {
         #region Errors
+
+        public const string ERROR = "ERROR!";
+        public const string ERROR_BADREQUEST = "Null object or unvalidated field!";
+        public const string ERROR_UNAUTHENTICATED = "YOU MAY NOT LOGGED IN!";
         public const string ERROR_LOADFAIL = "Fail to load DataSet";
         public const string ERROR_CREATED = "Failed creation";
         public const string ERROR_REMOVED = "Failed delete";

@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using WebApp.Constant;
 using WebApp.Models.RequestModel;
 using WebApp.Models.Response;
-using WebApp.Models.ViewModel;
 using WebApp.Services.AppliedService;
 using WebApp.Services.CityService;
 
@@ -34,6 +33,7 @@ namespace WebApp.Services.JobService
         public async Task<Response<Job>> GetAll()
         {
             var jobs = await _jobRepository.DbSet
+                .AsNoTracking()
                 .Include(x=> x.Skill)
                 .Include(x=>x.City)
                 .Include(job =>job.JobType)
@@ -49,6 +49,7 @@ namespace WebApp.Services.JobService
         public async Task<Response<Job>> GetById(int id)
         {
             var job =  await _jobRepository.DbSet
+                .AsNoTracking()
                 .Include(x => x.Skill)
                 .Include(x => x.City)
                 .Include(job => job.JobType)
@@ -77,21 +78,62 @@ namespace WebApp.Services.JobService
             return  new Response<Job>(false, dataset:null, DisplayConstant.ERROR_LOADFAIL);
         }
 
-        public Task<Response<Job>> GetJobCreateddByEmployerId(string employerId)
+        public async Task<Response<Job>> GetJobCreatedByEmployerId(string employerId)
         {
-            throw new System.NotImplementedException();
+           var jobs = await _jobRepository.DbSet
+                .AsNoTracking()
+                .Where(job => job.EmployerId==employerId)
+                .ToListAsync();
+            if(jobs == null)
+            {
+                return new Response<Job>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
+            }
+            return new Response<Job>(true, jobs, DisplayConstant.SUCCESS);
         }
 
-        Task<Response<Job>> IJobService.CreateJob(JobCreateRequest request)
-        {
-            throw new System.NotImplementedException();
+        public async Task<Response<Job>> CreateJob(JobRequest request)
+        {           
+            if (request == null)
+            {
+                return new Response<Job>(false, data: null, DisplayConstant.ERROR_BADREQUEST);
+            }    
+            try
+            {
+                var job = MappingRequest(request);
+                await _jobRepository.DbSet.AddAsync(job);
+                await _unitOfWork.SaveChangesAsync();
+                var result = await _jobRepository.DbSet.LastAsync();
+                return new Response<Job>(true, result, DisplayConstant.SUCCESS);
+            }
+            catch
+            {
+                return new Response<Job>(false, data:null, DisplayConstant.ERROR_CREATED);
+            }
         }
 
-        Task<Response<Job>> IJobService.DeleteJob(int id)
+       public async Task<Response<Job>> DeleteJob(int id)
         {
-            throw new System.NotImplementedException();
+            var job = await GetById(id);
+            if(!job.Success)
+            {
+                return new Response<Job>(false, data: null, DisplayConstant.ERROR_INSTANCE_NOT_FOUND);
+            }
+            try
+            {
+                 _jobRepository.DbSet.Remove(job.Data);
+                await _unitOfWork.SaveChangesAsync();
+                return new Response<Job>(true, data:null, DisplayConstant.SUCCESS);
+            }
+            catch
+            {
+                return new Response<Job>(false, job.Data, DisplayConstant.ERROR_REMOVED);
+            }
         }
-
+        private Job MappingRequest(JobRequest request)
+        {
+            var job = _mapper.Map<Job>(request);
+            return job;
+        }
         
 
         
