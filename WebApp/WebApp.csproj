@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Services\EmployerService\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

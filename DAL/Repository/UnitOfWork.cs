@@ -10,7 +10,7 @@ namespace DAL.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private FindingJobContext _context;
+        private readonly FindingJobContext _context;
         public UnitOfWork(FindingJobContext context)
         {
             _context = context;

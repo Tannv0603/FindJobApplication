@@ -9,5 +9,6 @@ namespace WebApp.Services.CityService
     {
         Task<Response<City>> GetById(int id);
         Task<Response<City>> GetAll();
+        Task<Response<City>> GetByName(string name);
     }
 }

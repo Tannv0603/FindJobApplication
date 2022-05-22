@@ -17,16 +17,19 @@ namespace WebApp.Services.JobService
     {
         private readonly IJobRepository _jobRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICityService _cityService;
         private readonly IAppliedService _appliedService;
         private readonly IMapper _mapper;
         public JobService(IJobRepository jobRepository, 
             IUnitOfWork unitOfWork,
             IEmployeeAppliedForJobRepository appliedJob,
-            IAppliedService appliedService)
+            IAppliedService appliedService,
+            ICityService cityService)
         {
             _jobRepository = jobRepository;
             _unitOfWork = unitOfWork;
             _appliedService = appliedService;
+            _cityService = cityService;
         }
 
         
@@ -129,17 +132,18 @@ namespace WebApp.Services.JobService
                 return new Response<Job>(false, job.Data, DisplayConstant.ERROR_REMOVED);
             }
         }
+       
+
+        public Task<Response<Job>> UpdateJob(int id, JobRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
         private Job MappingRequest(JobRequest request)
         {
             var job = _mapper.Map<Job>(request);
+            var city = _cityService.GetByName(request.City);
+            job.CityId = city.Id;
             return job;
         }
-        
-
-        
-
-      
-
-      
     }
 }

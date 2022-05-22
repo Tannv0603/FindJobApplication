@@ -20,7 +20,7 @@ namespace WebApp.Services.CityService
         }
         public async Task<Response<City>> GetAll()
         {
-          var cities = await _cityRepository.DbSet.ToListAsync();
+          var cities = await _cityRepository.DbSet.AsNoTracking().ToListAsync();
             if(cities == null)
             {
                 return new Response<City>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
@@ -30,7 +30,20 @@ namespace WebApp.Services.CityService
 
         public async Task<Response<City>> GetById(int id)
         {
-            var city = await _cityRepository.DbSet.FirstOrDefaultAsync(c => c.CityId==id);
+            var city = await _cityRepository.DbSet
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.CityId==id);
+            if (city == null)
+            {
+                return new Response<City>(false, data: null, DisplayConstant.ERROR_LOADFAIL);
+            }
+            return new Response<City>(true, city, DisplayConstant.SUCCESS);
+        }
+
+        public async Task<Response<City>> GetByName(string name)
+        {
+            var city = await _cityRepository.DbSet.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.CityName == name);
             if (city == null)
             {
                 return new Response<City>(false, data: null, DisplayConstant.ERROR_LOADFAIL);
