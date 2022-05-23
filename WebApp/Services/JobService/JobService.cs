@@ -39,7 +39,6 @@ namespace WebApp.Services.JobService
                 .AsNoTracking()
                 .Include(x=> x.Skill)
                 .Include(x=>x.City)
-                .Include(job =>job.JobType)
                 .Include(job => job.Employer)
                 .ToListAsync();
             if (jobs == null) 
@@ -55,7 +54,6 @@ namespace WebApp.Services.JobService
                 .AsNoTracking()
                 .Include(x => x.Skill)
                 .Include(x => x.City)
-                .Include(job => job.JobType)
                 .Include(job => job.Employer)
                 .FirstOrDefaultAsync(job => job.JobId==id);
             if(job == null)

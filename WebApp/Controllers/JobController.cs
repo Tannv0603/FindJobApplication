@@ -17,11 +17,13 @@ namespace WebApp.Controllers
         }
         public async Task<IActionResult> GetAll()
         {
-            return View( await _jobService.GetAll());
+            var jobs = await _jobService.GetAll();
+            return View(jobs.DataSet);
         }
         public async Task<IActionResult> GetById(int id)
         {
-            return View(await _jobService.GetById(id));
+            var job = await _jobService.GetById(id);
+            return View(job.Data);
         }
 
     }

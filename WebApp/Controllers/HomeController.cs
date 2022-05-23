@@ -23,7 +23,7 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Index()
         {
             var jobs = await _jobService.GetAll();
-            return View(jobs);
+            return View(jobs.DataSet);
         }
 
         public IActionResult Privacy()

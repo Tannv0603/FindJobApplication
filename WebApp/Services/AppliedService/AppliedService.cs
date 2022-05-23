@@ -15,13 +15,11 @@ namespace WebApp.Services.AppliedService
     public class AppliedService : IAppliedService
     {
         private readonly IEmployeeAppliedForJobRepository _repository;
-        private readonly IJobService _jobService;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AppliedService(IEmployeeAppliedForJobRepository repository, IUnitOfWork unitOfWork, IJobService jobService)
+        public AppliedService(IEmployeeAppliedForJobRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
-            _jobService = jobService;
             _unitOfWork = unitOfWork;   
         }
 
