@@ -39,6 +39,7 @@ namespace WebApp.Services.JobService
                 .AsNoTracking()
                 .Include(x=> x.Skill)
                 .Include(x=>x.City)
+                .Include(x=>x.JobTitle)
                 .Include(job => job.Employer)
                 .ToListAsync();
             if (jobs == null) 
