@@ -10,7 +10,7 @@ namespace WebApp.Services.EmployeeService
         Task<Response<Employee>> GetAll();
         Task<Response<Employee>> GetById(string id);
         Task<Response<Employee>> GetByAppliedJob(int jobId);
-        Task<Response<Employee>> RegisterAsEmployee(EmployeeRegisterRequest request);
+        Task<Response<Employee>> RegisterAsEmployee(UserRegisterRequest request);
 
     }
 }

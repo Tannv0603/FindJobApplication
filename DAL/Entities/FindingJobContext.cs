@@ -127,15 +127,6 @@ namespace DAL.Entities
 
                 entity.Property(e => e.DateOfBirth).HasColumnType("date");
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Phone)
-                    .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
 
                 entity.HasOne(d => d.EmployeeNavigation)
                     .WithOne(p => p.Employee)
@@ -184,18 +175,6 @@ namespace DAL.Entities
                     .IsRequired()
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(255);
-
-                entity.Property(e => e.FullName)
-                    .IsRequired()
-                    .HasMaxLength(255);
-
-                entity.Property(e => e.Phone)
-                    .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
 
                 entity.HasOne(d => d.EmployerNavigation)
                     .WithOne(p => p.Employer)

@@ -22,6 +22,9 @@ using System.Text;
 using WebApp.Services.AppliedService;
 using WebApp.Services.CloudService;
 using WebApp.Services.JobTitleService;
+using WebApp.Services.UserService;
+using AutoMapper;
+using WebApp.Mapper;
 
 namespace WebApp
 {
@@ -38,7 +41,7 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddEntityFrameworkSqlServer()
+            services
                 .AddDbContext<FindingJobContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultDB"), b => b.MigrationsAssembly("DAL")));
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<FindingJobContext>()
@@ -61,7 +64,14 @@ namespace WebApp
             services.AddScoped<IEmployerRepository, EmployerRepository>();
             services.AddScoped<IJobTitleRepository, JobTitleRepository>();
             services.AddScoped<IEmployeeAppliedForJobRepository, EmployeeAppliedForJobRepository>();
-            //
+            //// Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
             //add cloud  
             var cloudName = Configuration.GetValue<string>("AccountSettings:CloudName");
             var apiKey = Configuration.GetValue<string>("AccountSettings:ApiKey");
@@ -75,6 +85,7 @@ namespace WebApp
             services.AddSingleton(new Cloudinary(new Account(cloudName, apiKey, apiSecret)));
             //add services
             services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IUserService, UserService>();    
             services.AddScoped<IJobService, JobService>();
             services.AddScoped<IJobTitleService, JobTitleService>();
             services.AddScoped<IAppliedService, AppliedService>();

@@ -9,6 +9,7 @@ namespace WebApp.Services.UserService
     public interface IUserService
     {
         Task<Response<User>> GetCurrentUserAsync();
-
+        Task<Response<User>> GetByEmail(string email);
+        Task<Response<User>> CreateAsync(UserRegisterRequest request);
     }
 }
