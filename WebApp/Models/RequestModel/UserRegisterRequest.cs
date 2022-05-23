@@ -16,5 +16,7 @@ namespace WebApp.Models.RequestModel
         [Required(ErrorMessage = DisplayConstant.ERROR_PASSWORD_REQUIRED)]
         [MinLength(6, ErrorMessage = DisplayConstant.ERROR_PASSWORD_VALIDATE)]
         public string Password { get; set; }
+        [Compare("Password", ErrorMessage = "Mật khẩu không trùng khớp")]
+        public string CofirmPassword { get; set; }
     }
 }
