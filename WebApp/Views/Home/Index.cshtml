@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-9 col-md-10">
                             <div class="hero__caption">
-                                <h1>Find the most exciting startup jobs</h1>
+                                <h1>Find the most exciting startup it jobs</h1>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle text-center">
-                        <span>FEATURED TOURS Packages</span>
+                        <span>INFORMATION TECHNOLOGY</span>
                         <h2>Browse Top Categories </h2>
                     </div>
                 </div>
@@ -64,88 +64,80 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-tour"></span>
+                            <span><img src="/web/img/listjobtil/cloud-computing.png" alt=""></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Design & Creative</a></h5>
-                            <span>(653)</span>
+                            <h5><a href="job_listing.html">Cloud Computing Engineer</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-cms"></span>
+                            <span><img src="/web/img/listjobtil/data-center.png" alt=""></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Design & Development</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Computer Network Specialist</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-report"></span>
+                            <span><img src="/web/img/listjobtil/screw-driver.png" alt=""></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Sales & Marketing</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Computer Support Specialist</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-app"></span>
+                            <span><img src="/web/img/listjobtil/server.png" alt=""></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Mobile Application</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Database Administrator</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-helmet"></span>
+                            <span><img src="/web/img/listjobtil/team.png" alt=""></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Construction</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Information Technology Leadership</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-high-tech"></span>
+                            <span><img src="/web/img/listjobtil/shield.png" alt=""></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Information Technology</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Information Security Specialist</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-real-estate"></span>
+                            <span><img src="/web/img/listjobtil/responsive.png" alt=""></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Real Estate</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Software/Application Developer</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="single-services text-center mb-30">
                         <div class="services-ion">
-                            <span class="flaticon-content"></span>
+                            <span><img src="/web/img/listjobtil/front-end.png" alt=""></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Content Writer</a></h5>
-                            <span>(658)</span>
+                            <h5><a href="job_listing.html">Web Developer</a></h5>
                         </div>
                     </div>
                 </div>
@@ -191,28 +183,46 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-10">
-                    
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="job_details.html"><img src="/web/img/icon/job-list1.png" alt=""></a>
+                    @foreach (var job in Model as IEnumerable<Job>){
+                        if(@job.StartSalary > 1000)
+                        {
+                        <!-- single-job-content -->
+                            <div class="single-job-items mb-30">
+                                <div class="job-items">
+                                    <div class="company-img">
+                                        <a href="job_details.html"><img src="/web/img/icon/@job.JobImage" alt=""></a>
+                                    </div>
+                                    <div class="job-tittle">
+                                        <a href="job_details.html"><h4>@job.JobName</h4></a>
+                                        <ul>
+                                            <li>@job.Skill.SkillName</li>
+                                            <li><i class="fas fa-map-marker-alt"></i>@job.City.CityName</li>
+                                            <li>@job.StartSalary - @job.EndSalary</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="items-link f-right">
+                                    @{
+                                                switch(@job.JobType)
+                                                {
+                                                    case 1:
+                                                        <a href="job_details.html">Full Time</a>
+                                                        break;
+                                                    case 2:
+                                                        <a href="job_details.html">Part Time</a>
+                                                        break;
+                                                    case 3:
+                                                        <a href="job_details.html">Intership</a>
+                                                        break;
+                                                }
+                                     }
+                                    <span>@job.StartDate</span>
+                                </div>
                             </div>
-                            <div class="job-tittle">
-                                <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                                <ul>
-                                    <li>Creative Agency</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                    <li>$3500 - $4000</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
-                            <span>7 hours ago</span>
-                        </div>
-                    </div>
-                    <!-- single-job-content -->
+                        }
+
+                    }
+                    @*<!-- single-job-content -->
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
@@ -271,7 +281,7 @@
                             <a href="job_details.html">Full Time</a>
                             <span>7 hours ago</span>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -480,3 +490,4 @@
     <!-- Blog Area End -->
 
 </main>
+<link rel="stylesheet" href="~/web/css/iticon.css">
