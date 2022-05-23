@@ -1,0 +1,9 @@
+span:hover {
+    color: palevioletred;
+}
+
+.icon-it{
+    color: #1da0f2;
+    display: block;
+    text-decoration-line: underline;
+}

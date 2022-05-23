@@ -38,22 +38,15 @@ namespace WebApp.Controllers
         {
             return View();
         }
-        public IActionResult JobDetails()
+        public IActionResult Blog()
         {
             return View();
         }
-        public IActionResult JobListing()
+        public IActionResult BlogDetail()
         {
             return View();
         }
-        public IActionResult Signin()
-        {
-            return View();
-        }
-        public IActionResult Signup()
-        {
-            return View();
-        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

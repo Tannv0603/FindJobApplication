@@ -25,6 +25,13 @@ namespace WebApp.Controllers
             var job = await _jobService.GetById(id);
             return View(job.Data);
         }
-
+        public IActionResult JobDetails()
+        {
+            return View();
+        }
+        public IActionResult JobListing()
+        {
+            return View();
+        }
     }
 }
