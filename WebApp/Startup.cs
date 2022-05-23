@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using CloudinaryDotNet;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using WebApp.Services.AppliedService;
+using WebApp.Services.CloudService;
+using WebApp.Services.JobTitleService;
 
 namespace WebApp
 {
@@ -52,13 +55,31 @@ namespace WebApp
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IJobRepository, JobRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICvRepository, CvRepository>();
+            services.AddScoped<ISkillRepository, SkillRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployerRepository, EmployerRepository>();
+            services.AddScoped<IJobTitleRepository, JobTitleRepository>();
             services.AddScoped<IEmployeeAppliedForJobRepository, EmployeeAppliedForJobRepository>();
             //
+            //add cloud  
+            var cloudName = Configuration.GetValue<string>("AccountSettings:CloudName");
+            var apiKey = Configuration.GetValue<string>("AccountSettings:ApiKey");
+            var apiSecret = Configuration.GetValue<string>("AccountSettings:ApiSecret");
+
+            if (new[] { cloudName, apiKey, apiSecret }.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new ArgumentException("Please specify Cloudinary account details!");
+            }
+
+            services.AddSingleton(new Cloudinary(new Account(cloudName, apiKey, apiSecret)));
             //add services
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IJobService, JobService>();
+            services.AddScoped<IJobTitleService, JobTitleService>();
             services.AddScoped<IAppliedService, AppliedService>();
-
+            services.AddScoped<ICloudService, CloudService>();
+      
 
             //config identity
             services.Configure<IdentityOptions>(options =>
@@ -79,7 +100,7 @@ namespace WebApp
                 // User settings.
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                options.User.RequireUniqueEmail = false;
+                options.User.RequireUniqueEmail = true;
             });
             //add authentication
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
