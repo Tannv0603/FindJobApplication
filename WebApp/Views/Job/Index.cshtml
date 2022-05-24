@@ -200,10 +200,10 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="#"><img src="/web/img/icon/@job.JobImage" alt=""></a>
+                                            <a href="@Url.Action("Detail","Job", new { id = job.JobId})"><img src="/web/img/icon/@job.JobImage" alt=""></a>
                                         </div>
                                         <div class="job-tittle job-tittle2">
-                                            <a href="#">
+                                            <a href="@Url.Action("Detail","Job", new { id = job.JobId})">
                                                 <h4>@job.JobName</h4>
                                             </a>
                                             <ul>
