@@ -30,6 +30,7 @@
                                 </div>
                                 
                             </div>
+                            
                             <div class="form-group">
                                 <label for="fullname"><i class="zmdi zmdi-account-box"></i></label>
                                 @Html.EditorFor(model => model.FullName,new { htmlAttributes = new { placeholder = "Full Name" } })
@@ -54,7 +55,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                                @Html.PasswordFor(m => m.CofirmPassword,new { @placeholder = "Cofirm Password" })
+                            </div>
+                            <div style="color:red;">
+                                    @Html.ValidationMessageFor(m => m.CofirmPassword, "", new { @class = "text-danger" })
                             </div>
                             
                         
