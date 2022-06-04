@@ -74,21 +74,24 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(UserRegisterRequest request)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                var user = _userService.GetByEmail(request.Email);
-                if (user == null)
+                if (request.TypeUser == "Employer") request.TypeUser = "2";
+                if (request.TypeUser == "Employee") request.TypeUser = "1";
+                var user = await _userService.GetByEmail(request.Email);
+                if (user.Data == null)
                 {
+                    
                    var result = await _userService.CreateAsync(request);
                     if(result.Success) return RedirectToAction("SignIn", "User");
                 }
                 else
                 {
-                    ViewBag.error = "Already Exist Username or Email";
+                    ViewData["error"] = "Already Exist Username or Email";
                     return View();
                 }
             }
-            ViewBag.error = "Invalid Request";
+            ViewData["error"] = "Invalid Request";
              return View();
         }
         

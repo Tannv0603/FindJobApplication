@@ -15,11 +15,17 @@ namespace DAL.Repository
         {
             _context = context;
         }
+
+        public void ClearTracked()
+        {
+            _context.ChangeTracker.Clear();
+        }
+        
         public void SaveChanges()
         {
             _context.SaveChanges();
         }
-
+        
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();

@@ -50,25 +50,27 @@ namespace WebApp.Services.UserService
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber,
                 UserName = request.UserName,
-                TypeUser = request.TypeUser,
+                AvatarUrl = MediaConstant.DEFAULT_USER_AVATAR,
+                TypeUser = short.Parse(request.TypeUser),
                 FullName = request.FullName
             };
-            await _userManager.CreateAsync(user);
+            await _userManager.CreateAsync(user).ConfigureAwait(false);
             var created = await GetByEmail(request.Email);
-            if (created != null)
+            if (created.Data != null)
             {
-                if (request.TypeUser == TypeUser.Employee)
+                if (short.Parse(request.TypeUser) == TypeUser.Employee)
                 {
                     var result = await CreateEmployeeAsync(created.Data.Id);
                     if (!result)
                     {
                         return new Response<User>(false, created.Data, DisplayConstant.ERROR);
                     }
-                    var role = _roleManager.FindByNameAsync(UserRoles.Employer);
-                    if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employee });
+                    var role =await _roleManager.FindByNameAsync(UserRoles.Employee);
+                    if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employee }).ConfigureAwait(false);
+                    _unitOfWork.ClearTracked();
                     await _userManager.AddToRoleAsync(created.Data, UserRoles.Employee);
                 }
-                if (request.TypeUser == TypeUser.Employer)
+                if (short.Parse(request.TypeUser) == TypeUser.Employer)
                 {
                     var result = await CreateEmployerAsync(created.Data.Id);
                     if (!result) 
@@ -76,8 +78,10 @@ namespace WebApp.Services.UserService
                         return new Response<User>(false, created.Data, DisplayConstant.ERROR);
                     }
                     var role = _roleManager.FindByNameAsync(UserRoles.Employer);
-                    if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employer });
-                    await _userManager.AddToRoleAsync(created.Data, UserRoles.Employee);
+                    if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employer }).ConfigureAwait(false);
+                    _unitOfWork.ClearTracked();
+                    
+                    await _userManager.AddToRoleAsync(created.Data, UserRoles.Employer);
                 }
                 return new Response<User>(true, created.Data, DisplayConstant.SUCCESS_CREATED);
             }
@@ -91,9 +95,9 @@ namespace WebApp.Services.UserService
         {
             try
             {
-                Employer employer = new Employer() { EmployerId = id };
-                await _employerRepository.DbSet.AddAsync(employer);
-                await _unitOfWork.SaveChangesAsync();
+                Employer employer = new Employer() { EmployerId = id, CompanyName="" };
+                await _employerRepository.DbSet.AddAsync(employer).ConfigureAwait(false);
+                await _unitOfWork.SaveChangesAsync().ConfigureAwait(false);
                 return true;
             }
             catch
@@ -106,9 +110,9 @@ namespace WebApp.Services.UserService
         {
             try
             {
-                Employee employee = new Employee() { EmployeeId = id };
-                await _employeeRepository.DbSet.AddAsync(employee);
-                await _unitOfWork.SaveChangesAsync();
+                Employee employee = new Employee() { EmployeeId = id, Address="",CityId=0,DateOfBirth=DateTime.Now };
+                await _employeeRepository.DbSet.AddAsync(employee).ConfigureAwait(false);
+                await _unitOfWork.SaveChangesAsync().ConfigureAwait(false);
                 return true;
             }
             catch

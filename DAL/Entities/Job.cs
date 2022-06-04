@@ -15,9 +15,9 @@ namespace DAL.Entities
         public string Address { get; set; }
         public decimal StartSalary { get; set; }
         public decimal EndSalary { get; set; }
-        public DateTime ModifiedDate { get; set; }
-        public bool Status { get; set; }
-        public string Tags { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        public bool? Status { get; set; }
+        public string? Tags { get; set; }
         public short JobType { get; set; }
         public int SkillId { get; set; }
         public short SkillLevel { get; set; }

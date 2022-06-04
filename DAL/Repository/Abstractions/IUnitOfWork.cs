@@ -10,5 +10,6 @@ namespace DAL.Repository.Abstractions
     {
         Task SaveChangesAsync();
         void SaveChanges();
+        void ClearTracked();
     }
 }

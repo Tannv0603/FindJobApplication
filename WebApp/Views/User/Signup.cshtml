@@ -1,4 +1,5 @@
-﻿@model WebApp.Models.RequestModel.UserRegisterRequest
+﻿@using WebApp.Constant;
+@model WebApp.Models.RequestModel.UserRegisterRequest
 <!-- Hero Area Start-->
 <div class="slider-area ">
     <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
@@ -19,52 +20,48 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign Up</h2>
+                           <h5 style="color:red;">@ViewData["error"]</h5>
                    <!-- Fixing or Config Form Here-->
                         <form method="POST" class="register-form" id="register-form">
                             <div class="input-group">
                                 <div style="margin-left: 25px; position: relative" class="rs-select2 js-select-simple select--no-search">
-                                    <select name="registeras">
-                                        <option disabled="disabled" selected="selected">Register As</option>
-                                        <option>Employee</option>
-                                        <option>Employer</option>
-                                    </select>
-                                    <div class="select-dropdown"></div>
+                                  @Html.DropDownListFor(model => model.TypeUser, new SelectList(Enum.GetValues(typeof(UserType))),"Register As")
+                                   
                                 </div>
-                                <div><label for="role"><i class="zmdi zmdi-accounts-list"></i></label></div>
+                                
                             </div>
                             <div class="form-group">
                                 <label for="fullname"><i class="zmdi zmdi-account-box"></i></label>
-                                <input type="text" name="f_name" id="fname" placeholder="Full Name"/>
+                                @Html.EditorFor(model => model.FullName,new { htmlAttributes = new { placeholder = "Full Name" } })
+                               
                             </div>
                             
                             <div class="form-group">
                                 <label for="phone"><i class="zmdi zmdi-phone"></i></label>
-                                <input type="text" name="phone" id="phone" placeholder="Phone"/>
+                                @Html.EditorFor(model => model.PhoneNumber,new { htmlAttributes = new { placeholder = "Phone Number" } })
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                               @Html.EditorFor(model => model.Email,new { htmlAttributes = new { placeholder = "Email" } })
                             </div>
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="u_name" id="uname" placeholder="User Name"/>
+                               @Html.EditorFor(model => model.UserName,new { htmlAttributes = new { placeholder = "UserName" } })
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
+                               @Html.EditorFor(model => model.Password,new { htmlAttributes = new { placeholder = "Password" } })
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
                             
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label style="font-size: 12px" for="agree-term" class="label-agree-term"><span ><span ></span></span> I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
+                        
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
                             </div>
+                         
                         </form>
                         
                     </div>

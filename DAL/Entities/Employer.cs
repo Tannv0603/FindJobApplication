@@ -13,7 +13,7 @@ namespace DAL.Entities
         }
 
         public string EmployerId { get; set; }      
-        public string CompanyName { get; set; }
+        public string? CompanyName { get; set; }
         public virtual User EmployerNavigation { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
     }
