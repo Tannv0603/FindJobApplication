@@ -64,8 +64,10 @@
                                                 <ul class="submenu">
                                                     <li><a href="@Url.Action("Blog","Home")">Blog</a></li>
                                                     <li><a href="@Url.Action("BlogDetail","Home")">Blog Details</a></li>
-                                                    <li><a href="@Url.Action("Detail","Job")">Job Details</a></li>
+                                                    <li><a href="@Url.Action("ListCv","Employee")">List Cv</a></li>
+                                                    <li><a href="@Url.Action("AppliedJob","Employee")">Applied Jobs </a></li>
                                                     <li><a href="@Url.Action("HRPost","Employer")">Add New Job</a></li>
+                                                    <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
@@ -74,7 +76,7 @@
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="@Url.Action("SignUp","User")" class="btn head-btn1">Register</a>
+                                    <a href="@Url.Action("SignUp","User")" class="btn btn-danger">Register</a>
                                     <a href="@Url.Action("SignIn","User")" class="btn head-btn2">Login</a>
                                 </div>
                             </div>
