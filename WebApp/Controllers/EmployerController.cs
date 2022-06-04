@@ -16,5 +16,9 @@ namespace WebApp.Controllers
         {
             return View();
         }
+        public IActionResult DetailListCv()
+        {
+            return View();
+        }
     }
 }
