@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace WebApp.Controllers
 {
-    public class EmployerController : Controller
+    public class EmployeeController : Controller
     {
-        public IActionResult HRPost()
+        public IActionResult ListCv()
         {
             return View();
         }
-        public IActionResult JobManagement()
+        public IActionResult AppliedJob()
         {
             return View();
         }
