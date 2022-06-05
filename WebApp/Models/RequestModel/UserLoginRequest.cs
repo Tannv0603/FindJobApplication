@@ -9,5 +9,6 @@ namespace WebApp.Models.RequestModel
         [Required(ErrorMessage = DisplayConstant.ERROR_PASSWORD_REQUIRED)]
         [MinLength(6,ErrorMessage =DisplayConstant.ERROR_PASSWORD_VALIDATE)]
         public string Password { get; set; }
+        public bool RememberMe { get; set; }
     }
 }

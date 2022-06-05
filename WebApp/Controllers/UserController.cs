@@ -22,13 +22,16 @@ namespace WebApp.Controllers
         private readonly IConfiguration _configuration;
         private readonly IUserService _userService;
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         
         public UserController(IConfiguration config,
             IUserService userService,
-            UserManager<User> userManager)
+            UserManager<User> userManager,
+            SignInManager<User> signManager)
         {
             _userManager = userManager;
             _userService = userService;
+            _signInManager = signManager;
             _configuration = config;
         }
         public IActionResult SignIn()
@@ -49,39 +52,36 @@ namespace WebApp.Controllers
             (UserLoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
-            if (user != null && await _userManager.CheckPasswordAsync(user, request.Password))
-            {
-                var userRoles = await _userManager.GetRolesAsync(user);
-                var authClaims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.NameIdentifier,user.Id),
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.Email, user.Email),
-                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                };
-                foreach (var userRole in userRoles)
-                {
-                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                }
-                var token = GetToken(authClaims);
-                HttpContext.Session.SetString("Token", token.ToString());
-                return RedirectToAction("Index", "Home");
-            }
-            return RedirectToAction("Error");
+            var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
+            if (result.Succeeded)
+                return RedirectToAction("Index", "Job");
+            ViewData["error"] = "Username or password Incorrect!";
+            return View();
+        }
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Job");
         }
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(UserRegisterRequest request)
         {
-            if(ModelState.IsValid)
+            if(request.ConfirmPassword!=request.Password)
+            {
+                ViewData["error"] = "Confirm password unmatch!";
+                return View();
+            }
+            if(ModelState.IsValid) 
             {
                 if (request.TypeUser == "Employer") request.TypeUser = "2";
                 if (request.TypeUser == "Employee") request.TypeUser = "1";
-                var user = await _userService.GetByEmail(request.Email);
-                if (user.Data == null)
+                var userEmail = await _userManager.FindByEmailAsync(request.Email);
+                var userName = await _userManager.FindByNameAsync(request.UserName);
+                if (userEmail == null && userName==null)
                 {
-                    
                    var result = await _userService.CreateAsync(request);
                     if(result.Success) return RedirectToAction("SignIn", "User");
                 }
@@ -97,7 +97,7 @@ namespace WebApp.Controllers
         
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT:ValidIssuer"],

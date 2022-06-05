@@ -54,36 +54,35 @@ namespace WebApp.Services.UserService
                 TypeUser = short.Parse(request.TypeUser),
                 FullName = request.FullName
             };
-            await _userManager.CreateAsync(user).ConfigureAwait(false);
-            var created = await GetByEmail(request.Email);
-            if (created.Data != null)
+            await _userManager.CreateAsync(user,request.Password).ConfigureAwait(false);
+            var created = await _userManager.FindByEmailAsync(request.Email);
+            if (created != null)
             {
                 if (short.Parse(request.TypeUser) == TypeUser.Employee)
                 {
-                    var result = await CreateEmployeeAsync(created.Data.Id);
+                    var role = await _roleManager.FindByNameAsync(UserRoles.Employee);
+                    if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employee }).ConfigureAwait(false);
+                    await _userManager.AddToRoleAsync(created, UserRoles.Employee);
+                    var result = await CreateEmployeeAsync(created.Id);
                     if (!result)
                     {
-                        return new Response<User>(false, created.Data, DisplayConstant.ERROR);
+                        return new Response<User>(false, created, DisplayConstant.ERROR);
                     }
-                    var role =await _roleManager.FindByNameAsync(UserRoles.Employee);
-                    if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employee }).ConfigureAwait(false);
-                    _unitOfWork.ClearTracked();
-                    await _userManager.AddToRoleAsync(created.Data, UserRoles.Employee);
+                    _unitOfWork.ClearTracked();                   
                 }
                 if (short.Parse(request.TypeUser) == TypeUser.Employer)
                 {
-                    var result = await CreateEmployerAsync(created.Data.Id);
-                    if (!result) 
-                    {
-                        return new Response<User>(false, created.Data, DisplayConstant.ERROR);
-                    }
                     var role = _roleManager.FindByNameAsync(UserRoles.Employer);
                     if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employer }).ConfigureAwait(false);
+                    await _userManager.AddToRoleAsync(created, UserRoles.Employer);
+                    var result = await CreateEmployerAsync(created.Id);
+                    if (!result) 
+                    {
+                        return new Response<User>(false, created, DisplayConstant.ERROR);
+                    }
                     _unitOfWork.ClearTracked();
-                    
-                    await _userManager.AddToRoleAsync(created.Data, UserRoles.Employer);
                 }
-                return new Response<User>(true, created.Data, DisplayConstant.SUCCESS_CREATED);
+                return new Response<User>(true, created, DisplayConstant.SUCCESS_CREATED);
             }
             else
             {
@@ -98,6 +97,7 @@ namespace WebApp.Services.UserService
                 Employer employer = new Employer() { EmployerId = id, CompanyName="" };
                 await _employerRepository.DbSet.AddAsync(employer).ConfigureAwait(false);
                 await _unitOfWork.SaveChangesAsync().ConfigureAwait(false);
+                _unitOfWork.ClearTracked();
                 return true;
             }
             catch
@@ -113,6 +113,7 @@ namespace WebApp.Services.UserService
                 Employee employee = new Employee() { EmployeeId = id, Address="",CityId=0,DateOfBirth=DateTime.Now };
                 await _employeeRepository.DbSet.AddAsync(employee).ConfigureAwait(false);
                 await _unitOfWork.SaveChangesAsync().ConfigureAwait(false);
+                _unitOfWork.ClearTracked();
                 return true;
             }
             catch
