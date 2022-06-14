@@ -1,4 +1,16 @@
-﻿<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+﻿@using System.Security.Claims;
+@{    
+    if (Context.User.Identity.IsAuthenticated)
+    {
+        Layout = "LoggedIn_Layout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }    
+    var user = User.FindFirstValue(ClaimTypes.Name);
+}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/web/css/jobmanagement.css">
 <!-- Hero Area Start-->
 <div class="slider-area ">
@@ -14,6 +26,7 @@
         </div>
     </div>
 </div>
+<div style="background: #ededed;" class="whole-wrap">
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -405,4 +418,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
