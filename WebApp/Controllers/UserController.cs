@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebApp.Models.RequestModel;
 using WebApp.Services.UserService;
+using WebApp.Constant;
 
 namespace WebApp.Controllers
 {
@@ -94,21 +95,16 @@ namespace WebApp.Controllers
             ViewData["error"] = "Invalid Request";
              return View();
         }
-        
-        private JwtSecurityToken GetToken(List<Claim> authClaims)
+        public async Task<IActionResult> UpdateProfile()
         {
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:ValidIssuer"],
-                audience: _configuration["JWT:ValidAudience"],
-                expires: DateTime.Now.AddHours(3),
-                claims: authClaims,
-                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-                );
-
-            return token;
+            var user = await _userManager.GetUserAsync(User);
+            if (user.TypeUser == TypeUser.Employee)
+                return RedirectToAction("UpdateProfile", "Employee");
+            if (user.TypeUser == TypeUser.Employer)
+                return RedirectToAction("UpdateProfile", "Employer");
+            return View();
         }
+        
 
     }
 }
