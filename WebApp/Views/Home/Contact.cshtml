@@ -1,4 +1,16 @@
-﻿<!-- Hero Area Start-->
+﻿@using System.Security.Claims;
+@{    
+    if (Context.User.Identity.IsAuthenticated)
+    {
+        Layout = "LoggedIn_Layout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }    
+    var user = User.FindFirstValue(ClaimTypes.Name);
+}
+<!-- Hero Area Start-->
 <div class="slider-area ">
     <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
         <div class="container">

@@ -1,10 +1,12 @@
 ﻿@using System.Security.Claims;
 @{
-    var user = User.FindFirstValue(ClaimTypes.Name).ToString();
-    var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+var user = User.FindFirstValue(ClaimTypes.Name).ToString();
+var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+var role = User.FindFirstValue(ClaimTypes.Role);
 }
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -63,23 +65,36 @@
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="@Url.Action("Index","Job")">Find a Jobs </a></li>
-                                            <li><a href="@Url.Action("About","Home")">About</a></li>
+                                            <li><a href="@Url.Action(" Index","Job")">Find a Jobs </a></li>
+                                            @if(@role == "Employee")
+                                            {
+                                            <li><a href="@Url.Action(" ListCv","Employee")">List Cv</a></li>
+                                            <li><a href="@Url.Action(" AppliedJob","Employee")">Applied Jobs </a></li>
+                                            }
+                                            @if(@role == "Employer")
+                                            {
+                                            <li><a href="@Url.Action(" HRPost","Employer")">Add New Job</a></li>
+                                            <li><a href="@Url.Action(" JobManagement","Employer")">Jobs Management</a>
+                                            </li>
+                                            <li><a href="@Url.Action(" DetailListCv","Employer")">Details List Cv</a>
+                                            </li>
+                                            }
                                             <li>
                                                 <a href="#">Page</a>
                                                 <ul class="submenu">
-                                                    <li><a href="@Url.Action("Blog","Home")">Blog</a></li>
-                                                    <li><a href="@Url.Action("BlogDetail","Home")">Blog Details</a></li>
-                                                    <li><a href="@Url.Action("Detail","Job")">Job Details</a></li>
-                                                    <li><a href="@Url.Action("HRPost","Employer")">Add New Job</a></li>
+                                                    <li><a href="@Url.Action(" About","Home")">About</a></li>
+                                                    <li><a href="@Url.Action(" Blog","Home")">Blog</a></li>
+                                                    <li><a href="@Url.Action(" BlogDetail","Home")">Blog Details</a>
+                                                    </li>
+
                                                 </ul>
                                             </li>
-                                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                                            <li><a href="@Url.Action(" Contact","Home")">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
-			                     <nav class="navbar navbar-expand-xl navbar-light ">
+                                <nav class="navbar navbar-expand-xl navbar-light ">
                                     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
                                         <div class="navbar-nav ml-auto">
 			                            <div class="nav-item dropdown">
@@ -93,7 +108,7 @@
 				                            </div>
 			                            </div>
                                         </div>
-		                            </div>
+                                    </div>
                                 </nav>
                             </div>
                         </div>
@@ -119,7 +134,8 @@
                                 <div class="footer-tittle">
                                     <h4>About Us</h4>
                                     <div class="footer-pera">
-                                        <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
+                                        <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so
+                                            behold.</p>
                                     </div>
                                 </div>
                             </div>
@@ -168,14 +184,16 @@
                                 <!-- Form -->
                                 <div class="footer-form">
                                     <div id="mc_embed_signup">
-                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                              method="get" class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                                   class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                                   onblur="this.placeholder = ' Email Address '">
+                                        <form target="_blank"
+                                            action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                            method="get" class="subscribe_form relative mail_part">
+                                            <input type="email" name="email" id="newsletter-form-email"
+                                                placeholder="Email Address" class="placeholder hide-on-focus"
+                                                onfocus="this.placeholder = ''"
+                                                onblur="this.placeholder = ' Email Address '">
                                             <div class="form-icon">
                                                 <button type="submit" name="submit" id="newsletter-submit"
-                                                        class="email_icon newsletter-submit button-contactForm">
+                                                    class="email_icon newsletter-submit button-contactForm">
                                                     <img src="/web/img/icon/form.png" alt="">
                                                 </button>
                                             </div>
@@ -227,7 +245,9 @@
                                 <p>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     Copyright &copy;
-                                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                                    This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                        href="https://colorlib.com" target="_blank">Colorlib</a>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
                             </div>
@@ -284,4 +304,5 @@
     <script src="/web/js/main.js"></script>
 
 </body>
+
 </html>

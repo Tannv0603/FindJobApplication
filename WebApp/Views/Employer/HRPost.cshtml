@@ -1,4 +1,16 @@
-﻿<!-- Hero Area Start-->
+﻿@using System.Security.Claims;
+@{    
+    if (Context.User.Identity.IsAuthenticated)
+    {
+        Layout = "LoggedIn_Layout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }    
+    var user = User.FindFirstValue(ClaimTypes.Name);
+}
+<!-- Hero Area Start-->
 <div class="slider-area ">
     <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
         <div class="container">
@@ -14,12 +26,12 @@
 </div>
 <!-- Hero Area End -->
 <!-- Start Align Area -->
-<div class="whole-wrap">
+<div style="background: #ededed;" class="whole-wrap">
     <div class="container box_1170">
-        <div class="section-top-border">
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <form action="#">
+        <div  class="section-top-border">
+            <div  class="row">
+                <div  class="col-lg-8 col-md-8">
+                    <form style="background: #ededed;" action="#">
                         <h3 class="mb-30">Create New Job</h3>
 
                         <div class="mt-10">

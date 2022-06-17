@@ -213,7 +213,7 @@ a {
 }
 
 a:hover {
-    color: #fff
+    color: #000099
 }
 
 a:focus,
@@ -225,7 +225,7 @@ a:hover,
 
 a,
 button {
-    color: #fff;
+    color: #4c4cff;
     outline: medium none
 }
 
@@ -3250,7 +3250,7 @@ hr {
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body a:hover {
-    color: #fff
+    color: #0000ff
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body p {
