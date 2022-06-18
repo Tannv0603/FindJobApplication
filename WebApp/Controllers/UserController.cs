@@ -24,7 +24,6 @@ namespace WebApp.Controllers
         private readonly IUserService _userService;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        
         public UserController(IConfiguration config,
             IUserService userService,
             UserManager<User> userManager,
@@ -55,7 +54,17 @@ namespace WebApp.Controllers
             var user = await _userManager.FindByNameAsync(request.UserName);
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
             if (result.Succeeded)
+            {
                 return RedirectToAction("Index", "Job");
+                //var claim = new List<Claim>();
+                //claim.Add(new Claim(ClaimTypes.NameIdentifier, request.UserName));
+                //var roles =await _userManager.GetRolesAsync(user);
+                //foreach(var role in roles)
+                //{
+                //    claim.Add(new Claim(ClaimTypes.Role, role));
+                //}    
+            }
+              
             ViewData["error"] = "Username or password Incorrect!";
             return View();
         }

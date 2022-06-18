@@ -1,0 +1,17 @@
+﻿@*
+    chứa 1 job detail {
+        job name, 
+        job image,
+        address
+    }
+    1 dropdown list CV
+    1 nút apply  
+    1 nút back trỏ về job detail 
+    1 nút add new CV trỏ về page add cv
+*@
+@using DAL.Entities;
+@model IEnumerable<Cv>;
+@foreach(var cv in Model)
+{
+   @cv.StoredUrl;
+}
