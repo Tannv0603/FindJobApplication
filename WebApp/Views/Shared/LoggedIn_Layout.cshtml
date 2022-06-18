@@ -66,23 +66,23 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                                         <ul id="navigation">
                                             <li><a href="/">Home</a></li>
                                             <li><a href="@Url.Action("Index","Job")">Find a Jobs </a></li>
-                                            <li><a href="@Url.Action("ListCv","Employee")">List Cv</a></li>
-                                            <li><a href="@Url.Action("AppliedJob","Employee")">Applied Jobs </a></li>
-                                            <li><a href="@Url.Action("HRPost","Employer")">Add New Job</a></li>
-                                            <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>                                          
-                                            <li><a href="@Url.Action("DetailListCv","Employer")">Details List Cv</a>
-                                            </li>
                                             <li>
                                                 <a href="#">Page</a>
                                                 <ul class="submenu">
                                                     <li><a href="@Url.Action("About","Home")">About</a></li>
                                                     <li><a href="@Url.Action("Blog","Home")">Blog</a></li>
                                                     <li><a href="@Url.Action("BlogDetail","Home")">Blog Details</a>
+                                                    <li><a href="@Url.Action("ListCv","Employee")">List Cv</a></li>
+                                                    <li><a href="@Url.Action("AppliedJob","Employee")">Applied Jobs </a></li>
+                                                    <li><a href="@Url.Action("HRPost","Employer")">Add New Job</a></li>
+                                                    <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>
+                                                    <li><a href="@Url.Action("DetailListCv","Employer")">Details List Cv</a>
                                                     </li>
-
                                                 </ul>
                                             </li>
                                             <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                                            <li><a href="@Url.Action("Apply","Apply")">Apply</a></li>
+                                            <li><a href="@Url.Action("Profile","Employer")">Profile Employer</a>
                                         </ul>
                                     </nav>
                                 </div>
@@ -91,9 +91,11 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                                     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
                                         <div class="navbar-nav ml-auto">
 			                            <div class="nav-item dropdown">
-				                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> <b class="caret">Welcome @user</b></a>
+				                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> <b class="caret">Welcome @user <img
+                                                        style="border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;height:40px;width:40px"
+                                                        src="~/web/img/logo/user-tie.png" class="avatar" alt="Avatar"></b></a>
 				                            <div class="dropdown-menu">
-					                            <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
+					                            <a href="@Url.Action("UpdateProfile","Employee")" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
 					                            <a href="#" class="dropdown-item"><i class="fa fa-key"></i> Change Password</a></a>
 					                            <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
 					                            <div class="dropdown-divider"></div>
