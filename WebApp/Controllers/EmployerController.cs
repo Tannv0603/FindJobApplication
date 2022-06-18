@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApp.Controllers
 {
@@ -17,6 +13,10 @@ namespace WebApp.Controllers
             return View();
         }
         public IActionResult DetailListCv()
+        {
+            return View();
+        }
+        public IActionResult Profile()
         {
             return View();
         }
