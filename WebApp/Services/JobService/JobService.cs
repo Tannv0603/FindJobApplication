@@ -18,7 +18,7 @@ using WebApp.Services.SkillService;
 
 namespace WebApp.Services.JobService
 {
-    public class JobService:IJobService
+    public class JobService : IJobService
     {
         private readonly IJobRepository _jobRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -28,7 +28,7 @@ namespace WebApp.Services.JobService
         private readonly ISkillService _skillService;
         private readonly ICloudService _cloudService;
         private readonly IJobTitleService _jobTitleService;
-        public JobService(IJobRepository jobRepository, 
+        public JobService(IJobRepository jobRepository,
             IUnitOfWork unitOfWork,
             IEmployeeAppliedForJobRepository appliedJob,
             IAppliedService appliedService,
@@ -41,22 +41,22 @@ namespace WebApp.Services.JobService
             _unitOfWork = unitOfWork;
             _appliedService = appliedService;
             _cityService = cityService;
-            _cloudService = cloudService;   
+            _cloudService = cloudService;
             _skillService = skillService;
             _jobTitleService = jobTitleService;
         }
 
-        
+
         public async Task<Response<Job>> GetAll()
         {
             var jobs = await _jobRepository.DbSet
                 .AsNoTracking()
-                .Include(x=> x.Skill)
-                .Include(x=>x.City)
-                .Include(x=>x.JobTitle)
+                .Include(x => x.Skill)
+                .Include(x => x.City)
+                .Include(x => x.JobTitle)
                 .Include(job => job.Employer)
                 .ToListAsync();
-            if (jobs == null) 
+            if (jobs == null)
             {
                 return new Response<Job>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
             }
@@ -65,13 +65,14 @@ namespace WebApp.Services.JobService
 
         public async Task<Response<Job>> GetById(int id)
         {
-            var job =  await _jobRepository.DbSet
+            var job = await _jobRepository.DbSet
                 .AsNoTracking()
                 .Include(x => x.Skill)
                 .Include(x => x.City)
                 .Include(job => job.Employer)
-                .FirstOrDefaultAsync(job => job.JobId==id);
-            if(job == null)
+                .Include(job => job.JobTitle)
+                .FirstOrDefaultAsync(job => job.JobId == id);
+            if (job == null)
             {
                 return new Response<Job>(false, data: null, DisplayConstant.ERROR_LOADFAIL);
             }
@@ -82,37 +83,37 @@ namespace WebApp.Services.JobService
         {
             var collectingApply = await _appliedService.GetAppliedByEmployee(employeeId);
             var result = new List<Job>();
-            if(collectingApply.Success)
+            if (collectingApply.Success)
             {
-                foreach( var apply in collectingApply.DataSet)
+                foreach (var apply in collectingApply.DataSet)
                 {
                     var job = await GetById(apply.JobId);
                     result.Add(job.Data);
                 }
                 return new Response<Job>(true, result, DisplayConstant.SUCCESS);
-            }    
-            return  new Response<Job>(false, dataset:null, DisplayConstant.ERROR_LOADFAIL);
+            }
+            return new Response<Job>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
         }
 
         public async Task<Response<Job>> GetJobCreatedByEmployerId(string employerId)
         {
-           var jobs = await _jobRepository.DbSet
-                .AsNoTracking()
-                .Where(job => job.EmployerId==employerId)
-                .ToListAsync();
-            if(jobs == null)
+            var jobs = await _jobRepository.DbSet
+                 .AsNoTracking()
+                 .Where(job => job.EmployerId == employerId)
+                 .ToListAsync();
+            if (jobs == null)
             {
                 return new Response<Job>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
             }
             return new Response<Job>(true, jobs, DisplayConstant.SUCCESS);
         }
 
-        public async Task<Response<Job>> CreateJob(NewJob request,IFormFile file, string userid)
-        {           
+        public async Task<Response<Job>> CreateJob(NewJob request, IFormFile file, string userid)
+        {
             if (request == null)
             {
                 return new Response<Job>(false, data: null, DisplayConstant.ERROR_BADREQUEST);
-            }    
+            }
             try
             {
 
@@ -126,17 +127,17 @@ namespace WebApp.Services.JobService
                     default: jobType = 0; break;
                 }
                 var skillLevel = new short();
-                switch(request.SkillLevel)
+                switch (request.SkillLevel)
                 {
                     case nameof(Level.Master): skillLevel = Level.Master; break;
                     case nameof(Level.Expert): skillLevel = Level.Expert; break;
                     case nameof(Level.Senior): skillLevel = Level.Senior; break;
                     case nameof(Level.Junior): skillLevel = Level.Junior; break;
                     case nameof(Level.Fresher): skillLevel = Level.Fresher; break;
-                    default : skillLevel = 0; break;
+                    default: skillLevel = 0; break;
                 }
                 var imagePath = _cloudService.AddImage(file);
-                if (imagePath == null) imagePath =DisplayConstant.JOB_IMG_DEFAULT_PATH;
+                if (imagePath == null) imagePath = DisplayConstant.JOB_IMG_DEFAULT_PATH;
                 var job = new Job()
                 {
                     JobName = request.JobName.Trim(),
@@ -159,33 +160,33 @@ namespace WebApp.Services.JobService
                 };
                 await _jobRepository.DbSet.AddAsync(job);
                 await _unitOfWork.SaveChangesAsync();
-                return new Response<Job>(true, data:null, DisplayConstant.SUCCESS);
+                return new Response<Job>(true, data: null, DisplayConstant.SUCCESS);
             }
             catch
             {
-                return new Response<Job>(false, data:null, DisplayConstant.ERROR_CREATED);
+                return new Response<Job>(false, data: null, DisplayConstant.ERROR_CREATED);
             }
         }
 
-       public async Task<Response<Job>> DeleteJob(int id)
+        public async Task<Response<Job>> DeleteJob(int id)
         {
             var job = await GetById(id);
-            if(!job.Success)
+            if (!job.Success)
             {
                 return new Response<Job>(false, data: null, DisplayConstant.ERROR_INSTANCE_NOT_FOUND);
             }
             try
             {
-                 _jobRepository.DbSet.Remove(job.Data);
+                _jobRepository.DbSet.Remove(job.Data);
                 await _unitOfWork.SaveChangesAsync();
-                return new Response<Job>(true, data:null, DisplayConstant.SUCCESS);
+                return new Response<Job>(true, data: null, DisplayConstant.SUCCESS);
             }
             catch
             {
                 return new Response<Job>(false, job.Data, DisplayConstant.ERROR_REMOVED);
             }
         }
-       
+
 
         public Task<Response<Job>> UpdateJob(int id, JobRequest request)
         {
