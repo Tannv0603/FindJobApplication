@@ -26,7 +26,7 @@ namespace WebApp.Services.CloudService
             
             try
             {
-                if (file.Length > 0)
+                if (file != null)
                 {
                     var result = new ImageUploadResult();
                     using (var stream = file.OpenReadStream())

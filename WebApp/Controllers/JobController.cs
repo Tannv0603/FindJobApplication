@@ -17,7 +17,6 @@ namespace WebApp.Controllers
     {
         private readonly IJobService _jobService;
         private readonly ICityService _cityService;
-
         private readonly IJobTitleService _jobTitleService;
         public JobController(IJobService jobService
             ,ICityService cityService
@@ -49,7 +48,7 @@ namespace WebApp.Controllers
             var jobs = await _jobService.GetAll();
             var cities = await _cityService.GetAll();
             var titles = await _jobTitleService.GetAll();
-            filter.SearchFilter = filter.SearchFilter.Trim().ToLower();
+            filter.SearchFilter =""+filter.SearchFilter.Trim().ToLower();
             jobs.DataSet
                 .Where(j =>
                     (j.StartSalary >= filter.StartSalary
@@ -58,8 +57,7 @@ namespace WebApp.Controllers
                     || j.City.CityName.ToLower().Contains(filter.SearchFilter)
                     || j.JobTitle.TitleName.ToLower().Contains(filter.SearchFilter)
                     || j.Address.ToLower().Contains(filter.SearchFilter)
-                    || j.City.CityName.ToLower().Contains(filter.City)
-                    || filter.SearchFilter == null)
+                    || j.City.CityName.ToLower().Contains(filter.City))
                     && (j.City.CityName == filter.City
                     || filter.City == null)
                     && (j.JobTitle.TitleName == filter.JobTitle

@@ -40,7 +40,8 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
-            _cloudService.AddCV(file);
+            var path = _cloudService.AddCV(file);
+           
 
             return RedirectToAction("EmployeeCV",userid);
         }

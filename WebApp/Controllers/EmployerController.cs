@@ -56,7 +56,7 @@ namespace WebApp.Controllers
             if (result.Success)
             {
                 ViewBag.Message = "Successfull";
-                return View("JobManagement");
+                return RedirectToAction("JobManagement");
             }
             else
             {
