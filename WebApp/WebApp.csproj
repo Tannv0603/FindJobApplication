@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="CloudinaryDotNet" Version="1.17.0" />
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.57.0.2684" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />

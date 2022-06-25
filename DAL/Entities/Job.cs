@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -30,5 +31,7 @@ namespace DAL.Entities
         public virtual Employer Employer { get; set; }
         public virtual JobTitle JobTitle { get; set; }
         public virtual Skill Skill { get; set; }
+        [NotMapped]
+        public virtual IEnumerable<EmployeeAppliedForJob> AppliedDetail { get; set; }
     }
 }

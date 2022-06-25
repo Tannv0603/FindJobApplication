@@ -1,13 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 using WebApp.Models.Response;
 
 namespace WebApp.Services.CloudService
 {
     public interface ICloudService
     {
-        Task<bool> AddCv();
-        Task<bool> AddImage();
-        Task<bool> DeleteCv();
-        Task<bool> DeleteImage();
+        public string AddImage(IFormFile file);
+        public string  AddCV(IFormFile file);
     }
 }

@@ -4,14 +4,16 @@ using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(FindingJobContext))]
-    partial class FindingJobContextModelSnapshot : ModelSnapshot
+    [Migration("20220625043735_add FK applying")]
+    partial class addFKapplying
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,9 +76,6 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasColumnName("CVID")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CvName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)")

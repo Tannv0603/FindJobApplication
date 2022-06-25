@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 using WebApp.Constant;
 using WebApp.Models.RequestModel;
 using WebApp.Models.Response;
+using WebApp.Models.ViewModel;
 using WebApp.Services.AppliedService;
 using WebApp.Services.CityService;
+using WebApp.Services.CloudService;
+using WebApp.Services.JobTitleService;
+using WebApp.Services.SkillService;
 
 namespace WebApp.Services.JobService
 {
@@ -20,16 +24,25 @@ namespace WebApp.Services.JobService
         private readonly ICityService _cityService;
         private readonly IAppliedService _appliedService;
         private readonly IMapper _mapper;
+        private readonly ISkillService _skillService;
+        private readonly ICloudService _cloudService;
+        private readonly IJobTitleService _jobTitleService;
         public JobService(IJobRepository jobRepository, 
             IUnitOfWork unitOfWork,
             IEmployeeAppliedForJobRepository appliedJob,
             IAppliedService appliedService,
-            ICityService cityService)
+            ICityService cityService,
+            ICloudService cloudService,
+            ISkillService skillService,
+            IJobTitleService jobTitleService)
         {
             _jobRepository = jobRepository;
             _unitOfWork = unitOfWork;
             _appliedService = appliedService;
             _cityService = cityService;
+            _cloudService = cloudService;   
+            _skillService = skillService;
+            _jobTitleService = jobTitleService;
         }
 
         
@@ -93,7 +106,7 @@ namespace WebApp.Services.JobService
             return new Response<Job>(true, jobs, DisplayConstant.SUCCESS);
         }
 
-        public async Task<Response<Job>> CreateJob(JobRequest request)
+        public async Task<Response<Job>> CreateJob(NewJob request, string userid)
         {           
             if (request == null)
             {
@@ -101,11 +114,51 @@ namespace WebApp.Services.JobService
             }    
             try
             {
-                var job = MappingRequest(request);
+
+                var jobType = new short();
+                switch (request.JobType)
+                {
+                    case nameof(JobType.Freelancer): jobType = JobType.Freelancer; break;
+                    case nameof(JobType.Internship): jobType = JobType.Internship; break;
+                    case nameof(JobType.FullTime): jobType = JobType.FullTime; break;
+                    case nameof(JobType.PartTime): jobType = JobType.PartTime; break;
+                    default: jobType = 0; break;
+                }
+                var skillLevel = new short();
+                switch(request.SkillLevel)
+                {
+                    case nameof(Level.Master): skillLevel = Level.Master; break;
+                    case nameof(Level.Expert): skillLevel = Level.Expert; break;
+                    case nameof(Level.Senior): skillLevel = Level.Senior; break;
+                    case nameof(Level.Junior): skillLevel = Level.Junior; break;
+                    case nameof(Level.Fresher): skillLevel = Level.Fresher; break;
+                    default : skillLevel = 0; break;
+                }
+                var imagePath = _cloudService.AddImage(request.JobImage);
+                if (imagePath == null) imagePath =DisplayConstant.JOB_IMG_DEFAULT_PATH;
+                var job = new Job()
+                {
+                    JobName = request.JobName.Trim(),
+                    JobImage = imagePath,
+                    CityId = _cityService.GetAll().Result.DataSet.FirstOrDefault(c => c.CityName == request.City).CityId,
+                    SkillId = _skillService.GetAll().Result.DataSet.FirstOrDefault(s => s.SkillName == request.Skill).SkillId,
+                    JobTitleId = _jobTitleService.GetAll().Result.DataSet.FirstOrDefault(jt => jt.TitleName == request.JobTitle).TitleId,
+                    SkillLevel = skillLevel,
+                    JobType = jobType,
+                    Address = request.Address.Trim(),
+                    Description = request.Description.Trim(),
+                    EndDate = request.EndDate,
+                    StartDate = request.StartDate,
+                    StartSalary = request.StartSalary,
+                    EndSalary = request.EndSalary,
+                    ModifiedDate = System.DateTime.Now,
+                    EmployerId = userid,
+                    Tags = request.Tags,
+                    Status = true
+                };
                 await _jobRepository.DbSet.AddAsync(job);
                 await _unitOfWork.SaveChangesAsync();
-                var result = await _jobRepository.DbSet.LastAsync();
-                return new Response<Job>(true, result, DisplayConstant.SUCCESS);
+                return new Response<Job>(true, data:null, DisplayConstant.SUCCESS);
             }
             catch
             {

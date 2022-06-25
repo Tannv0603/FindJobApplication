@@ -60,9 +60,9 @@ namespace WebApp.Services.UserService
             {
                 if (short.Parse(request.TypeUser) == TypeUser.Employee)
                 {
-                    var role = await _roleManager.FindByNameAsync(UserRoles.Employee);
-                    if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employee }).ConfigureAwait(false);
-                    await _userManager.AddToRoleAsync(created, UserRoles.Employee);
+                    //var role = await _roleManager.FindByNameAsync(UserRoles.Employee);
+                    //if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employee }).ConfigureAwait(false);
+                    //await _userManager.AddToRoleAsync(created, UserRoles.Employee);
                     var result = await CreateEmployeeAsync(created.Id);
                     if (!result)
                     {
@@ -72,9 +72,9 @@ namespace WebApp.Services.UserService
                 }
                 if (short.Parse(request.TypeUser) == TypeUser.Employer)
                 {
-                    var role = _roleManager.FindByNameAsync(UserRoles.Employer);
-                    if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employer }).ConfigureAwait(false);
-                    await _userManager.AddToRoleAsync(created, UserRoles.Employer);
+                    //var role = _roleManager.FindByNameAsync(UserRoles.Employer);
+                    //if (role == null) await _roleManager.CreateAsync(new IdentityRole() { Name = UserRoles.Employer }).ConfigureAwait(false);
+                    //await _userManager.AddToRoleAsync(created, UserRoles.Employer);
                     var result = await CreateEmployerAsync(created.Id);
                     if (!result) 
                     {

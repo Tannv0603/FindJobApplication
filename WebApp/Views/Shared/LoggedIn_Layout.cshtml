@@ -66,11 +66,10 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                                         <ul id="navigation">
                                             <li><a href="/">Home</a></li>
                                             <li><a href="@Url.Action("Index","Job")">Find a Jobs </a></li>
-                                            <li><a href="@Url.Action("ListCv","Employee")">List Cv</a></li>
+                                            <li><a href="@Url.Action("EmployeeCV","CV")">My CV</a></li>
                                             <li><a href="@Url.Action("AppliedJob","Employee")">Applied Jobs </a></li>
-                                            <li><a href="@Url.Action("HRPost","Employer")">Add New Job</a></li>
-                                            <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>                                          
-                                            <li><a href="@Url.Action("DetailListCv","Employer")">Details List Cv</a>
+                                            <li><a href="@Url.Action("AddJob","Employer",FormMethod.Get)">Add New Job</a></li>
+                                            <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>   
                                             </li>
                                             <li>
                                                 <a href="#">Page</a>

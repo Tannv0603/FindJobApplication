@@ -25,6 +25,8 @@ using WebApp.Services.JobTitleService;
 using WebApp.Services.UserService;
 using AutoMapper;
 using WebApp.Mapper;
+using WebApp.Services.SkillService;
+using WebApp.Services.CVService;
 
 namespace WebApp
 {
@@ -91,6 +93,8 @@ namespace WebApp
             services.AddScoped<IJobTitleService, JobTitleService>();
             services.AddScoped<IAppliedService, AppliedService>();
             services.AddScoped<ICloudService, CloudService>();
+            services.AddScoped<ISkillService, SkillService>();
+            services.AddScoped<ICVService, CVService>();
       
 
             //config identity

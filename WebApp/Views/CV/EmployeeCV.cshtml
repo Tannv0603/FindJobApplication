@@ -34,11 +34,13 @@
             <div class="col-sm-12">
 
                 <div class="container">
-
-                    <div style="margin-bottom:10px" class="btn-group">
+                    @using (Html.BeginForm("AddCV","CV",FormMethod.Post,new { enctype = "multipart/form-data" }))
+                    {
+                     <div style="margin-bottom:10px" class="btn-group">
                         <input style="height: 55px; width: 380px" class="form-control form-control-lg" id="formFileLg" type="file">
-                        <button style="margin-left:10px;width:150px" type="button" href="@Url.Action("ListCv","Employee")" class="btn btn-secondary">ADD CV</button>
+                        <button style="margin-left:10px;width:150px" type="submit"  class="btn btn-secondary">ADD CV</button>
                     </div>
+                    }                   
                     <div class="list list-row card" id="sortable" data-sortable-id="0" aria-dropeffect="move">
                         <div class="row">
                             <div class="col-md-6" id="example2-left">

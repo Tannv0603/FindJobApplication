@@ -21,5 +21,9 @@
         public const string SUCCESS_REMOVED = "Success Removed!";
         public const string SUCCESS = "Sucess!";
         #endregion
+        #region ImageDefaultPath
+        public const string USER_IMG_DEFAULT_PATH = "";
+        public const string JOB_IMG_DEFAULT_PATH = "";
+        #endregion
     }
 }

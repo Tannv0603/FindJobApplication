@@ -8,6 +8,10 @@ namespace WebApp.Models.Response
         public bool Success { get; set; }
         public T Data { get; set; }
         public IEnumerable<T> DataSet { get; set; }
+        public Response()
+        {
+
+        }
         public Response(bool success, T data, string message)
         {
             Success = success;
