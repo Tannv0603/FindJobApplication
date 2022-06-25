@@ -26,9 +26,8 @@ namespace WebApp.Services.AppliedService
         public async Task<Response<EmployeeAppliedForJob>> ApplyForJob(int cvId, int jobId)
         {
             var IsApplied = await _appliedRepository.DbSet
-                .AsNoTracking()
                 .FirstOrDefaultAsync(app => app.JobId == jobId && app.Cvid == cvId);
-            if (IsApplied == null)
+            if (IsApplied != null)
                 return new Response<EmployeeAppliedForJob>(false,IsApplied,DisplayConstant.ERROR_INSTANCE_EXISTED);
             try
             {
@@ -38,7 +37,7 @@ namespace WebApp.Services.AppliedService
                     JobId = jobId,
                     Date = DateTime.Now
                 };
-               var result =  await _appliedRepository.DbSet.AddAsync(Applying);
+               var result = _appliedRepository.DbSet.Add(Applying);
                await _unitOfWork.SaveChangesAsync();
                 return new Response<EmployeeAppliedForJob>(true, Applying, DisplayConstant.SUCCESS_CREATED);
             }

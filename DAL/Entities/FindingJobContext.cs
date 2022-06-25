@@ -137,7 +137,7 @@ namespace DAL.Entities
 
             modelBuilder.Entity<EmployeeAppliedForJob>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new {e.JobId,e.Cvid});
 
                 entity.ToTable("EmployeeAppliedForJob");
 

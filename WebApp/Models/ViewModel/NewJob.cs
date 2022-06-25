@@ -7,7 +7,6 @@ namespace WebApp.Models.ViewModel
     public class NewJob
     {
         public string JobName { get; set; }
-        public IFormFile JobImage { get; set; }
         public string JobTitle { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }

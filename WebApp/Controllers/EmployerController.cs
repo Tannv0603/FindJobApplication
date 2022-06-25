@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -48,11 +49,11 @@ namespace WebApp.Controllers
             return View(ViewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> AddJob(NewJob newJob)
+        public async Task<IActionResult> AddJob(NewJob newJob, IFormFile file)
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
-            var result = await _jobService.CreateJob(newJob,userid);
+            var result = await _jobService.CreateJob(newJob,file,userid);
             if (result.Success)
             {
                 ViewBag.Message = "Successfull";

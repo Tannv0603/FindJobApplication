@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DAL.Entities;
 using DAL.Repository.Abstractions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,7 +107,7 @@ namespace WebApp.Services.JobService
             return new Response<Job>(true, jobs, DisplayConstant.SUCCESS);
         }
 
-        public async Task<Response<Job>> CreateJob(NewJob request, string userid)
+        public async Task<Response<Job>> CreateJob(NewJob request,IFormFile file, string userid)
         {           
             if (request == null)
             {
@@ -134,7 +135,7 @@ namespace WebApp.Services.JobService
                     case nameof(Level.Fresher): skillLevel = Level.Fresher; break;
                     default : skillLevel = 0; break;
                 }
-                var imagePath = _cloudService.AddImage(request.JobImage);
+                var imagePath = _cloudService.AddImage(file);
                 if (imagePath == null) imagePath =DisplayConstant.JOB_IMG_DEFAULT_PATH;
                 var job = new Job()
                 {

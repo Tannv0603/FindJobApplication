@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApp.Models.RequestModel;
@@ -13,7 +14,7 @@ namespace WebApp.Services.JobService
         Task<Response<Job>> GetById(int id);
         Task<Response<Job>> GetJobAppliedByEmployeeId(string employeeId);
         Task<Response<Job>> GetJobCreatedByEmployerId(string employerId);
-        Task<Response<Job>> CreateJob(NewJob request, string userid);
+        Task<Response<Job>> CreateJob(NewJob request,IFormFile file, string userid);
         Task<Response<Job>> DeleteJob(int id);
         Task<Response<Job>> UpdateJob(int id, JobRequest request);
     }

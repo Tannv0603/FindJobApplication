@@ -10,6 +10,8 @@ using System.Security.Principal;
 using System.Security.Claims;
 using WebApp.Services.CVService;
 using WebApp.Models.RequestModel;
+using WebApp.Models.ViewModel;
+using WebApp.Services.AppliedService;
 
 namespace WebApp.Controllers
 {
@@ -18,34 +20,44 @@ namespace WebApp.Controllers
 
         private readonly IUserService _userService;
         private readonly UserManager<User> _userManager;
-        private readonly JobService _jobService;
-        private readonly CVService _cvService;
+        private readonly IJobService _jobService;
+        private readonly ICVService _cvService;
+        private readonly IAppliedService _appliedService;
 
         public ApplyController(
             IUserService userService,
             UserManager<User> userManager,
-            JobService jobService,
-            CVService cvService)
+            IJobService jobService,
+            ICVService cvService,
+            IAppliedService appliedService)
         {
             _userManager = userManager;
             _userService = userService;
             _cvService = cvService;
             _jobService = jobService;
+            _appliedService = appliedService;
         }
 
         public async Task<IActionResult> Apply(int jobId)
         {
-            var job = _jobService.GetById(jobId);
-            var user = await _userManager.GetUserAsync(User);
-            var cv = await _cvService.GetByEmpId(user.Id);
-            return View(cv.DataSet);
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var userid = _userManager.GetUserId(currentUser);
+            var cv = await _cvService.GetByEmpId(userid);
+            var job = await _jobService.GetById(jobId);
+            var viewmodel = new ApplyViewModel()
+            {
+                Cv = cv.DataSet,
+                Job = job.Data
+            };
+            return View(viewmodel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Apply(ApplyRequest request)
+        public async Task<IActionResult> Apply(int jobId, int cvId)
         {
-
-            return View();
+         
+            var result = await _appliedService.ApplyForJob(cvId, jobId);
+            return RedirectToAction("Apply",new { jobId = jobId} );
         }
     }
 }

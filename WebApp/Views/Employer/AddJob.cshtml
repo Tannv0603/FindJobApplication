@@ -58,7 +58,7 @@
 </div>
 <!-- Hero Area End -->
 <!-- Start Align Area -->    
-@using (Html.BeginForm("AddJob","Employer",FormMethod.Post,@Model.NewJob))
+@using (Html.BeginForm("AddJob","Employer",FormMethod.Post,new { enctype = "multipart/form-data" }))
 {
     <div style="background: #ededed;" class="whole-wrap">
     <div class="container box_1170">
@@ -113,19 +113,19 @@
                             <p>City<span class="required">*</span></p>
                             <div class="input-group-icon mt-10">
                                 <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-                               @Html.DropDownListFor(m=>m.NewJob.City,cityOpt,"City",new{@class="select-form", @require="true"})
+                               @Html.DropDownListFor(m=>m.NewJob.City,cityOpt,new{@class="select-form", @require="true"})
                             </div>
                         </div>
                         <div class="mt-10">
                             <div class="position-item">
                                  <div class="item">
                                 <p>Job Title<span class="required">*</span></p>
-                                @Html.DropDownListFor(m=>m.NewJob.JobTitle,titleOpt,"Title",new{@class="select-form", @require="true"})
+                                @Html.DropDownListFor(m=>m.NewJob.JobTitle,titleOpt,new{@class="select-form", @require="true"})
                             
                             </div>
                             <div class="item">
                                 <p>Job Type<span class="required">*</span></p>
-                                 @Html.DropDownListFor(m=>m.NewJob.JobType,typeOpt,"Title",new{@class="select-form", @require="true"})
+                                 @Html.DropDownListFor(m=>m.NewJob.JobType,typeOpt,new{@class="select-form", @require="true"})
                             </div>
                             </div>                            
                         </div>
@@ -136,13 +136,10 @@
                     </form>
                 </div>
                 <div class="col-lg-3 col-md-4 mt-sm-30">
-                    <div class="single-element-widget">
-                        <h3 class="mb-30">Job Nature</h3>
-                        @Html.DropDownListFor(m => m.NewJob.JobType, typeOpt,new {@class="select-form", @require="true"})
-                    </div>
+                    
                     <div class="single-element-widget">
                         <h3 class="mb-30">Photos</h3>
-                       @Html.EditorFor(m =>m.NewJob.JobImage,new{@type="file"})
+                        <input type="file" name="file">
                     </div>
                     <div class="single-element-widget">
                         <h3 class="mb-30">Skills</h3>

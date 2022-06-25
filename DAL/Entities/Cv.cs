@@ -13,7 +13,6 @@ namespace DAL.Entities
         public string CvName { get; set; }
         public string StoredUrl { get; set; }
         public decimal Weight { get; set; }
-
         public virtual Employee Employee { get; set; }
         [NotMapped]
         public virtual IEnumerable<EmployeeAppliedForJob> AppliedDetail {get; set;}

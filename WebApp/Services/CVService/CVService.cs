@@ -55,9 +55,19 @@ namespace WebApp.Services.CVService
             throw new System.NotImplementedException();
         }
 
-        public Task<Response<Cv>> UploadCv(string url)
+        public async Task<Response<Cv>> UploadCv(Cv request)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                await _cvRepository.DbSet.AddAsync(request);
+                await _unitOfWork.SaveChangesAsync();
+                return new Response<Cv> { Success = true };
+            }
+            catch
+            {
+                return new Response<Cv> { Success = false };
+            }
+           
         }
     }
 }

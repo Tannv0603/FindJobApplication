@@ -1,17 +1,124 @@
-﻿@*
-    chứa 1 job detail {
-        job name, 
-        job image,
-        address
-    }
-    1 dropdown list CV
-    1 nút apply  
-    1 nút back trỏ về job detail 
-    1 nút add new CV trỏ về page add cv
-*@
+﻿
 @using DAL.Entities;
-@model IEnumerable<Cv>;
-@foreach(var cv in Model)
-{
-   @cv.StoredUrl;
-}
+@using WebApp.Models.ViewModel;
+@model ApplyViewModel;
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/web/css/apply.css">
+    <main>
+        <!-- Hero Area Start-->
+        <div class="slider-area ">
+            <div class="single-slider section-overly slider-height2 d-flex align-items-center"
+                data-background="/web/img/hero/about.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Applied Details</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Area End -->
+        <!-- job post company Start -->
+        <div style="background: #ededed;" class="job-post-company pt-120 pb-120">
+            @using (Html.BeginForm("Apply","Apply",FormMethod.Post,new { enctype = "multipart/form-data" }))
+              {
+            <div class="container">
+                <div class="row justify-content-between">
+                    
+                    <!-- Left Content -->
+                    <div class="col-xl-7 col-lg-8">
+                        <!-- job single -->
+                        <div class="single-job-items mb-50">
+                            <div class="job-items">
+                                <div class="company-img company-img-details">
+                                    <a href="#"><img src="@Model.Job.JobImage" style="width:200px; height:200px" alt=""></a>
+                                </div>
+                                <div class="job-tittle">
+                                    <a href="#">
+                                        <h4>@Model.Job.JobTitle</h4>
+                                    </a>
+                                    <ul>
+                                        <li style="width:40px">C#</li>
+                                        <li><i class="fas fa-map-marker-alt"></i>@Model.Job.Address</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- job single End -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="card ccard radius-t-0 h-100">
+                                        <div class="position-tl w-102 border-t-3 brc-primary-tp3 ml-n1px mt-n1px"></div>
+                                        <!-- the blue line on top -->
+
+                                        <div class="card-header pb-3 brc-secondary-l3">
+                                            <h5 class="card-title mb-2 mb-md-0 text-dark-m3">
+                                                List Your CV
+                                            </h5>
+
+                                        </div>
+
+                                        <div class="card-body pt-2 pb-1">
+                                        
+                                            <input type="hidden" name="jobid" value="@Model.Job.JobId">
+                                             @foreach(var cv in Model.Cv)
+                                        {
+                                              <div role="button"
+                                                class="d-flex flex-wrap align-items-center my-2 bgc-secondary-l4 bgc-h-secondary-l3 radius-1 p-25 d-style">
+                                                
+
+                                                <span class="text-default-d3 text-90 text-600">
+                                                    @cv.CvName
+                                                </span>
+                                                <span class="ml-auto text-dark-l2 text-nowrap">
+                                                  <a href="@cv.StoredUrl" target="_blank">View</a>
+                                                </span>
+
+                                                <span class="ml-2">
+                                                  <input type="radio" value="@cv.Cvid" id="radio_1" name="cvId" />
+                                                   <label for="radio_1"></label>
+                                                </span>
+                                            </div>
+                                        }
+                                        
+                                       
+                                      
+                                          
+                                            <div class="card-header pb-3 brc-secondary-l3">
+                                                    <a style="width:169px;background:#007abb;" type="button" href="@Url.Action("EmployeeCV","CV")" class="btn btn-info">Add New CV</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Content -->
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="post-details3  mb-50">
+                            <div class="apply-btn2">
+                                <input type="submit" style="color:oldlace;background:#007abb;" href="" class="btn" value="Apply Now">
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="post-details3  mb-50">
+                            <a type="button" href="@Url.Action("Detail","Job"@*, new { id=job.JobId}*@)" class="btn btn-danger">Back Job Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <!-- job post company End -->
+
+    </main>

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using WebApp.Constant;
+using WebApp.Models.ViewModel;
 using WebApp.Services.AppliedService;
 using WebApp.Services.CloudService;
 using WebApp.Services.CVService;
@@ -31,19 +33,29 @@ namespace WebApp.Controllers
             var cvs = await _appliedService.GetAppliedByJob(jobid);
             return View(cvs.DataSet);
         }
-        public async Task<IActionResult> EmployeeCV(string userid)
+        public async Task<IActionResult> EmployeeCV()
         {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var userid = _userManager.GetUserId(currentUser);
             var cvs = await _cvService.GetByEmpId(userid);
             return View(cvs.DataSet);
         }
-        public async Task<IActionResult> AddCv(IFormFile file)
+        public async Task<IActionResult> AddCv(IFormFile file, string filename)
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
             var path = _cloudService.AddCV(file);
-           
-
-            return RedirectToAction("EmployeeCV",userid);
+            var cv = new Cv()
+            {
+                CvName = filename,
+                StoredUrl = path.Url.ToString(),
+                EmployeeId = userid,
+                Weight = path.Bytes/1048576,
+            };
+           var result = await _cvService.UploadCv(cv);
+            if (result.Success) ViewBag.Success = DisplayConstant.SUCCESS_CREATED;
+            else ViewBag.Error = DisplayConstant.ERROR_CREATED;
+            return RedirectToAction("EmployeeCV");
         }
     }
 }

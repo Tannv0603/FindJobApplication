@@ -48,9 +48,29 @@ namespace WebApp.Services.CloudService
           
         }
 
-        public string AddCV(IFormFile file)
+        public UploadResult AddCV(IFormFile file)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                if (file != null)
+                {
+                    var result = new ImageUploadResult();
+                    using (var stream = file.OpenReadStream())
+                    {
+                        var uploadParams = new ImageUploadParams()
+                        {
+                            File = new FileDescription(file.Name, stream)
+                        };
+                        result = _cloudinary.Upload(uploadParams);
+                    }
+                    return result;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            return null;
         }
     }
 

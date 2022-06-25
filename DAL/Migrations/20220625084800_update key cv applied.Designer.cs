@@ -4,14 +4,16 @@ using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(FindingJobContext))]
-    partial class FindingJobContextModelSnapshot : ModelSnapshot
+    [Migration("20220625084800_update key cv applied")]
+    partial class updatekeycvapplied
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,10 +126,6 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Entities.EmployeeAppliedForJob", b =>
                 {
-                    b.Property<int>("JobId")
-                        .HasColumnType("int")
-                        .HasColumnName("JobID");
-
                     b.Property<int>("Cvid")
                         .HasColumnType("int")
                         .HasColumnName("CVID");
@@ -135,9 +133,13 @@ namespace DAL.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
 
-                    b.HasKey("JobId", "Cvid");
+                    b.Property<int>("JobId")
+                        .HasColumnType("int")
+                        .HasColumnName("JobID");
 
                     b.HasIndex("Cvid");
+
+                    b.HasIndex("JobId");
 
                     b.ToTable("EmployeeAppliedForJob");
                 });

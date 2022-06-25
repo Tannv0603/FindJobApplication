@@ -1,4 +1,6 @@
 ﻿@using System.Security.Claims;
+@using DAL.Entities;
+@model IEnumerable<Cv>;
 @{    
     if (Context.User.Identity.IsAuthenticated)
     {
@@ -37,20 +39,23 @@
                     @using (Html.BeginForm("AddCV","CV",FormMethod.Post,new { enctype = "multipart/form-data" }))
                     {
                      <div style="margin-bottom:10px" class="btn-group">
-                        <input style="height: 55px; width: 380px" class="form-control form-control-lg" id="formFileLg" type="file">
+                         <input type="text" placeholder="CV File Name" name="filename" class="input-form form-control form-control-lg">
+                        <input style="height: 55px; width: 380px" name="file" class="form-control form-control-lg" id="formFileLg" type="file">
                         <button style="margin-left:10px;width:150px" type="submit"  class="btn btn-secondary">ADD CV</button>
                     </div>
                     }                   
                     <div class="list list-row card" id="sortable" data-sortable-id="0" aria-dropeffect="move">
                         <div class="row">
                             <div class="col-md-6" id="example2-left">
-                                <div class="list-item" data-id="13" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false" style="">
+                                @foreach(var cv in Model)
+                                {
+                                    <div class="list-item" data-id="13" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false" style="">
                                     <div class="flex">
-                                        <a href="#" class="item-author text-color" data-abc="true">Sam idod</a>
-                                        <div class="item-except text-muted text-sm h-1x">For what reason would it be advisable for me to think about business content?</div>
+                                        <a href="#" class="item-author text-color" data-abc="true">@cv.CvName</a>
+                                        <div class="item-except text-muted text-sm h-1x"><a href=@cv.StoredUrl target="_blank">View</a></div>
                                     </div>
                                     <div class="no-wrap">
-                                        <div class="item-date text-muted text-sm d-none d-md-block">15 weeks ago</div>
+                                        <div class="item-date text-muted text-sm d-none d-md-block">@cv.Weight MB</div>
                                     </div>
                                     <div>
                                         <div class="item-action dropdown">
@@ -69,126 +74,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-item" data-id="9" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false">
-                                    <div class="flex">
-                                        <a href="#" class="item-author text-color" data-abc="true">Sam qpire</a>
-                                        <div class="item-except text-muted text-sm h-1x">advisable for me to think about business content?</div>
-                                    </div>
-                                    <div class="no-wrap">
-                                        <div class="item-date text-muted text-sm d-none d-md-block">12 days ago</div>
-                                    </div>
-                                    <div>
-                                        <div class="item-action dropdown">
-                                            <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="12" cy="5" r="1"></circle>
-                                                    <circle cx="12" cy="19" r="1"></circle>
-                                                </svg>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
-                                                <a class="dropdown-item" href="#" data-abc="true">See detail </a><a href="#" class="dropdown-item download" data-abc="true">Download </a>
-                                                <div class="dropdown-divider"></div> <a href="#" class="dropdown-item trash" data-abc="true">Delete item</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-item" data-id="17" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false" style="">
-                                    <div class="flex">
-                                        <a href="#" class="item-author text-color" data-abc="true">Tidoh mark</a>
-                                        <div class="item-except text-muted text-sm h-1x">For what reason for me to think about business content?</div>
-                                    </div>
-                                    <div class="no-wrap">
-                                        <div class="item-date text-muted text-sm d-none d-md-block">3/1/18</div>
-                                    </div>
-                                    <div>
-                                        <div class="item-action dropdown">
-                                            <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="12" cy="5" r="1"></circle>
-                                                    <circle cx="12" cy="19" r="1"></circle>
-                                                </svg>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
-                                                <a class="dropdown-item" href="#" data-abc="true">See detail </a><a class="dropdown-item download" data-abc="true">Download </a>
-                                                <div class="dropdown-divider"></div> <a class="dropdown-item trash" data-abc="true">Delete item</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-item" data-id="8" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false">
-                                    <div class="flex">
-                                        <a href="#" class="item-author text-color" data-abc="true"> Telon Maskun</a>
-                                        <div class="item-except text-muted text-sm h-1x">For what reason would it be advisable for me</div>
-                                    </div>
-                                    <div class="no-wrap">
-                                        <div class="item-date text-muted text-sm d-none d-md-block">12/10/19</div>
-                                    </div>
-                                    <div>
-                                        <div class="item-action dropdown">
-                                            <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="12" cy="5" r="1"></circle>
-                                                    <circle cx="12" cy="19" r="1"></circle>
-                                                </svg>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
-                                                <a class="dropdown-item" href="#" data-abc="true">See detail </a><a class="dropdown-item download" data-abc="true">Download </a>
-                                                <div class="dropdown-divider"></div> <a class="dropdown-item trash" data-abc="true">Delete item</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-item" data-id="10" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false" style="">
-                                    <div class="flex">
-                                        <a href="#" class="item-author text-color" data-abc="true">Clark Handscomb</a>
-                                        <div class="item-except text-muted text-sm h-1x">For what reason would it be advisable about business content?</div>
-                                    </div>
-                                    <div class="no-wrap">
-                                        <div class="item-date text-muted text-sm d-none d-md-block">10 day ago</div>
-                                    </div>
-                                    <div>
-                                        <div class="item-action dropdown">
-                                            <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="12" cy="5" r="1"></circle>
-                                                    <circle cx="12" cy="19" r="1"></circle>
-                                                </svg>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
-                                                <a class="dropdown-item" href="#" data-abc="true">See detail </a><a class="dropdown-item download" data-abc="true">Download </a>
-                                                <div class="dropdown-divider"></div> <a class="dropdown-item trash" data-abc="true">Delete item</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-item" data-id="3" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false">
-                                    <div class="flex">
-                                        <a href="#" class="item-author text-color" data-abc="true">Jordan Stephens</a>
-                                        <div class="item-except text-muted text-sm h-1x">For what reason would it be advisable for me to think about business</div>
-                                    </div>
-                                    <div class="no-wrap">
-                                        <div class="item-date text-muted text-sm d-none d-md-block">10 hour ago</div>
-                                    </div>
-                                    <div>
-                                        <div class="item-action dropdown">
-                                            <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="12" cy="5" r="1"></circle>
-                                                    <circle cx="12" cy="19" r="1"></circle>
-                                                </svg>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
-                                                <a class="dropdown-item" href="#" data-abc="true">See detail </a><a class="dropdown-item download" data-abc="true">Download </a>
-                                                <div class="dropdown-divider"></div> <a class="dropdown-item trash" data-abc="true">Delete item</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
                             </div>
                             <div class="col-md-6" id="example2-right">
                                 <div class="list-item" data-id="13" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false" style="">
