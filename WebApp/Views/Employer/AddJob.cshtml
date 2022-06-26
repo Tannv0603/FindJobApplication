@@ -43,130 +43,139 @@
 }
 <!-- Hero Area Start-->
 <main>
-<div class="slider-area ">
-    <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="hero-cap text-center">
-                        <h2>Poster</h2>
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+        <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Poster</h2>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Hero Area End -->
-<!-- Start Align Area -->    
-@using (Html.BeginForm("AddJob","Employer",FormMethod.Post,new { enctype = "multipart/form-data" }))
-{
-    <div style="background: #ededed;" class="whole-wrap">
-    <div class="container box_1170">
-        <div  class="section-top-border">
-            <div  class="row">
-                <div  class="col-lg-8 col-md-8">
-                    <form style="background: #ededed;" action="#">
-                        <h3 class="mb-30">Create New Job</h3>
+    <!-- Hero Area End -->
+    <!-- Start Align Area -->
+    @using (Html.BeginForm("AddJob","Employer",FormMethod.Post,new { enctype = "multipart/form-data" }))
+    {
+        <div style="background: #ededed;" class="whole-wrap">
+            <div class="container box_1170">
+                <div  class="section-top-border">
+                    <div  class="row">
+                        <div  class="col-lg-8 col-md-8">
+                            <form style="background: #ededed;" action="#">
+                                <h3 class="mb-30">Create New Job</h3>
 
-                        <div class="mt-10">
-                            <p>Job Name<span class="required"> *</span></p>
-                            @Html.TextBoxFor(m => m.NewJob.JobName,new {@class ="single-input", @required="true"})                            
-                        </div>
-                        <div class="mt-10">
-                            <p>Job Tags<span class="required"> *</span></p>
-                            @Html.TextBoxFor(m=> m.NewJob.Tags, new {@class ="single-input",@placeholder="Ex: Unity C# Javascript", @required="true",@onfocus="this.placeholder = ''", @onblur="this.placeholder = 'Ex: Unity C# Javascript'"})
-                            
-                        </div>
+                                <div class="mt-10">
+                                    <p>Job Name<span class="required"> *</span></p>
+                                    @Html.TextBoxFor(m => m.NewJob.JobName,new {@type="text" ,@class ="single-input", @placeholder = "", @onfocus = "this.placeholder = ''", @onblur="this.placeholder = ''" , @required="true"})
+                                </div>
+                                <div class="mt-10">
+                                    <p>Job Tags<span class="required"> *</span></p>
+                                    @Html.TextBoxFor(m=> m.NewJob.Tags, new {@type="text" ,@class ="single-input",@placeholder="Ex: Unity C# Javascript", @required="true",@onfocus="this.placeholder = ''", @onblur="this.placeholder = 'Ex: Unity C# Javascript'"})
+                                </div>
 
-                        <div class="contact-item">
-                            <div class="item">
-                                <p>Start Salary (VND/month)<span class="required">*</span></p>
-                                @Html.TextBoxFor(m=>m.NewJob.StartSalary, new {@class ="single-input",@type="number"})
-                            </div>
-                            <div class="item">
-                                <p>End Salary (VND/month)<span class="required">*</span></p>                               
-                                @Html.TextBoxFor(m=>m.NewJob.EndSalary, new {@class ="single-input",@type="number"})
-                            </div>
-                        </div>
-                        <div class="position-item">
-                            <div class="item">
-                                <p>Start Date<span class="required"> *</span></p>
-                                 @Html.TextBoxFor(m=>m.NewJob.StartDate, new {@require="true",@style="height:40px",@class ="single-input",@type="date"})                              
-                                <i class="fas fa-calendar-alt" style="margin-right:10px"></i>
-                            </div>
-                            <div class="item">
-                                <p>End Date<span class="required"> *</span></p>
-                                   @Html.TextBoxFor(m=>m.NewJob.EndDate, new {@require="true",@style="height:40px",@class ="single-input",@type="date"})
-                                <i class="fas fa-calendar-alt" style="margin-right:10px"></i>
-                            </div>
-                        </div>
+                                <div class="contact-item">
+                                    <div class="item">
+                                        <p>Start Salary ($/month)<span class="required">*</span></p>
+                                        @Html.TextBoxFor(m=>m.NewJob.StartSalary, new {@style="height:40px" ,@class ="single-input",@type="number", @min="0"})
+                                    </div>
+                                    <div class="item">
+                                        <p>End Salary ($/month)<span class="required">*</span></p>  
+                                        @Html.TextBoxFor(m=>m.NewJob.EndSalary, new {@style="height:40px" ,@class ="single-input",@type="number", @min="0"})
+                                    </div>
+                                </div>
+                                <div class="position-item">
+                                    <div class="item">
+                                        <p>Start Date<span class="required"> *</span></p>
+                                        @Html.TextBoxFor(m=>m.NewJob.StartDate, new {@require="true",@style="height:40px",@class ="single-input",@type="date"})  
+                                        <i class="fas fa-calendar-alt" style="margin-right:10px"></i>
+                                    </div>
+                                    <div class="item">
+                                        <p>End Date<span class="required"> *</span></p>
+                                        @Html.TextBoxFor(m=>m.NewJob.EndDate, new {@require="true",@style="height:40px",@class ="single-input",@type="date"})
+                                        <i class="fas fa-calendar-alt" style="margin-right:10px"></i>
+                                    </div>
+                                </div>
 
-                        <div class="mt-10">
-                            <p>Address<span class="required">*</span></p>
-                            <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
-                                     @Html.TextBoxFor(m=>m.NewJob.Address, new {@require="true",@style="height:40px",@class ="single-input",@type="text"})                              
-                            </div>
-                        </div>
+                                <div class="mt-10">
+                                    <p>Address<span class="required">*</span></p>
+                                    <div class="input-group-icon mt-10">
+                                        <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
+                                        @Html.TextBoxFor(m=>m.NewJob.Address, new {@require="true",@class ="single-input",@type="text", @placeholder="Address", @onfocus="this.placeholder = ''",@onblur="this.placeholder = 'Address'"})   
+                                    </div>
+                                </div>
 
-                        <div class="mt-10">
-                            <p>City<span class="required">*</span></p>
-                            <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-                               @Html.DropDownListFor(m=>m.NewJob.City,cityOpt,new{@class="select-form", @require="true"})
-                            </div>
-                        </div>
-                        <div class="mt-10">
-                            <div class="position-item">
-                                 <div class="item">
-                                <p>Job Title<span class="required">*</span></p>
-                                @Html.DropDownListFor(m=>m.NewJob.JobTitle,titleOpt,new{@class="select-form", @require="true"})
-                            
-                            </div>
-                            <div class="item">
-                                <p>Job Type<span class="required">*</span></p>
-                                 @Html.DropDownListFor(m=>m.NewJob.JobType,typeOpt,new{@class="select-form", @require="true"})
-                            </div>
-                            </div>                            
-                        </div>
-                        <div class="mt-10">
-                            <p>Description<span class="required">*</span></p> 
-                            @Html.TextAreaFor(m => m.NewJob.Description, new {@class="single-textarea", @require="true"})
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-sm-30">
-                    
-                    <div class="single-element-widget">
-                        <h3 class="mb-30">Photos</h3>
-                        <input type="file" name="file">
-                    </div>
-                    <div class="single-element-widget">
-                        <h3 class="mb-30">Skills</h3>
-                       @Html.DropDownListFor(m=>m.NewJob.Skill,skillOpt,new{@class="select-form", @require="true"})
-                    </div>
+                                <div class="mt-10">
+                                    <p>City<span class="required">*</span></p>
+                                    <div class="input-group-icon mt-10">
+                                        <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+                                        <div class="form-select" id="default-select">
+                                            @Html.DropDownListFor(m=>m.NewJob.City,cityOpt,new{@class="select-form", @require="true"})
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-10">
+                                    <p>Job Title<span class="required">*</span></p>
+                                    <div class="input-group-icon mt-10">
+                                        <div class="icon"><i class="fa fa-briefcase" aria-hidden="true"></i></div>
+                                        <div class="form-select" id="default-select">
+                                            @Html.DropDownListFor(m=>m.NewJob.JobTitle,titleOpt,new{@class="select-form" ,@require="true"})
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="single-element-widget mt-30">
-                        <h3 class="mb-30">Skill Level</h3>
-                       @Html.DropDownListFor(m=> m.NewJob.SkillLevel,skillLevelOpt,new{@class="select-form"})
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-10">
-                            <div class="cv-caption text-center">
+                                <div class="mt-10">
+                                    <p>Description<span class="required">*</span></p>
+                                    @Html.TextAreaFor(m => m.NewJob.Description, new {@class="single-textarea", @require="true", @placeholder="Text", @onfocus="this.placeholder = ''", @onblur="this.placeholder = 'Text'"})
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-3 col-md-4 mt-sm-30">
+                            <div class="single-element-widget">
+                                <h3 class="mb-30">Job Nature</h3>
+                                <div class="switch-wrap d-flex justify-content-between">
+                                    @Html.DropDownListFor(m => m.NewJob.JobType, typeOpt,new {@require="true"})
+                                </div>
+                        
+                            </div>
+                            <div class="single-element-widget">
+                                <h3 class="mb-30">Photos</h3>
+                                <input type="file" name="file" accept="file/*">
+                            </div>
+                            <div class="single-element-widget mt-30">
+                                <h3 class="mb-30">Skills</h3>
+                                <div class="default-select" id="default-select">
+                                    @Html.DropDownListFor(m=>m.NewJob.Skill,skillOpt)
+                                </div>
+                            </div>
+
+                            <div class="single-element-widget mt-30">
+                                <h3 class="mb-30">Skill Level</h3>
+                                <div class="switch-wrap d-flex justify-content-between">
+                                    @Html.DropDownListFor(m=> m.NewJob.SkillLevel,skillLevelOpt)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-10">
+                                    <div class="cv-caption text-center">
                                 
-                                <button type="submit" class="border-btn2 border-btn4">Create New Job</button>
+                                        <button type="submit" class="border-btn2 border-btn4">Create New Job</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-}
- 
-<!-- End Align Area -->
-<link rel="stylesheet" href="/web/css/post.css">
+    }
+
+    <!-- End Align Area -->
+    <link rel="stylesheet" href="/web/css/post.css">
 </main>

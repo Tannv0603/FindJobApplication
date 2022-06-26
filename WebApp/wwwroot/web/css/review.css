@@ -212,3 +212,6 @@
     border-radius: 0;
     height: 30px;
 }
+p {
+    word-wrap: break-word;
+}
