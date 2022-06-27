@@ -51,20 +51,30 @@ namespace WebApp.Services.AppliedService
 
         public async Task<Response<EmployeeAppliedForJob>> GetAppliedByEmployee(string id)
         {
-            var jobs =await _appliedRepository.DbSet.Where(job => job.Cv.EmployeeId == id).ToListAsync();
-            if(jobs == null)
+            var applied = await _appliedRepository.DbSet
+                 .Include(item => item.Cv).ThenInclude(cv => cv.Employee).ThenInclude(emp => emp.EmployeeNavigation)
+                 .Include(item => item.Job).ThenInclude(job => job.Employer).ThenInclude(emp => emp.EmployerNavigation)
+                 .Include(item => item.Job).ThenInclude(job => job.City)
+                 .Include(item => item.Job).ThenInclude(job => job.Skill)
+                 .Include(item => item.Job).ThenInclude(job => job.JobTitle)
+                 .OrderByDescending(item => item.Date)
+                 .Where(item => item.Cv.EmployeeId == id).ToListAsync();
+            if(applied == null)
             {
                 return new Response<EmployeeAppliedForJob>(false, dataset: null, DisplayConstant.ERROR_LOADFAIL);
             }
-            return new Response<EmployeeAppliedForJob>(true, dataset: jobs, DisplayConstant.SUCCESS);
+            return new Response<EmployeeAppliedForJob>(true, dataset: applied, DisplayConstant.SUCCESS);
         }
 
         public async Task<Response<EmployeeAppliedForJob>> GetAppliedByJob(int jobid)
         {
             var cvs = await _appliedRepository.DbSet
-                .Where(applied => applied.JobId == jobid)
-                .Include(detail => detail.Cv).ThenInclude(cv => cv.Employee).ThenInclude(emp => emp.EmployeeNavigation)
-                .Include(detail => detail.Job)
+                 .Include(item => item.Cv).ThenInclude(cv => cv.Employee).ThenInclude(emp => emp.EmployeeNavigation)
+                 .Include(item => item.Job).ThenInclude(job => job.Employer).ThenInclude(emp => emp.EmployerNavigation)
+                 .Include(item => item.Job).ThenInclude(job => job.City)
+                 .Include(item => item.Job).ThenInclude(job => job.Skill)
+                 .Include(item => item.Job).ThenInclude(job => job.JobTitle)
+                .Where(applied => applied.JobId == jobid).OrderByDescending(item => item.Date)
                 .ToListAsync();
 
             return new Response<EmployeeAppliedForJob>()

@@ -30,8 +30,7 @@
 }
 
 <main>
-   @using (Html.BeginForm("Filter","Job",FormMethod.Post,@Model.Filter))
-   {
+   
     <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
@@ -48,11 +47,14 @@
     </div>
     <!-- Hero Area End -->
     <!-- Job List Area Start -->
+     @using (Html.BeginForm("Filter","Job",@Model.Filter,FormMethod.Post,true,new {}))
+    {
     <div style="background: #f2f2f2;" class="job-listing-area pt-120 pb-120">
         <div class="container">
             <div class="row">
-                <!-- Left content -->
-                <div class="col-xl-3 col-lg-3 col-md-4">     
+                <!-- Left content -->                
+                <div class="col-xl-3 col-lg-3 col-md-4">    
+                  
                     <div class="row">
                         <input type="submit" value="Apply Filters" class="btn btn-danger"/>
                         <div class="select-job-items col-6">
@@ -140,7 +142,7 @@
                     </div>
                     
                     <!-- Job Category Listing End -->
-                </div>
+                </div>                
                 <!-- Right content -->
                 <div class="col-xl-9 col-lg-9 col-md-8">
                     <!-- Featured_job_start -->
@@ -168,43 +170,50 @@
                             <!-- Count of Job list End -->
                             <!-- single-job-content -->
                             @foreach (var job in Model.Jobs as IEnumerable<Job>){
-                                <div style="width:1100px" class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="@Url.Action("Detail","Job", new { id = job.JobId})"><img src="@job.JobImage" style="width:70px"alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="@Url.Action("Detail","Job", new { id = job.JobId})">
-                                                <h4 style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 480px;">@job.JobName</h4>
+                                <div  class="single-job-items mb-30">
+                                    <div class= "job-tittle job-tittle2">
+                                    <a href="@Url.Action("Detail","Job", new { id = job.JobId})">
+                                                <h4 style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%">@job.JobName</h4>
                                             </a>
-                                            <ul>
-                                                <li style="width:200px"><i class="fa fa-tags" aria-hidden="true"></i>@job.Tags</li>
-                                                <li style="width:120px"><i class="fas fa-map-marker-alt"></i>@job.City.CityName</li>
-                                                <li><i class="fa fa-usd" aria-hidden="true"></i>@job.StartSalary - @job.EndSalary</li>
+                                    </div>
+                                    <div class="job-items row">                                         
+                                        <div class="company-img col-4">
+                                            <a href="@Url.Action("Detail","Job", new { id = job.JobId})"><img src="@job.JobImage" style="width:25%"alt=""></a>
+                                        </div>
+                                        <div class="job-tittle job-tittle2 col-4">
+                                            <ul>                                                
+                                                <li style="width:100%"><i class="fas fa-map-marker-alt"></i>@job.City.CityName</li>
+                                                <li><i class="fa fa-usd" aria-hidden="true"></i>@Decimal.Floor(@job.StartSalary) - @Decimal.Floor(@job.EndSalary)</li>                                                
+                                                 <li>Require Skill: @job.Skill.SkillName</li>
                                             </ul>
                                         </div>
+                                         <div  class="items-link items-link2 col-4">
+                                             <div class="f-right">
+                                                    @{
+                                                     switch(@job.JobType)
+                                                     {
+                                                    case JobType.FullTime:
+                                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})">FullTime</a>
+                                                        break;
+                                                    case JobType.Freelancer:
+                                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})">Freelancer</a>
+                                                        break;
+                                                    case JobType.PartTime:
+                                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})">PartTime</a>
+                                                        break;
+                                                    case JobType.Internship:
+                                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})">Internship</a>
+                                                        break;
+                                                      }
+                                                    }
+                                             </div>
+                                              <div class="f-right">
+                                        <span style="color:grey"><i class="fa fa-calendar" aria-hidden="true"></i> @job.StartDate.Date.ToShortDateString()</span>
+                                        <span style="color:grey"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> @job.EndDate.Date.ToShortDateString()</span>
+                                        </div>
                                     </div>
-                                    <div class="items-link items-link2 f-right">
-                                        @{
-                                                switch(@job.JobType)
-                                                {
-                                                    case 1:
-                                                        <a href="job_details.html">FullTime</a>
-                                                        break;
-                                                    case 2:
-                                                        <a href="job_details.html">Freelancer</a>
-                                                        break;
-                                                    case 3:
-                                                        <a href="job_details.html">PartTime</a>
-                                                        break;
-                                                    case 4:
-                                                        <a href="job_details.html">Internship</a>
-                                                        break;
-                                                }
-                                        }
-                                        <span style="color:grey"><i class="fa fa-calendar" aria-hidden="true"></i> @job.StartDate</span>
-                                        <span style="color:grey"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> @job.EndDate</span>
                                     </div>
+                                                                     
                                 </div>
                             }
                         </div>

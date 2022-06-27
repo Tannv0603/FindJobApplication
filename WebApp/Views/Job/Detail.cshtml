@@ -1,5 +1,6 @@
 ﻿@using DAL.Entities;
 @model Job;
+@using WebApp.Constant;
 @using System.Security.Claims
 @{
         if (Context.User.Identity.IsAuthenticated)
@@ -54,11 +55,11 @@
                         <div class="post-details1 mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
-                                <h4>Job Tags</h4>
+                                <h4>Relevants:</h4>
                             </div>
                             <p><i class="fa fa-tags" aria-hidden="true"></i> @Model.Tags</p>
                             <div class="small-section-tittle">
-                                <h4>Address - Location</h4>
+                                <h4>Address - Location:</h4>
                             </div>
                             <p><i class="fas fa-map-marker-alt"></i> @Model.Address - @Model.City.CityName</p>
                         </div>
@@ -66,7 +67,7 @@
                         <div class="post-details1 mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
-                                <h4>Required Abilities</h4>
+                                <h4>Main responsibility for: </h4>
                             </div>
                                 <p><i class="fa fa-briefcase" aria-hidden="true"></i> @Model.JobTitle.TitleName</p>
                         </div>
@@ -86,36 +87,35 @@
                     <div class="post-details3  mb-50">
                         <!-- Small Section Tittle -->
                         <div style="text-align:center" class="company-img company-img-details">
-                            <a href="@Url.Action(" Detail","Job", new { id=Model.JobId})"><img src="@Model.JobImage" alt=""></a>
+                            <a href="@Url.Action(" Detail","Job", new { id=Model.JobId})"><img src="@Model.JobImage" style="width:100%" alt=""></a>
                         </div>
                         <br />
                         <div class="small-section-tittle">
                             <h4>Job Overview</h4>
                         </div>
                         <ul>
-                            <li>Posted date : <span>@Model.StartDate</span></li>
                             <li>Skill : <span>@Model.Skill.SkillName</span></li>
                             <li>Job nature :
                                 @{
                                     switch  (@Model.JobType)
                                     {
-                                        case 1:
-                                            <span href="job_details.html">FullTime</span>
+                                        case JobType.FullTime:
+                                            <span>FullTime</span>
                                             break;
-                                        case 2:
-                                            <span href="job_details.html">Freelancer</span>
+                                        case JobType.Freelancer:
+                                            <span>Freelancer</span>
                                             break;
-                                        case 3:
-                                            <span href="job_details.html">PartTime</span>
+                                        case JobType.PartTime:
+                                            <span>PartTime</span>
                                             break;
-                                        case 4:
-                                            <span href="job_details.html">Internship</span>
+                                        case JobType.Internship:
+                                            <span>Internship</span>
                                             break;
                                     }
                                 }
                             </li>
-                            <li>Salary : <span>$@Model.StartSalary /Month</span></li>
-                            <li>Application date : 
+                            <li>Salary : <span>$@Decimal.Floor(@Model.StartSalary) - @Decimal.Floor(@Model.StartSalary) per month</span></li>
+                            <li>Experience required : 
                                 @{
                                     switch  (@Model.SkillLevel)
                                     {
@@ -136,31 +136,14 @@
                                             break; 
                                     }
                                 }
-                            </li>
-                            <li>Ended date : <span>@Model.EndDate</span></li>
+                            </li> 
+                            <li>Apply date : <span>@Model.StartDate.ToShortDateString()</span></li>
+                            <li>until : <span>@Model.EndDate.ToShortDateString()</span></li>
                         </ul>
                         <div class="apply-btn2">
                             <a href="@Url.Action("Apply","Apply", new { jobId=Model.JobId})" class="btn">Apply Now</a>
                         </div>
-                    </div>
-                    <div class="post-details4  mb-50">
-                        <!-- Small Section Tittle -->
-                        <div class="small-section-tittle">
-                            <h4>Company Information</h4>
-                        </div>
-                        <span>Colorlib</span>
-                        <p>
-                            
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout.
-                        
-                        </p>
-                        <ul>
-                            <li>Name: <span>Colorlib </span></li>
-                            <li>Web : <span> colorlib.com</span></li>
-                            <li>Email: <span>carrier.colorlib@gmail.com</span></li>
-                        </ul>
-                    </div>
+                    </div>                 
                 </div>
             </div>
 

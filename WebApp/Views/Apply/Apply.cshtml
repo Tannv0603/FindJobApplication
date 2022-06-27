@@ -25,6 +25,14 @@
         <!-- Hero Area End -->
         <!-- job post company Start -->
         <div style="background: #ededed;" class="job-post-company pt-120 pb-120">
+            @if (ViewBag.Message != null)  
+            {  
+                 <script type="text/javascript">  
+                  window.onload = function () {  
+                alert("@ViewBag.Message");  
+            };  
+        </script>  
+            }  
             @using (Html.BeginForm("Apply","Apply",FormMethod.Post,new { enctype = "multipart/form-data" }))
               {
             <div class="container">

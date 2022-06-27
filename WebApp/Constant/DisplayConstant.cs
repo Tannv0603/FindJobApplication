@@ -3,7 +3,7 @@
     public class DisplayConstant
     {
         #region Errors
-
+        public const string ERROR_ALREADY_APPLIED = "You already applied this Cv to this Job!";
         public const string ERROR = "ERROR!";
         public const string ERROR_BADREQUEST = "Null object or unvalidated field!";
         public const string ERROR_UNAUTHENTICATED = "YOU MAY NOT LOGGED IN!";
@@ -19,7 +19,7 @@
         #region Success
         public const string SUCCESS_CREATED = "Success Created!";
         public const string SUCCESS_REMOVED = "Success Removed!";
-        public const string SUCCESS = "Sucess!";
+        public const string SUCCESS = "Success!";
         #endregion
         #region ImageDefaultPath
         public const string USER_IMG_DEFAULT_PATH = "";

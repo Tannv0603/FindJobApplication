@@ -12,6 +12,8 @@ namespace DAL.Entities
         public string EmployeeId { get; set; }
         public string CvName { get; set; }
         public string StoredUrl { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Weight { get; set; }
         public virtual Employee Employee { get; set; }
         [NotMapped]

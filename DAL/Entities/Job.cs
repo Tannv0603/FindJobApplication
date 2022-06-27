@@ -14,7 +14,9 @@ namespace DAL.Entities
         public string JobImage { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal StartSalary { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal EndSalary { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public bool? Status { get; set; }

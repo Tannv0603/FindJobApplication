@@ -6,8 +6,8 @@ namespace WebApp.Models.ViewModel
         
     {
         //filter for salary
-      public int? StartSalary { get; set; }
-        public int? EndSalary { get; set; }
+      public decimal? StartSalary { get; set; }
+        public decimal? EndSalary { get; set; }
         //filter for search text
         public string? SearchFilter { get; set; }
         public int? JobType { get; set; }
@@ -21,11 +21,11 @@ namespace WebApp.Models.ViewModel
 
         public bool IsInternship { get; set; }
         //sort
-        public string SortBy { get; set; }
+        public string? SortBy { get; set; }
         //fiter by city
-        public string City { get; set; }
+        public string? City { get; set; }
         //filter by Title
-        public string JobTitle { get; set; }
+        public string? JobTitle { get; set; }
 
 
     }

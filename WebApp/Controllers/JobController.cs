@@ -48,37 +48,29 @@ namespace WebApp.Controllers
             var jobs = await _jobService.GetAll();
             var cities = await _cityService.GetAll();
             var titles = await _jobTitleService.GetAll();
-            filter.SearchFilter =""+filter.SearchFilter.Trim().ToLower();
-            jobs.DataSet
-                .Where(j =>
-                    (j.StartSalary >= filter.StartSalary
-                    && j.EndSalary <= filter.EndSalary)
-                    && (j.JobName.ToLower().Contains(filter.SearchFilter)
-                    || j.City.CityName.ToLower().Contains(filter.SearchFilter)
-                    || j.JobTitle.TitleName.ToLower().Contains(filter.SearchFilter)
-                    || j.Address.ToLower().Contains(filter.SearchFilter)
-                    || j.City.CityName.ToLower().Contains(filter.City))
-                    && (j.City.CityName == filter.City
-                    || filter.City == null)
-                    && (j.JobTitle.TitleName == filter.JobTitle
-                     || filter.JobTitle == null)
-                     && ((j.JobType == JobType.FullTime
-                     && filter.IsFullTime)
-                     || (j.JobType == JobType.Freelancer
-                     && filter.IsFreeLance)
-                     || (j.JobType == JobType.PartTime
-                     && filter.IsPartTime)
-                     || (j.JobType == JobType.Internship
-                     && filter.IsInternship)
-                    ))
+            var searchText =(filter.SearchFilter +"").ToLower().Trim();
+            var result = jobs.DataSet
+                .Where(j =>                    
+                    (j.StartSalary >= filter.StartSalary && j.EndSalary <= filter.EndSalary)
+                    && (j.City.CityName == filter.City || filter.City == null)
+                    && (j.JobTitle.TitleName == filter.JobTitle || filter.JobTitle == null)
+                    && ((j.JobType == JobType.FullTime&& filter.IsFullTime)
+                        || (j.JobType == JobType.Freelancer && filter.IsFreeLance)
+                        || (j.JobType == JobType.PartTime && filter.IsPartTime)
+                        || (j.JobType == JobType.Internship && filter.IsInternship))
+                    && (j.JobName.Contains(searchText)
+                        || j.JobName.ToLower().Contains(searchText)
+                        || j.JobTitle.TitleName.ToLower().Contains(searchText)
+                        || j.Tags.ToLower().Contains(searchText))
+                    )
                 .ToList();
             switch(filter.SortBy)
             {
-                case SortBy.Salary: jobs.DataSet.OrderByDescending(j => j.StartSalary); break;
-                case SortBy.Date: jobs.DataSet.OrderByDescending(j => j.StartDate); break;
-                default: jobs.DataSet.OrderByDescending(j => j.StartDate); break;
+                case SortBy.Salary: result.OrderByDescending(j => j.StartSalary); break;
+                case SortBy.Date: result.OrderByDescending(j => j.StartDate); break;
+                default: result.OrderByDescending(j => j.StartDate); break;
             }
-            return View("Index",new JobViewModel { Jobs = jobs.DataSet, Cities = cities.DataSet, Titles = titles.DataSet });
+            return View("Index",new JobViewModel { Jobs = result, Cities = cities.DataSet, Titles = titles.DataSet });
         }
     }
 }

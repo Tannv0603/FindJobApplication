@@ -12,6 +12,7 @@ using WebApp.Services.CVService;
 using WebApp.Models.RequestModel;
 using WebApp.Models.ViewModel;
 using WebApp.Services.AppliedService;
+using WebApp.Constant;
 
 namespace WebApp.Controllers
 {
@@ -55,9 +56,30 @@ namespace WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Apply(int jobId, int cvId)
         {
-         
             var result = await _appliedService.ApplyForJob(cvId, jobId);
-            return RedirectToAction("Apply",new { jobId = jobId} );
+            if(result.Success)
+            {
+
+                return RedirectToAction("AppliedJob", new { message = DisplayConstant.SUCCESS });
+            }
+
+            return RedirectToAction("AppliedJob", new { message = DisplayConstant.ERROR_ALREADY_APPLIED });
+        }
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> AppliedJob(string message)
+        {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var userid = _userManager.GetUserId(currentUser);
+            ViewBag.Message = message;
+            var appliedJobs = await _appliedService.GetAppliedByEmployee(userid);
+            return View(appliedJobs.DataSet);
+        }
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> AppliedCv(int id)
+        {
+            var applied = await _appliedService.GetAppliedByJob(id);
+
+            return View(applied.DataSet);
         }
     }
 }
