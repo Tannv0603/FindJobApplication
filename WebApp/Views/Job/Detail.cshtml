@@ -1,8 +1,10 @@
 ﻿@using DAL.Entities;
-@model Job;
+@using WebApp.Models.ViewModel;
+@model JobDetailViewModel;
 @using WebApp.Constant;
 @using System.Security.Claims
 @{
+        var user = User.FindFirstValue(ClaimTypes.Name);
         if (Context.User.Identity.IsAuthenticated)
         {
                 Layout = "LoggedIn_Layout";
@@ -11,7 +13,6 @@
         {
                 Layout = "_Layout";
         }
-        var user = User.FindFirstValue(ClaimTypes.Name);
 }
 <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css"
         integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
@@ -43,8 +44,7 @@
                 <div class="col-xl-7 col-lg-8">
                     <!-- job single -->
                     <div>
-                        <h2 style="word-wrap: break-word;">@Model.JobName</h2>
-
+                        <h2 style="word-wrap: break-word;">@Model.Job.JobName</h2>
                     </div>
                     <br />
                     <br />
@@ -57,11 +57,11 @@
                             <div class="small-section-tittle">
                                 <h4>Relevants:</h4>
                             </div>
-                            <p><i class="fa fa-tags" aria-hidden="true"></i> @Model.Tags</p>
+                            <p><i class="fa fa-tags" aria-hidden="true"></i> @Model.Job.Tags</p>
                             <div class="small-section-tittle">
                                 <h4>Address - Location:</h4>
                             </div>
-                            <p><i class="fas fa-map-marker-alt"></i> @Model.Address - @Model.City.CityName</p>
+                            <p><i class="fas fa-map-marker-alt"></i> @Model.Job.Address - @Model.Job.City.CityName</p>
                         </div>
 
                         <div class="post-details1 mb-50">
@@ -69,7 +69,7 @@
                             <div class="small-section-tittle">
                                 <h4>Main responsibility for: </h4>
                             </div>
-                                <p><i class="fa fa-briefcase" aria-hidden="true"></i> @Model.JobTitle.TitleName</p>
+                                <p><i class="fa fa-briefcase" aria-hidden="true"></i> @Model.Job.JobTitle.TitleName</p>
                         </div>
 
                         <div class="post-details2  mb-50">
@@ -77,7 +77,7 @@
                             <div class="small-section-tittle">
                                 <h4>Job Description</h4>
                             </div>
-                            <p>@Model.Description</p>
+                            <p>@Model.Job.Description</p>
                         </div>
                     </div>
 
@@ -87,17 +87,17 @@
                     <div class="post-details3  mb-50">
                         <!-- Small Section Tittle -->
                         <div style="text-align:center" class="company-img company-img-details">
-                            <a href="@Url.Action(" Detail","Job", new { id=Model.JobId})"><img src="@Model.JobImage" style="width:100%" alt=""></a>
+                            <a href="@Url.Action(" Detail","Job", new { id=Model.Job.JobId})"><img src="@Model.Job.JobImage" style="width:100%" alt=""></a>
                         </div>
                         <br />
                         <div class="small-section-tittle">
                             <h4>Job Overview</h4>
                         </div>
                         <ul>
-                            <li>Skill : <span>@Model.Skill.SkillName</span></li>
+                            <li>Skill : <span>@Model.Job.Skill.SkillName</span></li>
                             <li>Job nature :
                                 @{
-                                    switch  (@Model.JobType)
+                                    switch  (@Model.Job.JobType)
                                     {
                                         case JobType.FullTime:
                                             <span>FullTime</span>
@@ -114,10 +114,10 @@
                                     }
                                 }
                             </li>
-                            <li>Salary : <span>$@Decimal.Floor(@Model.StartSalary) - @Decimal.Floor(@Model.StartSalary) per month</span></li>
+                            <li>Salary : <span>$@Decimal.Floor(@Model.Job.StartSalary) - @Decimal.Floor(@Model.Job.StartSalary) per month</span></li>
                             <li>Experience required : 
                                 @{
-                                    switch  (@Model.SkillLevel)
+                                    switch  (@Model.Job.SkillLevel)
                                     {
                                         case 1:
                                             <span href="job_details.html">Fresher</span>
@@ -137,11 +137,11 @@
                                     }
                                 }
                             </li> 
-                            <li>Apply date : <span>@Model.StartDate.ToShortDateString()</span></li>
-                            <li>until : <span>@Model.EndDate.ToShortDateString()</span></li>
+                            <li>Apply date : <span>@Model.Job.StartDate.ToShortDateString()</span></li>
+                            <li>until : <span>@Model.Job.EndDate.ToShortDateString()</span></li>
                         </ul>
                         <div class="apply-btn2">
-                            <a href="@Url.Action("Apply","Apply", new { jobId=Model.JobId})" class="btn">Apply Now</a>
+                            <a href="@Url.Action("Apply","Apply", new { jobId=Model.Job.JobId})" class="btn">Apply Now</a>
                         </div>
                     </div>                 
                 </div>

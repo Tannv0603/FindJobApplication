@@ -66,7 +66,6 @@ namespace WebApp.Services.JobService
         public async Task<Response<Job>> GetById(int id)
         {
             var job = await _jobRepository.DbSet
-                .AsNoTracking()
                 .Include(x => x.Skill)
                 .Include(x => x.City)
                 .Include(job => job.Employer)

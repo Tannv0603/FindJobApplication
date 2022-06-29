@@ -124,12 +124,12 @@
                                         <input type="text" class="js-range-slider" value="" />
                                         <div class="d-flex align-items-center">
                                             <div class="price_text">
-                                                <p>Price :</p>
+                                                <p>Salary from: </p>
                                             </div>
                                             <div class="price_value d-flex justify-content-center">
-                                                   @Html.TextBoxFor(m => m.Filter.StartSalary, new {@class="js-input-from", @id="amount",@readonly ="true"})
-                                                <span>to</span>
-                                                @Html.TextBoxFor(m => m.Filter.EndSalary, new {@class="js-input-to", @id="amount", @readonly ="true"})
+                                            @Html.TextBoxFor(m => m.Filter.StartSalary, new {@class="js-input-from", @id="amount",@readonly ="true"})
+                                            <span>to</span>
+                                            @Html.TextBoxFor(m => m.Filter.EndSalary, new {@class="js-input-to", @id="amount", @readonly ="true"})
                                             </div>
                                         </div>
                                     </div>

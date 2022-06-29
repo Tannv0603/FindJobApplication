@@ -10,6 +10,7 @@ using WebApp.Models.ViewModel;
 using WebApp.Services.CityService;
 using WebApp.Services.JobService;
 using WebApp.Services.JobTitleService;
+using WebApp.Services.ReviewService;
 
 namespace WebApp.Controllers
 {
@@ -18,11 +19,14 @@ namespace WebApp.Controllers
         private readonly IJobService _jobService;
         private readonly ICityService _cityService;
         private readonly IJobTitleService _jobTitleService;
+        private readonly IReviewService _reviewService;
         public JobController(IJobService jobService
             ,ICityService cityService
-            ,IJobTitleService jobTitleService)
+            ,IJobTitleService jobTitleService
+            ,IReviewService reviewService)
         {
             _jobTitleService = jobTitleService;
+            _reviewService = reviewService;
             _jobService = jobService;
             _cityService = cityService;
         }
@@ -39,8 +43,19 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var job = await _jobService.GetById(id);
-            if(job.Success) return View(job.Data);
-            return View("Error", new ErrorViewModel() { RequestId=job.Message});
+            var reviews = await _reviewService.GetAll(id);
+            double rating = 0;
+            foreach (var review in reviews.DataSet)
+            {
+                rating = rating + review.Rating;
+            }
+            var viewModel = new JobDetailViewModel()
+            {
+                Job = job.Data,
+                Reviews = reviews.DataSet,
+                AvgScore = rating / reviews.DataSet.Count()
+            };
+            return View(viewModel);
         }
 
         public async Task<IActionResult> Filter(FilterViewModel filter)

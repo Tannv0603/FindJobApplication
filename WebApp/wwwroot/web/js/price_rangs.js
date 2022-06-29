@@ -2378,7 +2378,7 @@ var $range = $(".js-range-slider"),
     $inputTo = $(".js-input-to"),
     instance,
     min = 0,
-    max = 1000,
+    max = 50000,
     from = 10,
     to = 100;
 
@@ -2388,11 +2388,11 @@ $range.ionRangeSlider({
     max: max,
     from: 0,
     to: 500,
-  prefix: 'tk. ',
+  prefix: '',
     onStart: updateInputs,
     onChange: updateInputs,
     step: 1,
-    prettify_enabled: true,
+    prettify_enabled: false,
     prettify_separator: ".",
   values_separator: " - ",
   force_edges: true

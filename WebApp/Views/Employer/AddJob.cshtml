@@ -43,6 +43,19 @@
 }
 <!-- Hero Area Start-->
 <main>
+    <script type="text/javascript">  
+        function validateForm(formElement) {
+          if (formElement.NewJob_StartSalary.value > formElement.NewJob_EndSalary.value)
+          {
+            formElement.NewJob_EndSalary.value = formElement.NewJob_StartSalary.value;
+            return focusElement('Please enter Max Salary greater than Star Salary.');
+          }
+        }
+        function focusElement(message)
+            {
+                alert(message);
+            }
+  </script>  
     <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
@@ -59,7 +72,7 @@
     </div>
     <!-- Hero Area End -->
     <!-- Start Align Area -->
-    @using (Html.BeginForm("AddJob","Employer",FormMethod.Post,new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("AddJob","Employer",FormMethod.Post,new {@name="frm",enctype = "multipart/form-data" }))
     {
         <div style="background: #ededed;" class="whole-wrap">
             <div class="container box_1170">
@@ -85,7 +98,7 @@
                                     </div>
                                     <div class="item">
                                         <p>End Salary ($/month)<span class="required">*</span></p>  
-                                        @Html.TextBoxFor(m=>m.NewJob.EndSalary, new {@style="height:40px" ,@class ="single-input",@type="number", @min="0"})
+                                        @Html.TextBoxFor(m=>m.NewJob.EndSalary, new {@style="height:40px" ,@onblur="validateForm(frm)",@class ="single-input",@type="number", @min="0"})
                                     </div>
                                 </div>
                                 <div class="position-item">
@@ -165,7 +178,7 @@
                                 <div class="col-xl-10">
                                     <div class="cv-caption text-center">
                                 
-                                        <button type="submit" class="border-btn2 border-btn4">Create New Job</button>
+                                        <button type="submit"  class="border-btn2 border-btn4">Create New Job</button>
                                     </div>
                                 </div>
                             </div>

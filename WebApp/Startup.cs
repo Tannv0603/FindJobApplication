@@ -27,6 +27,7 @@ using AutoMapper;
 using WebApp.Mapper;
 using WebApp.Services.SkillService;
 using WebApp.Services.CVService;
+using WebApp.Services.ReviewService;
 
 namespace WebApp
 {
@@ -66,6 +67,7 @@ namespace WebApp
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployerRepository, EmployerRepository>();
             services.AddScoped<IJobTitleRepository, JobTitleRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IEmployeeAppliedForJobRepository, EmployeeAppliedForJobRepository>();
             //// Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>
@@ -95,6 +97,7 @@ namespace WebApp
             services.AddScoped<ICloudService, CloudService>();
             services.AddScoped<ISkillService, SkillService>();
             services.AddScoped<ICVService, CVService>();
+            services.AddScoped<IReviewService, ReviewService>();
       
 
             //config identity
