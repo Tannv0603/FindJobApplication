@@ -12,32 +12,32 @@
     else
     {
         Layout = "_Layout";
-    }    
+    }
     var user = User.FindFirstValue(ClaimTypes.Name);
     var sortOptions = new List<SelectListItem>();
-    sortOptions.Add(new SelectListItem() { Text = "Date" });    
+    sortOptions.Add(new SelectListItem() { Text = "Date" });
     sortOptions.Add(new SelectListItem() { Text = "Salary" });
     var cityOpt = new List<SelectListItem>();
     var titleOpt = new List<SelectListItem>();
-    foreach(var city in Model.Cities )
+    foreach (var city in Model.Cities)
     {
-        cityOpt.Add(new SelectListItem(){Text=city.CityName});
+        cityOpt.Add(new SelectListItem() { Text = city.CityName });
     }
-    foreach(var title in Model.Titles )
+    foreach (var title in Model.Titles)
     {
-        titleOpt.Add(new SelectListItem(){Text=title.TitleName});
+        titleOpt.Add(new SelectListItem() { Text = title.TitleName });
     }
 }
 
 <main>
-   
+
     <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="hero-cap text-center">                            
+                        <div class="hero-cap text-center">
                             <h2>Get your job</h2>
                         </div>
                     </div>
@@ -47,202 +47,201 @@
     </div>
     <!-- Hero Area End -->
     <!-- Job List Area Start -->
-     @using (Html.BeginForm("Filter","Job",@Model.Filter,FormMethod.Post,true,new {}))
+    @using (Html.BeginForm("Filter", "Job", @Model.Filter, FormMethod.Post, true, new { }))
     {
-    <div style="background: #f2f2f2;" class="job-listing-area pt-120 pb-120">
-        <div class="container">
-            <div class="row">
-                <!-- Left content -->                
-                <div class="col-xl-3 col-lg-3 col-md-4">    
-                  
-                    <div class="row">
-                        <input type="submit" value="Apply Filters" class="btn btn-danger"/>
-                        <div class="select-job-items col-6">
-                            <br>
-                           @Html.DropDownListFor(m => m.Filter.SortBy,sortOptions,"Sort By", new{@class="nice-select"})                                           
+        <div style="background: #f2f2f2;" class="job-listing-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <!-- Left content -->
+                    <div class="col-xl-3 col-lg-3 col-md-4">
+
+                        <div class="row">
+                            <input type="submit" value="Apply Filters" class="btn btn-danger" />
+                            <div class="select-job-items col-6">
+                                <br>
+                                @Html.DropDownListFor(m => m.Filter.SortBy,sortOptions,"Sort By", new{@class="nice-select"})
+                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- Job Category Listing start -->
-                    <div class="job-category-listing mb-50">                         
-                        <!-- single one -->
-                        <div class="single-listing">
-                            <div class="small-section-tittle2">
-                                <h4>Category</h4>
-                            </div>
-                            <!-- Select job items start -->
-                            <div class="select-job-items2">
-                                @Html.DropDownListFor(m => m.Filter.JobTitle,titleOpt,"Job Category")
-                            </div>
-                            <!--  Select job items End-->
-                            <!-- select-Categories start -->
-                            <div class="select-Categories pt-80 pb-50">
+
+                        <!-- Job Category Listing start -->
+                        <div class="job-category-listing mb-50">
+                            <!-- single one -->
+                            <div class="single-listing">
                                 <div class="small-section-tittle2">
-                                    <h4>Working Type</h4>
+                                    <h4>Category</h4>
                                 </div>
-                                <label class="container">
-                                    Full-Time
-                                      @Html.CheckBoxFor(m =>m.Filter.IsFullTime,  new { @checked = "checked" })
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">
-                                      Part-Time
-                                      @Html.CheckBoxFor(m =>m.Filter.IsPartTime,  new { @checked = "checked" })
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">
-                                      Internship
-                                      @Html.CheckBoxFor(m =>m.Filter.IsInternship,  new { @checked = "checked" })
-                                    <span class="checkmark" ></span>
-                                </label>
-                                <label class="container">
-                                      Freelance
-                                      @Html.CheckBoxFor(m =>m.Filter.IsFreeLance,  new { @checked = "checked" })
-                                    <span class="checkmark"></span>
-                                </label>
-                             
+                                <!-- Select job items start -->
+                                <div class="select-job-items2">
+                                    @Html.DropDownListFor(m => m.Filter.JobTitle,titleOpt,"Job Category")
+                                </div>
+                                <!--  Select job items End-->
+                                <!-- select-Categories start -->
+                                <div class="select-Categories pt-80 pb-50">
+                                    <div class="small-section-tittle2">
+                                        <h4>Working Type</h4>
+                                    </div>
+                                    <label class="container">
+                                        Full-Time
+                                        @Html.CheckBoxFor(m =>m.Filter.IsFullTime,  new { @checked = "checked" })
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">
+                                        Part-Time
+                                        @Html.CheckBoxFor(m =>m.Filter.IsPartTime,  new { @checked = "checked" })
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">
+                                        Internship
+                                        @Html.CheckBoxFor(m =>m.Filter.IsInternship,  new { @checked = "checked" })
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">
+                                        Freelance
+                                        @Html.CheckBoxFor(m =>m.Filter.IsFreeLance,  new { @checked = "checked" })
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                </div>
+                                <!-- select-Categories End -->
                             </div>
-                            <!-- select-Categories End -->
-                        </div>
-                          <div class="single-listing">
-                               <div class="small-section-tittle2">
-                                <h4>Location</h4>
-                            </div>
-                       <div class="select-job-items2">
-                                @Html.DropDownListFor(m => m.Filter.City,cityOpt,"City")
-                            </div>
-                            </div>
-                        <div class="single-listing">
-                            <!-- Range Slider Start -->
-                            <aside class="left_widgets p_filter_widgets price_rangs_aside sidebar_box_shadow">
+                            <div class="single-listing">
                                 <div class="small-section-tittle2">
-                                    <h4>Salary Range</h4>
+                                    <h4>Location</h4>
                                 </div>
-                                <div class="widgets_inner">
-                                    <div class="range_item">
-                                        <!-- <div id="slider-range"></div> -->
-                                        <input type="text" class="js-range-slider" value="" />
-                                        <div class="d-flex align-items-center">
-                                            <div class="price_text">
-                                                <p>Salary from: </p>
-                                            </div>
-                                            <div class="price_value d-flex justify-content-center">
-                                            @Html.TextBoxFor(m => m.Filter.StartSalary, new {@class="js-input-from", @id="amount",@readonly ="true"})
-                                            <span>to</span>
-                                            @Html.TextBoxFor(m => m.Filter.EndSalary, new {@class="js-input-to", @id="amount", @readonly ="true"})
+                                <div class="select-job-items2">
+                                    @Html.DropDownListFor(m => m.Filter.City,cityOpt,"City",new { @style="overflow-y:scroll; max-height: 100px;" })
+                                </div>
+                            </div>
+                            <div class="single-listing">
+                                <!-- Range Slider Start -->
+                                <aside class="left_widgets p_filter_widgets price_rangs_aside sidebar_box_shadow">
+                                    <div class="small-section-tittle2">
+                                        <h4>Salary Range</h4>
+                                    </div>
+                                    <div class="widgets_inner">
+                                        <div class="range_item">
+                                            <!-- <div id="slider-range"></div> -->
+                                            <input type="text" class="js-range-slider" value="" />
+                                            <div class="d-flex align-items-center">
+                                                <div class="price_text">
+                                                    <p>Salary from: </p>
+                                                </div>
+                                                <div class="price_value d-flex justify-content-center">
+                                                    @Html.TextBoxFor(m => m.Filter.StartSalary, new {@class="js-input-from", @id="amount",@readonly ="true"})
+                                                    <span>to</span>
+                                                    @Html.TextBoxFor(m => m.Filter.EndSalary, new {@class="js-input-to", @id="amount", @readonly ="true"})
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </aside>
-                            <!-- Range Slider End -->
+                                </aside>
+                                <!-- Range Slider End -->
+                            </div>
+
+
                         </div>
-                       
-                        
+
+                        <!-- Job Category Listing End -->
                     </div>
-                    
-                    <!-- Job Category Listing End -->
-                </div>                
-                <!-- Right content -->
-                <div class="col-xl-9 col-lg-9 col-md-8">
-                    <!-- Featured_job_start -->
-                    <section class="featured-job-area">
-                        <div class="container">
-                            <!-- Search Text Start-->
-                            <div class="row">
-                                @Html.TextBoxFor(m => m.Filter.SearchFilter, new {@placeholder="Search for Jobs...!", @class ="input-form col-lg-6"})
-                                <div class="col-lg-3">
-                                    <input type="submit" value="Search" class="btn btn-danger">
-                                </div>
-                            </div><br>
-                            <!--Search Text End-->
-                            <!-- Count of Job list Start -->
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="count-job mb-35">
-                                        <span>@Model.Jobs.Count() Jobs found</span>
-                                        <!-- Select job items start -->
-                                        
-                                        <!--  Select job items End-->
+                    <!-- Right content -->
+                    <div class="col-xl-9 col-lg-9 col-md-8">
+                        <!-- Featured_job_start -->
+                        <section class="featured-job-area">
+                            <div class="container">
+                                <!-- Search Text Start-->
+                                <div class="row">
+                                    @Html.TextBoxFor(m => m.Filter.SearchFilter, new {@placeholder="Search for Jobs...!", @class ="input-form col-lg-6"})
+                                    <div class="col-lg-3">
+                                        <input type="submit" value="Search" class="btn btn-danger">
+                                    </div>
+                                </div><br>
+                                <!--Search Text End-->
+                                <!-- Count of Job list Start -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="count-job mb-35">
+                                            <span>@Model.Jobs.Count() Jobs found</span>
+                                            <!-- Select job items start -->
+                                            <!--  Select job items End-->
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Count of Job list End -->
-                            <!-- single-job-content -->
-                            @foreach (var job in Model.Jobs as IEnumerable<Job>){
-                                <div  class="single-job-items mb-30">
-                                    <div class= "job-tittle job-tittle2">
-                                    <a href="@Url.Action("Detail","Job", new { id = job.JobId})">
+                                <!-- Count of Job list End -->
+                                <!-- single-job-content -->
+                                @foreach (var job in Model.Jobs as IEnumerable<Job>)
+                                {
+                                    <div class="single-job-items mb-30">
+                                        <div class="job-tittle job-tittle2">
+                                            <a href="@Url.Action("Detail","Job", new { id = job.JobId})">
                                                 <h4 style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 100%">@job.JobName</h4>
                                             </a>
-                                    </div>
-                                    <div class="job-items row">                                         
-                                        <div class="company-img col-4">
-                                            <a href="@Url.Action("Detail","Job", new { id = job.JobId})"><img src="@job.JobImage" style="width:25%"alt=""></a>
                                         </div>
-                                        <div class="job-tittle job-tittle2 col-4">
-                                            <ul>                                                
-                                                <li style="width:100%"><i class="fas fa-map-marker-alt"></i>@job.City.CityName</li>
-                                                <li><i class="fa fa-usd" aria-hidden="true"></i>@Decimal.Floor(@job.StartSalary) - @Decimal.Floor(@job.EndSalary)</li>                                                
-                                                 <li>Require Skill: @job.Skill.SkillName</li>
-                                            </ul>
-                                        </div>
-                                         <div  class="items-link items-link2 col-4">
-                                             <div class="f-right">
+                                        <div class="job-items row">
+                                            <div class="company-img col-4">
+                                                <a href="@Url.Action("Detail","Job", new { id = job.JobId})"><img src="@job.JobImage" style="width:40%" alt=""></a>
+                                            </div>
+                                            <div class="job-tittle job-tittle2 col-4">
+                                                <ul>
+                                                    <li style="width:100%"><i class="fas fa-map-marker-alt"></i>@job.City.CityName</li>
+                                                    <li><i class="fa fa-usd" aria-hidden="true"></i>@Decimal.Floor(@job.StartSalary) - @Decimal.Floor(@job.EndSalary)</li>
+                                                    <li>Require Skill: @job.Skill.SkillName</li>
+                                                </ul>
+                                            </div>
+                                            <div class="items-link items-link2 col-4">
+                                                <div class="f-right">
                                                     @{
-                                                     switch(@job.JobType)
-                                                     {
-                                                    case JobType.FullTime:
-                                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})">FullTime</a>
-                                                        break;
-                                                    case JobType.Freelancer:
-                                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})">Freelancer</a>
-                                                        break;
-                                                    case JobType.PartTime:
-                                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})">PartTime</a>
-                                                        break;
-                                                    case JobType.Internship:
-                                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})">Internship</a>
-                                                        break;
-                                                      }
+                                                        switch (@job.JobType)
+                                                        {
+                                                            case JobType.FullTime:
+                                                                <a href="@Url.Action("Detail","Job", new { id = job.JobId})">FullTime</a>
+                                                                break;
+                                                            case JobType.Freelancer:
+                                                                <a href="@Url.Action("Detail","Job", new { id = job.JobId})">Freelancer</a>
+                                                                break;
+                                                            case JobType.PartTime:
+                                                                <a href="@Url.Action("Detail","Job", new { id = job.JobId})">PartTime</a>
+                                                                break;
+                                                            case JobType.Internship:
+                                                                <a href="@Url.Action("Detail","Job", new { id = job.JobId})">Internship</a>
+                                                                break;
+                                                        }
                                                     }
-                                             </div>
-                                              <div class="f-right">
-                                        <span style="color:grey"><i class="fa fa-calendar" aria-hidden="true"></i> @job.StartDate.Date.ToShortDateString()</span>
-                                        <span style="color:grey"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> @job.EndDate.Date.ToShortDateString()</span>
+                                                </div><br /><br />
+                                                <div class="f-right">
+                                                    <span style="color:grey"><i class="fa fa-calendar" aria-hidden="true"></i> @job.StartDate.Date.ToShortDateString() - <i class="fa fa-calendar-times-o" aria-hidden="true"></i> @job.EndDate.Date.ToShortDateString()</span>
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
-                                    </div>
-                                                                     
-                                </div>
-                            }
-                        </div>
-                    </section>
-                    <!-- Featured_job_end -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Job List Area End -->
-    <!--Pagination Start  -->
-    <div style="background: #f2f2f2;" class="pagination-area pb-115 text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="single-wrap d-flex justify-content-center">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
-                            </ul>
-                        </nav>
+                                }
+                            </div>
+                        </section>
+                        <!-- Featured_job_end -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--Pagination End  -->
+        <!-- Job List Area End -->
+        <!--Pagination Start  -->
+        <div style="background: #f2f2f2;" class="pagination-area pb-115 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="single-wrap d-flex justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Pagination End  -->
     }
 </main>

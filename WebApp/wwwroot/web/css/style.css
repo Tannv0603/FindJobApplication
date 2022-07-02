@@ -5469,7 +5469,8 @@ del {
     background: #f9f9ff;
     padding-left: 45px;
     padding-right: 40px;
-    width: 100%
+    width: 100%;
+    
 }
 
 .form-select .nice-select .list {
@@ -5478,8 +5479,11 @@ del {
     border-radius: 0px;
     box-shadow: none;
     width: 100%;
-    padding: 10px 0 10px 0px
+    padding: 10px 0 10px 0px;
+    max-height: 200px;
+    overflow-y: scroll;
 }
+
 
 .form-select .nice-select .list .option {
     font-weight: 300;
@@ -5490,7 +5494,7 @@ del {
     line-height: 28px;
     min-height: 28px;
     font-size: 12px;
-    padding-left: 45px
+    padding-left: 45px;
 }
 
 .form-select .nice-select .list .option.selected {
@@ -5500,7 +5504,7 @@ del {
 
 .form-select .nice-select .list .option:hover {
     color: #1f2b7b;
-    background: transparent
+    background: #ededed
 }
 
 .form-select .current {
@@ -7325,13 +7329,17 @@ form.search-box .search-form a {
 }
 
 .job-category-listing .single-listing .select-job-items2 .nice-select .list {
-    width: 100%
+    width: 100%;
+    max-height: 400px;
+  overflow-y: scroll;
 }
 
 .job-category-listing .single-listing .select-job-items2 .nice-select.open .list {
     width: 100%;
     border-radius: 0;
-    border: 0
+    border: 0;
+    max-height: 400px;
+  overflow-y: scroll;
 }
 
 .job-category-listing .single-listing .select-job-items2 .nice-select::after {
@@ -7550,3 +7558,4 @@ form.search-box .search-form a {
     background: #242b5e;
     color: #fff
 }
+
