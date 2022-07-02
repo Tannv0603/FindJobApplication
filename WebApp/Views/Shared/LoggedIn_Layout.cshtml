@@ -1,8 +1,8 @@
 ﻿@using System.Security.Claims;
 @{
-var user = User.FindFirstValue(ClaimTypes.Name).ToString();
-var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
-var role = User.FindFirstValue(ClaimTypes.Role);
+    var user = User.FindFirstValue(ClaimTypes.Name).ToString();
+    var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var role = User.FindFirstValue(ClaimTypes.Role);
 }
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -66,22 +66,20 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                                         <ul id="navigation">
                                             <li><a href="/">Home</a></li>
                                             <li><a href="@Url.Action("Index","Job")">Find a Jobs </a></li>
-                                            <li><a href="@Url.Action("EmployeeCV","CV")">My CV</a></li>
-                                            <li><a href="@Url.Action("AppliedJob","Apply")">Applied Jobs </a></li>
+
                                             <li><a href="@Url.Action("AddJob","Employer",FormMethod.Get)">Add New Job</a></li>
-                                            <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>   
+                                            <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>
                                             </li>
                                             <li>
                                                 <a href="#">Page</a>
                                                 <ul class="submenu">
                                                     <li><a href="@Url.Action("About","Home")">About</a></li>
-                                                    <li><a href="@Url.Action("Blog","Home")">Blog</a></li>
-                                                    <li><a href="@Url.Action("BlogDetail","Home")">Blog Details</a>
-                                                    </li>
-
+                                                    @*<li><a href="@Url.Action("Blog","Home")">Blog</a></li>*@
+                                                    <li><a href="@Url.Action("EmployeeCV","CV")">My CV</a></li>
+                                                    <li><a href="@Url.Action("AppliedJob","Apply")">Applied Jobs </a></li>
+                                                    <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -89,16 +87,16 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                                 <nav class="navbar navbar-expand-xl navbar-light ">
                                     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
                                         <div class="navbar-nav ml-auto">
-			                            <div class="nav-item dropdown">
-				                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> <b class="caret">Welcome @user</b></a>
-				                            <div class="dropdown-menu">
-					                            <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
-					                            <a href="#" class="dropdown-item"><i class="fa fa-key"></i> Change Password</a></a>
-					                            <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
-					                            <div class="dropdown-divider"></div>
-					                            <a href="@Url.Action("LogOut","User")" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></a>
-				                            </div>
-			                            </div>
+                                            <div class="nav-item dropdown">
+                                                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> <b class="caret">Welcome @user</b></a>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
+                                                    <a href="#" class="dropdown-item"><i class="fa fa-key"></i> Change Password</a></a>
+                                                    <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a href="@Url.Action("LogOut","User")" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </nav>
@@ -125,10 +123,13 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                             <div class="single-footer-caption mb-30">
                                 <div class="footer-tittle">
                                     <h4>About Us</h4>
-                                    <div class="footer-pera">
-                                        <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so
-                                            behold.</p>
-                                    </div>
+                                    <ul>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">All Jobs</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                    </ul>
                                 </div>
                             </div>
 
@@ -141,12 +142,11 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                                 <ul>
                                     <li>
                                         <p>
-                                            Address :Your address goes
-                                            here, your demo address.
+                                            Address :Đường số 5, CVPM, Quang Trung, Phường 14, Quận 12, Thành phố Hồ Chí Minh, Vietnam.
                                         </p>
                                     </li>
-                                    <li><a href="#">Phone : +8880 44338899</a></li>
-                                    <li><a href="#">Email : info@colorlib.com</a></li>
+                                    <li><a href="#">Phone : +84 337622898 </a></li>
+                                    <li><a href="#">Email : findingjob@gmail.com</a></li>
                                 </ul>
                             </div>
 
@@ -155,13 +155,13 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Important Link</h4>
+                                <h4>Terms & Conditions</h4>
                                 <ul>
-                                    <li><a href="#"> View Project</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Testimonial</a></li>
-                                    <li><a href="#">Proparties</a></li>
-                                    <li><a href="#">Support</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Operating Regulation</a></li>
+                                    <li><a href="#">Complaint Handling</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Press</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -171,21 +171,19 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                             <div class="footer-tittle">
                                 <h4>Newsletter</h4>
                                 <div class="footer-pera footer-pera2">
-                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
+                                    <p>Please send us your email address to let us know more about you.</p>
                                 </div>
                                 <!-- Form -->
                                 <div class="footer-form">
                                     <div id="mc_embed_signup">
-                                        <form target="_blank"
-                                            action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                            method="get" class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email"
-                                                placeholder="Email Address" class="placeholder hide-on-focus"
-                                                onfocus="this.placeholder = ''"
-                                                onblur="this.placeholder = ' Email Address '">
+                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                              method="get" class="subscribe_form relative mail_part">
+                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                                   class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                                   onblur="this.placeholder = ' Email Address '">
                                             <div class="form-icon">
                                                 <button type="submit" name="submit" id="newsletter-submit"
-                                                    class="email_icon newsletter-submit button-contactForm">
+                                                        class="email_icon newsletter-submit button-contactForm">
                                                     <img src="/web/img/icon/form.png" alt="">
                                                 </button>
                                             </div>
@@ -194,34 +192,6 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-                <div class="row footer-wejed justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <!-- logo -->
-                        <div class="footer-logo mb-20">
-                            <a href="index.html"><img src="/web/img/logo/logo2_footer.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="footer-tittle-bottom">
-                            <span>5000+</span>
-                            <p>Talented Hunter</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="footer-tittle-bottom">
-                            <span>451</span>
-                            <p>Talented Hunter</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <!-- Footer Bottom Tittle -->
-                        <div class="footer-tittle-bottom">
-                            <span>568</span>
-                            <p>Talented Hunter</p>
                         </div>
                     </div>
                 </div>
@@ -237,9 +207,7 @@ var role = User.FindFirstValue(ClaimTypes.Role);
                                 <p>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     Copyright &copy;
-                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |
-                                    This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-                                        href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <script>document.write(new Date().getFullYear());</script> Thank you to everyone who came to the recruitment site <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">Group 20</a>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
                             </div>

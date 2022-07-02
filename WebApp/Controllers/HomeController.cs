@@ -1,13 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models;
-using DAL.Repository;
-using DAL.Entities;
 using WebApp.Services.JobService;
 
 namespace WebApp.Controllers
@@ -15,7 +9,7 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly IJobService _jobService;
-        public HomeController (IJobService jobService)
+        public HomeController(IJobService jobService)
         {
             _jobService = jobService;
         }
@@ -39,10 +33,6 @@ namespace WebApp.Controllers
             return View();
         }
         public IActionResult Blog()
-        {
-            return View();
-        }
-        public IActionResult BlogDetail()
         {
             return View();
         }
