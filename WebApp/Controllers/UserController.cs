@@ -51,10 +51,15 @@ namespace WebApp.Controllers
         public async Task<IActionResult> SignIn
             (UserLoginRequest request)
         {
+            
             var user = await _userManager.FindByNameAsync(request.UserName);
-            var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
+            var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);            
             if (result.Succeeded)
             {
+               
+                var session = HttpContext.Session;
+                session.SetString("type", user.TypeUser.ToString());
+                
                 return RedirectToAction("Index", "Job");
                 //var claim = new List<Claim>();
                 //claim.Add(new Claim(ClaimTypes.NameIdentifier, request.UserName));

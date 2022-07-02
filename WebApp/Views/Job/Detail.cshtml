@@ -4,7 +4,7 @@
 @using WebApp.Constant;
 @using System.Security.Claims
 @{
-    var user = User.FindFirstValue(ClaimTypes.Name);
+    var user = User.FindFirstValue("typeuser");
     if (Context.User.Identity.IsAuthenticated)
     {
         Layout = "LoggedIn_Layout";

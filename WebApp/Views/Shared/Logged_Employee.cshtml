@@ -1,8 +1,10 @@
-﻿@using System.Security.Claims;
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor;
+@using System.Security.Claims
+@using WebApp.Constant; 
 @{
-    var user = User.FindFirstValue(ClaimTypes.Name).ToString();
-    var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    var role = User.FindFirstValue(ClaimTypes.Role);
+   var type = HttpContextAccessor.HttpContext.Session.GetString("type");
+   var user = User.FindFirstValue(ClaimTypes.Name).ToString();
 }
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -68,7 +70,8 @@
                                             <li><a href="@Url.Action("Index","Job")">Find a Jobs </a></li>
 
                                             <li><a href="@Url.Action("AddJob","Employer",FormMethod.Get)">Add New Job</a></li>
-                                            <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>                                            
+                                            <li><a href="@Url.Action("JobManagement","Employer")">Jobs Management</a></li>
+                                            
                                             <li>
                                                 <a href="#">Page</a>
                                                 <ul class="submenu">
@@ -88,7 +91,15 @@
                                             <div class="nav-item dropdown">
                                                 <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> <b class="caret">Welcome @user</b></a>
                                                 <div class="dropdown-menu">
-                                                    <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
+                                                    
+                                                    @if (type == TypeUser.Employee.ToString())
+                                                    {
+                                                        <a href="@Url.Action("Profile","Employee")" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="@Url.Action("Profile","Employer")" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+                                                    }
                                                     <a href="#" class="dropdown-item"><i class="fa fa-key"></i> Change Password</a></a>
                                                     <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
                                                     <div class="dropdown-divider"></div>
