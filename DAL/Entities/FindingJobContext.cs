@@ -24,6 +24,7 @@ namespace DAL.Entities
             : base(options)
         {
         }
+        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<ContactEmployee> ContactEmployees { get; set; }
         public virtual DbSet<Cv> Cvs { get; set; }
