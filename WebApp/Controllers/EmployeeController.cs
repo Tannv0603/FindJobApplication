@@ -36,7 +36,7 @@ namespace WebApp.Controllers
         {
             return View();
         }
-        public IActionResult UpdateProfile()
+        public IActionResult Profile()
         {
             return View();
         }

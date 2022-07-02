@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using WebApp.Services.CityService;
 using WebApp.Services.JobService;
 using WebApp.Services.JobTitleService;
 using WebApp.Services.ReviewService;
+using WebApp.Services.UserService;
 
 namespace WebApp.Controllers
 {
@@ -20,15 +22,21 @@ namespace WebApp.Controllers
         private readonly ICityService _cityService;
         private readonly IJobTitleService _jobTitleService;
         private readonly IReviewService _reviewService;
+        private readonly UserManager<User> _userManager;
+        private readonly IUserService _userService;
         public JobController(IJobService jobService
             ,ICityService cityService
             ,IJobTitleService jobTitleService
-            ,IReviewService reviewService)
+            ,IReviewService reviewService
+            ,IUserService userService
+            , UserManager<User> userManager)
         {
             _jobTitleService = jobTitleService;
             _reviewService = reviewService;
             _jobService = jobService;
             _cityService = cityService;
+            _userManager = userManager;
+            _userService = userService;
         }
         
         public async Task<IActionResult> Index()
@@ -40,24 +48,46 @@ namespace WebApp.Controllers
                 return View(new JobViewModel { Jobs = jobs.DataSet, Cities = cities.DataSet, Titles = titles.DataSet});        
             return View("Error", new ErrorViewModel() { RequestId = jobs.Message });
         }
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Detail(short id)
         {
             var job = await _jobService.GetById(id);
             var reviews = await _reviewService.GetAll(id);
             double rating = 0;
             foreach (var review in reviews.DataSet)
             {
-                rating = rating + review.Rating;
+                rating += review.Rating;
             }
-            var viewModel = new JobDetailViewModel()
+            var viewModel = new JobDetailViewModel
             {
-                Job = job.Data,
+                JobData = job.Data,
                 Reviews = reviews.DataSet,
-                AvgScore = rating / reviews.DataSet.Count()
+                AvgScore =  reviews.DataSet.Count()==0 ? 0: rating/reviews.DataSet.Count()
             };
-            return View(viewModel);
+            ViewBag.Reviews = reviews.DataSet;
+            ViewBag.AvgScore = rating / reviews.DataSet.Count();
+            if(job.Success) return View(viewModel);
+            return RedirectToAction("Index");
         }
-
+        [HttpPost]
+        public async Task<IActionResult> Rating(RatingModel RatingModel, short jobId)
+        {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var userid = _userManager.GetUserId(currentUser);
+            var job = await _jobService.GetById(jobId);
+            if(job.Data.EmployerId == userid)
+            {
+                return RedirectToAction("Detail", new { id = jobId });
+            }            
+            int score = RatingModel.IsOne ? 1 : RatingModel.IsTwo ? 2 : RatingModel.IsThree ? 3 : RatingModel.IsFour ? 4 : 5;
+            var review = await _reviewService.AddReview(
+                    new NewReview() { 
+                        Content = RatingModel.Comment, 
+                        Rating = score, JobId = jobId, 
+                        UserId = userid 
+                    }
+                );
+            return RedirectToAction("Detail",new { id=jobId });
+        }
         public async Task<IActionResult> Filter(FilterViewModel filter)
         {
             var jobs = await _jobService.GetAll();

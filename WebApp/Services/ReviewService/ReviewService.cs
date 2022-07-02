@@ -42,7 +42,8 @@ namespace WebApp.Services.ReviewService
                         Rating = newReview.Rating,
                         Comment = newReview.Content,
                         JobId = newReview.JobId,
-                        UserId  =  newReview.UserId
+                        UserId  =  newReview.UserId,
+                        Date = System.DateTime.Now
                     };
                     var result = await _reviewRespository.DbSet.AddAsync(review);
                     _unitOfWork.SaveChanges();

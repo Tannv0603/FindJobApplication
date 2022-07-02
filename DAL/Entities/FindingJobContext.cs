@@ -151,13 +151,13 @@ namespace DAL.Entities
                 entity.HasOne(d => d.Cv)
                     .WithMany()
                     .HasForeignKey(d => d.Cvid)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_EmployeeAppliedForJob_CV");
 
                 entity.HasOne(d => d.Job)
                     .WithMany()
                     .HasForeignKey(d => d.JobId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_EmployeeAppliedForJob_Job");
             });
 
@@ -257,10 +257,12 @@ namespace DAL.Entities
                 entity.Property(e => e.Comment)
                     .IsRequired()
                     .HasMaxLength(255);
+                entity.Property(e => e.Date).HasColumnName("Date").HasColumnType("date");
 
                 entity.Property(e => e.JobId).HasColumnName("JobID");
 
-                entity.Property(e => e.UserId).HasColumnName("UserID");
+               entity.Property(e => e.UserId).HasColumnName("UserID");
+               
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reviews)

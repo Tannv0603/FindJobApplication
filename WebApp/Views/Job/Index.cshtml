@@ -28,9 +28,8 @@
         titleOpt.Add(new SelectListItem(){Text=title.TitleName});
     }
 }
-
 <main>
-   
+  
     <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="/web/img/hero/about.jpg">
@@ -109,7 +108,7 @@
                                 <h4>Location</h4>
                             </div>
                        <div class="select-job-items2">
-                                @Html.DropDownListFor(m => m.Filter.City,cityOpt,"City")
+                                @Html.DropDownListFor(m => m.Filter.City,cityOpt,"City",new {@style="max-height:100px; overflow-y:scroll"})
                             </div>
                             </div>
                         <div class="single-listing">
