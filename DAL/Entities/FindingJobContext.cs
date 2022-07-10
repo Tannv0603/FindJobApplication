@@ -13,13 +13,6 @@ namespace DAL.Entities
         public FindingJobContext()
         {
         }
-
-        //private string _connectionString;
-        //public FindingJobContext(string connectionString)
-        //{
-        //    _connectionString = connectionString;
-        //}
-
         public FindingJobContext(DbContextOptions<FindingJobContext> options)
             : base(options)
         {
@@ -151,13 +144,13 @@ namespace DAL.Entities
                 entity.HasOne(d => d.Cv)
                     .WithMany()
                     .HasForeignKey(d => d.Cvid)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_EmployeeAppliedForJob_CV");
 
                 entity.HasOne(d => d.Job)
                     .WithMany()
                     .HasForeignKey(d => d.JobId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_EmployeeAppliedForJob_Job");
             });
 
@@ -267,7 +260,6 @@ namespace DAL.Entities
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reviews)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Review_User");
             });
 

@@ -15,6 +15,7 @@ namespace DAL.Entities
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal Weight { get; set; }
+        [NotMapped]
         public virtual Employee Employee { get; set; }
         [NotMapped]
         public virtual IEnumerable<EmployeeAppliedForJob> AppliedDetail {get; set;}

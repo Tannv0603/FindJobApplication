@@ -28,6 +28,8 @@ using WebApp.Mapper;
 using WebApp.Services.SkillService;
 using WebApp.Services.CVService;
 using WebApp.Services.ReviewService;
+using WebApp.Services.EmployeeService;
+using WebApp.Services.EmployerService;
 
 namespace WebApp
 {
@@ -98,7 +100,8 @@ namespace WebApp
             services.AddScoped<ISkillService, SkillService>();
             services.AddScoped<ICVService, CVService>();
             services.AddScoped<IReviewService, ReviewService>();
-      
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployerService, EmployerService>();
 
             //config identity
             services.Configure<IdentityOptions>(options =>

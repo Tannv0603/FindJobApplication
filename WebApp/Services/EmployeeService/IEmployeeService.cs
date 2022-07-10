@@ -7,9 +7,7 @@ namespace WebApp.Services.EmployeeService
 {
     public interface IEmployeeService
     {
-        Task<Response<Employee>> GetAll();
         Task<Response<Employee>> GetById(string id);
-        Task<Response<Employee>> GetByAppliedJob(int jobId);
-
+        Task<Response<Employee>> UpdateAsync(Employee employee);
     }
 }

@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="/web/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -87,15 +89,8 @@
                                             <div class="nav-item dropdown">
                                                 <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> <b class="caret">Welcome @user</b></a>
                                                 <div class="dropdown-menu">
-
-                                                    @if (type == TypeUser.Employee.ToString())
-                                                    {
-                                                        <a href="@Url.Action("Profile","Employee")" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a href="@Url.Action("Profile","Employer")" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
-                                                    }
+                                                    <a href="@Url.Action("Profile","Employee")" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+                                                    
                                                     <a href="#" class="dropdown-item"><i class="fa fa-key"></i> Change Password</a></a>
                                                     <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></a>
                                                     <div class="dropdown-divider"></div>

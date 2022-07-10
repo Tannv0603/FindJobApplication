@@ -27,19 +27,29 @@
                         <form method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                @Html.TextBoxFor(m => m.UserName,new { @placeholder = "User Name" })
+                                @Html.TextBoxFor(m => m.UserName,new { @placeholder = "User Name", @required="true" })
 
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                @Html.PasswordFor(m => m.Password,new { @placeholder = "Password" })
+                                @Html.PasswordFor(m => m.Password,new { @placeholder = "Password",@required="true" })
                             </div>
                             <div class="form-group">
                                 @Html.CheckBoxFor(m=>m.RememberMe,new{@class="agree-term"})
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
+                             <div>
+
+                                 @if(ViewData["error"] is not null)
+                            {
+                                <span style="color:red">@ViewData["error"].ToString()</span>
+                            }
+                            </div>
+                           
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" href="@Url.Action("LoggedIn_Layout","Shared")" value="Log in"/>
+                           
+                           
+                            <input type="submit" name="signin" id="signin" class="form-submit" href="@Url.Action("LoggedIn_Layout","Shared")" value="Log in"/>
                             </div>
                         </form>
                         <div class="social-login">

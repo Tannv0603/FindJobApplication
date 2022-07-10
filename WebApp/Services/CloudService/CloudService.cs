@@ -42,9 +42,9 @@ namespace WebApp.Services.CloudService
             }
             catch
             {
-                return null;
+                return "";
             }
-            return null;
+            return "";
           
         }
 

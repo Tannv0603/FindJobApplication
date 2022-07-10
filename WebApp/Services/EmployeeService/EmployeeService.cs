@@ -1,4 +1,7 @@
 ﻿using DAL.Entities;
+using DAL.Repository.Abstractions;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models.Response;
 
@@ -6,19 +9,34 @@ namespace WebApp.Services.EmployeeService
 {
     public class EmployeeService : IEmployeeService
     {
-        public Task<Response<Employee>> GetAll()
+        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public EmployeeService(IEmployeeRepository employeeRepository
+            , IUnitOfWork unitOfWork)
         {
-            throw new System.NotImplementedException();
+            _employeeRepository = employeeRepository;
+            _unitOfWork = unitOfWork;   
+        }
+       
+
+        public async Task<Response<Employee>> GetById(string id)
+        {
+            var employee = await _employeeRepository.DbSet.Include(e => e.EmployeeNavigation).FirstOrDefaultAsync(e => e.EmployeeId==id);
+            return new Response<Employee>()
+            {
+                Data = employee,
+                Success = true
+            };
         }
 
-        public Task<Response<Employee>> GetByAppliedJob(int jobId)
+        public async Task<Response<Employee>> UpdateAsync(Employee employee)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<Response<Employee>> GetById(string id)
-        {
-            throw new System.NotImplementedException();
+           _employeeRepository.DbSet.Update(employee);
+            await _unitOfWork.SaveChangesAsync();
+            return new Response<Employee>()
+            {
+                Success = true
+            };
         }
     }
 }

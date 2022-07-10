@@ -29,7 +29,10 @@
   .nice-select:hover {
     border-color: #dbdbdb; }
   .nice-select:active, .nice-select.open, .nice-select:focus {
-    border-color: #999; }
+    border-color: #999; 
+    
+
+  }
   .nice-select:after {
     border-bottom: 2px solid #999;
     border-right: 2px solid #999;
@@ -54,12 +57,15 @@
     -webkit-transform: rotate(-135deg);
         -ms-transform: rotate(-135deg);
             transform: rotate(-135deg); }
-  .nice-select.open .list {
-    opacity: 1;
-    pointer-events: auto;
-    -webkit-transform: scale(1) translateY(0);
+    .nice-select.open .list {
+        opacity: 1;
+        max-height: 200px;
+        overflow-y: scroll;
+        pointer-events: auto;
+        -webkit-transform: scale(1) translateY(0);
         -ms-transform: scale(1) translateY(0);
-            transform: scale(1) translateY(0); }
+        transform: scale(1) translateY(0);
+    }
   .nice-select.disabled {
     border-color: #ededed;
     color: #999;

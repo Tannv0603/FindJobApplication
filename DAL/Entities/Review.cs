@@ -15,7 +15,7 @@ namespace DAL.Entities
         public string Comment { get; set; }
         public double Rating { get; set; }
         public string UserId { get; set; }
-        [Column(TypeName = "date")]
+        [Column(TypeName = "datetime")]
         public DateTime Date { get; set; }
         public virtual User User { get; set; }
         public virtual Job Job { get; set; }

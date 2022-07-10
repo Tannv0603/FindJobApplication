@@ -4,14 +4,7 @@
 @using System.Security.Claims;
 @using WebApp.Models.ViewModel
 @{
-    if (Context.User.Identity.IsAuthenticated)
-    {
-        Layout = "LoggedIn_Layout";
-    }
-    else
-    {
-        Layout = "_Layout";
-    }    
+     
     var user = User.FindFirstValue(ClaimTypes.Name);
     var cityOpt = new List<SelectListItem>();
     var titleOpt = new List<SelectListItem>();

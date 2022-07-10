@@ -110,7 +110,7 @@ namespace WebApp.Services.UserService
         {
             try
             {
-                Employee employee = new Employee() { EmployeeId = id, Address="",CityId=0,DateOfBirth=DateTime.Now };
+                Employee employee = new Employee() { EmployeeId = id, Address="",CityId=1,DateOfBirth=DateTime.Now };
                 await _employeeRepository.DbSet.AddAsync(employee).ConfigureAwait(false);
                 await _unitOfWork.SaveChangesAsync().ConfigureAwait(false);
                 _unitOfWork.ClearTracked();

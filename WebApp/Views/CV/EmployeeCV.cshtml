@@ -2,14 +2,7 @@
 @using DAL.Entities;
 @model IEnumerable<Cv>;
 @{
-    if (Context.User.Identity.IsAuthenticated)
-    {
-        Layout = "LoggedIn_Layout";
-    }
-    else
-    {
-        Layout = "_Layout";
-    }
+    
     var user = User.FindFirstValue(ClaimTypes.Name);
 }
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">

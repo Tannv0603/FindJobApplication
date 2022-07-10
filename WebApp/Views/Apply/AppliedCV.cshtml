@@ -2,14 +2,7 @@
 @using DAL.Entities;
 @model IEnumerable<EmployeeAppliedForJob>;
 @{    
-    if (Context.User.Identity.IsAuthenticated)
-    {
-        Layout = "LoggedIn_Layout";
-    }
-    else
-    {
-        Layout = "_Layout";
-    }    
+       
     var user = User.FindFirstValue(ClaimTypes.Name);
 }
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>

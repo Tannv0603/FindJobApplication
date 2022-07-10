@@ -35,5 +35,7 @@ namespace DAL.Entities
         public virtual Skill Skill { get; set; }
         [NotMapped]
         public virtual IEnumerable<EmployeeAppliedForJob> AppliedDetail { get; set; }
+        [NotMapped]
+        public virtual IEnumerator<Review> Reviews { get; set; }
     }
 }

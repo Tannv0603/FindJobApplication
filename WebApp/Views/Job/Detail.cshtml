@@ -4,15 +4,7 @@
 @using WebApp.Constant;
 @using System.Security.Claims
 @{
-    var user = User.FindFirstValue("typeuser");
-    if (Context.User.Identity.IsAuthenticated)
-    {
-        Layout = "LoggedIn_Layout";
-    }
-    else
-    {
-        Layout = "_Layout";
-    }
+    
 }
 <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css"
       integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
@@ -55,9 +47,9 @@
                         <div class="post-details1 mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
-                                <h4>Relevants:</h4>
+                                <h4>Company:</h4>
                             </div>
-                            <p><i class="fa fa-tags" aria-hidden="true"></i> @Model.JobData.Tags</p>
+                            <p><i class="fa fa-tags" aria-hidden="true"></i> @Model.JobData.Employer.CompanyName</p>
                             <div class="small-section-tittle">
                                 <h4>Address - Location:</h4>
                             </div>

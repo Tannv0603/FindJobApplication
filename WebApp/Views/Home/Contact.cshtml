@@ -1,14 +1,6 @@
 ﻿@using System.Security.Claims;
 @{    
-    if (Context.User.Identity.IsAuthenticated)
-    {
-        Layout = "LoggedIn_Layout";
-    }
-    else
-    {
-        Layout = "_Layout";
-    }    
-    var user = User.FindFirstValue(ClaimTypes.Name);
+  
 }
 <!-- Hero Area Start-->
 <div class="slider-area ">
