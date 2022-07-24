@@ -51,7 +51,6 @@ namespace WebApp.Controllers
         public async Task<IActionResult> SignIn
             (UserLoginRequest request)
         {
-            
             var user = await _userManager.FindByNameAsync(request.UserName);
             if(user == null)
             {
@@ -61,10 +60,6 @@ namespace WebApp.Controllers
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);            
             if (result.Succeeded)
             {
-               
-                var session = HttpContext.Session;
-                session.SetString("type", user.TypeUser.ToString());
-                
                 return RedirectToAction("Index", "Job");
                 
             }

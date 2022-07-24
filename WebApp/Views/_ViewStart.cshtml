@@ -1,22 +1,32 @@
-﻿ @using Microsoft.AspNetCore.Http;
-    @inject IHttpContextAccessor HttpContextAccessor;
-    @using WebApp.Constant; 
+﻿@using DAL.Entities
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor;
+@inject UserManager<User> _userManager;
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using WebApp.Constant;
 @{
-   
-     if (!Context.User.Identity.IsAuthenticated)
+
+    if (!Context.User.Identity.IsAuthenticated)
     {
         Layout = "_Layout";
     }
     else
     {
-        var type = HttpContextAccessor.HttpContext.Session.GetString("type");
+        var id = User.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
+        var user = await _userManager.FindByIdAsync(id);
+        var type = user.TypeUser.ToString();
         if (type == TypeUser.Employee.ToString())
         {
             Layout = "Logged_Employee"; //layout choe employee
         }
-        else
+        else if (type == TypeUser.Employer.ToString())
         {
             Layout = "Logged_Employer"; // theem layout cho employer
+        }
+        else
+        {
+            Layout = "_Layout";
         }
     }
 }
