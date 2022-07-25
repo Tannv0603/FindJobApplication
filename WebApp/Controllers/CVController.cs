@@ -30,6 +30,10 @@ namespace WebApp.Controllers
         }
         public async Task<IActionResult> EmployerCV(short jobid)
         {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var cvs = await _appliedService.GetAppliedByJob(jobid);
             return View(cvs.DataSet);
         }
@@ -37,6 +41,8 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var cvs = await _cvService.GetByEmpId(userid);
             return View(cvs.DataSet);
         }
@@ -44,6 +50,8 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var path = _cloudService.AddCV(file);
             var cv = new Cv()
             {

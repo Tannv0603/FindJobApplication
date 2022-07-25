@@ -15,18 +15,23 @@
     {
         var id = User.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
         var user = await _userManager.FindByIdAsync(id);
-        var type = user.TypeUser.ToString();
-        if (type == TypeUser.Employee.ToString())
-        {
-            Layout = "Logged_Employee"; //layout choe employee
-        }
-        else if (type == TypeUser.Employer.ToString())
-        {
-            Layout = "Logged_Employer"; // theem layout cho employer
-        }
+        if (user == null) Layout = "_Layout";
         else
         {
-            Layout = "_Layout";
+            var type = user.TypeUser.ToString();
+            if (type == TypeUser.Employee.ToString())
+            {
+                Layout = "Logged_Employee"; //layout choe employee
+            }
+            else if (type == TypeUser.Employer.ToString())
+            {
+                Layout = "Logged_Employer"; // theem layout cho employer
+            }
+            else
+            {
+                Layout = "_Layout";
+            }
         }
+
     }
 }

@@ -18,32 +18,8 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-9 col-md-10">
                             <div class="hero__caption">
-                                <h1>Find the most exciting startup it jobs</h1>
+                                <h1>Find the most exciting startup IT jobs</h1>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Search Box -->
-                    <div class="row">
-                        <div class="col-xl-8">
-                            <!-- form -->
-                            <form action="#" class="search-box">
-                                <div class="input-form">
-                                    <input type="text" placeholder="Job Tittle or keyword">
-                                </div>
-                                <div class="select-form">
-                                    <div class="select-itms">
-                                        <select name="select" id="select1">
-                                            <option value="">Location BD</option>
-                                            <option value="">Location PK</option>
-                                            <option value="">Location US</option>
-                                            <option value="">Location UK</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="search-form">
-                                    <a href="#">Find job</a>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -150,7 +126,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="browse-btn2 text-center mt-50">
-                        <a href="job_listing.html" class="border-btn2">Browse All Sectors</a>
                     </div>
                 </div>
             </div>
@@ -165,7 +140,6 @@
                     <div class="cv-caption text-center">
                         <p class="pera1">FEATURED TOURS Packages</p>
                         <p class="pera2"> Make a Difference with Your Online Resume!</p>
-                        <a href="#" class="border-btn2 border-btn4">Upload your cv</a>
                     </div>
                 </div>
             </div>
@@ -187,20 +161,20 @@
             <div  class="row justify-content-center">
                 <div class="col-xl-10">
                     @foreach (var job in Model as IEnumerable<Job>){
-                        if(@job.StartSalary > 1000)
+                        if(@job.StartSalary > 1500)
                         {
                         <!-- single-job-content -->
                             <div class="single-job-items mb-30">
                                 <div class="job-items">
                                     <div class="company-img">
-                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})"><img src="/web/img/icon/@job.JobImage" alt=""></a>
+                                        <a href="@Url.Action("Detail","Job", new { id = job.JobId})"><img src="@job.JobImage" style="width:120px" alt=""></a>
                                     </div>
                                     <div class="job-tittle">
                                         <a href="@Url.Action("Detail","Job", new { id = job.JobId})"><h4>@job.JobName</h4></a>
                                         <ul>
-                                            <li style="width:60px">@job.Skill.SkillName</li>
-                                            <li style="width:150px"><i class="fas fa-map-marker-alt"></i>@job.City.CityName</li>
-                                            <li style="width:200px">@job.StartSalary - @job.EndSalary</li>
+                                            <li style="width:100%"><i class="fas fa-map-marker-alt"></i>@job.City.CityName</li>
+                                                    <li style="width:100%"><i class="fa fa-usd" aria-hidden="true"></i>@Decimal.Floor(@job.StartSalary) - @Decimal.Floor(@job.EndSalary)</li>
+                                                    <li style="width:100%">Company: @job.Employer.CompanyName</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -209,17 +183,22 @@
                                        switch(@job.JobType)
                                        {
                                              case 1:
-                                                 <a href="job_details.html">Intership</a>
+                                                 <a href="@Url.Action("Detail","Job", new { id = job.JobId})">Internship</a>
                                                  break;
                                              case 2:
-                                                 <a href="job_details.html">PartTime</a>
+                                                 <a href="@Url.Action("Detail","Job", new { id = job.JobId})">PartTime</a>
                                                  break;
                                              case 3:
-                                                 <a href="job_details.html">FullTime</a>
+                                                 <a href="@Url.Action("Detail","Job", new { id = job.JobId})">FullTime</a>
+                                             break;
+                                             case 4:
+                                                 <a href="@Url.Action("Detail","Job", new { id = job.JobId})">Freelancer</a>
                                              break;
                                        }
                                      }
-                                    <span>@job.StartDate</span>
+                                     <br/>
+                                    <span style="color:grey"><i class="fa fa-calendar" aria-hidden="true"></i> @job.StartDate.Date.ToShortDateString()</span>
+                                    <span style="color:grey"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> @job.EndDate.Date.ToShortDateString()</span>
                                 </div>
                             </div>
                         }
@@ -360,7 +339,7 @@
                         <div class="support-caption">
                             <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillum.</p>
                             <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>
-                            <a href="about.html" class="btn post-btn">Post a job</a>
+                            @*<a href="about.html" class="btn post-btn">Post a job</a>*@
                         </div>
                     </div>
                 </div>

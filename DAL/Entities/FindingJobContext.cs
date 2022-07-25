@@ -125,7 +125,7 @@ namespace DAL.Entities
                 entity.HasOne(d => d.EmployeeNavigation)
                     .WithOne(p => p.Employee)
                     .HasForeignKey<Employee>(d => d.EmployeeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Employee_User");
             });
 
@@ -173,7 +173,7 @@ namespace DAL.Entities
                 entity.HasOne(d => d.EmployerNavigation)
                     .WithOne(p => p.Employer)
                     .HasForeignKey<Employer>(d => d.EmployerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Employer_User");
             });
 

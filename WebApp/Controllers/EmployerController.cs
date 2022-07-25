@@ -61,6 +61,8 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var result = await _jobService.CreateJob(newJob,file,userid);
             if (result.Success)
             {
@@ -84,6 +86,8 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var emp = await _employerService.GetById(userid);
            
             var viewModel = new ProfileViewModel()
@@ -102,16 +106,17 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
-
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var user = await _userManager.FindByIdAsync(userid);
 
             if (request.IfChanged == "changed")
             {
-                user.AvatarUrl = _cloudService.AddImage(request.File);
+                user.AvatarUrl =""+ _cloudService.AddImage(request.File);
             }
             else
             {
-                user.AvatarUrl = request.IfChanged;
+                user.AvatarUrl =""+ request.IfChanged;
             }
             user.FullName = request.FullName;
             user.PhoneNumber = request.PhoneNumber;

@@ -18,12 +18,15 @@ using WebApp.Constant;
 
 namespace WebApp.Controllers
 {
+    [Route("[controller]/[action]")]
     public class UserController : Controller
     {
+
         private readonly IConfiguration _configuration;
         private readonly IUserService _userService;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+       
         public UserController(IConfiguration config,
             IUserService userService,
             UserManager<User> userManager,
@@ -105,6 +108,10 @@ namespace WebApp.Controllers
         }
         public async Task<IActionResult> UpdateProfile()
         {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var user = await _userManager.GetUserAsync(User);
             if (user.TypeUser == TypeUser.Employee)
                 return RedirectToAction("UpdateProfile", "Employee");
@@ -113,6 +120,25 @@ namespace WebApp.Controllers
             return View();
         }
         
-
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
+        {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                var result = await _userManager.ChangePasswordAsync(user,request.OldPassword,request.NewPassword);
+                if (result.Succeeded) ViewBag.result = "Successfully changed!";
+                else ViewBag.result = "Unsuccessfully!";
+            }
+            return View();
+        }
     }
 }

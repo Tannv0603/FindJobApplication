@@ -111,11 +111,11 @@ namespace WebApp.Controllers
                 .ToList();
             switch(filter.SortBy)
             {
-                case SortBy.Salary: result.OrderByDescending(j => j.StartSalary); break;
-                case SortBy.Date: result.OrderByDescending(j => j.StartDate); break;
-                default: result.OrderByDescending(j => j.StartDate); break;
+                case SortBy.Salary: return View("Index", new JobViewModel { Jobs = result.OrderByDescending(j => j.EndSalary), Cities = cities.DataSet, Titles = titles.DataSet });
+
+                case SortBy.Date: return View("Index", new JobViewModel { Jobs = result.OrderByDescending(j => j.StartDate), Cities = cities.DataSet, Titles = titles.DataSet });
+                default: return View("Index", new JobViewModel { Jobs = result.OrderByDescending(j => j.EndSalary), Cities = cities.DataSet, Titles = titles.DataSet });
             }
-            return View("Index",new JobViewModel { Jobs = result, Cities = cities.DataSet, Titles = titles.DataSet });
         }
     }
 }

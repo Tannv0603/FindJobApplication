@@ -48,6 +48,8 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var emp = await _employeeService.GetById(userid);
             var city = await _cityService.GetAll();
             var cityname = await _cityService.GetById(emp.Data.CityId);
@@ -70,16 +72,17 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
-
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var user =await _userManager.FindByIdAsync(userid);
 
             if (request.IfChanged == "changed")
             {
-                user.AvatarUrl = _cloudService.AddImage(request.File);
+                user.AvatarUrl =""+ _cloudService.AddImage(request.File);
             }
             else
             {
-                user.AvatarUrl = request.IfChanged;
+                user.AvatarUrl = ""+request.IfChanged;
             }
             user.FullName=request.FullName;
             user.PhoneNumber=request.PhoneNumber;

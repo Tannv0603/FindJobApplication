@@ -11,7 +11,7 @@ namespace DAL.Entities
         {
             Reviews = new HashSet<Review>();
         }
-        public string? AvatarUrl { get; set; }
+        public string? AvatarUrl { get; set; } = "";
         public string FullName { get; set; }
         public short TypeUser { get; set; }
 

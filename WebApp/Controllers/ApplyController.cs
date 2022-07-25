@@ -41,8 +41,11 @@ namespace WebApp.Controllers
 
         public async Task<IActionResult> Apply(int jobId)
         {
+            
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var cv = await _cvService.GetByEmpId(userid);
             var job = await _jobService.GetById(jobId);
             var viewmodel = new ApplyViewModel()
@@ -70,6 +73,8 @@ namespace WebApp.Controllers
         {
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
             var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             ViewBag.Message = message;
             var appliedJobs = await _appliedService.GetAppliedByEmployee(userid);
             return View(appliedJobs.DataSet);
@@ -77,8 +82,11 @@ namespace WebApp.Controllers
         [Route("[controller]/[action]")]
         public async Task<IActionResult> AppliedCv(int id)
         {
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var userid = _userManager.GetUserId(currentUser);
+            if (userid == null)
+                return RedirectToAction("Signin", "User");
             var applied = await _appliedService.GetAppliedByJob(id);
-
             return View(applied.DataSet);
         }
     }

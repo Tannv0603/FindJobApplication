@@ -85,11 +85,11 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Birthday</h6>
+                                        <h6 class="mb-0">Day of Birth</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="date" class="form-control" name="request.DayOfBirth" value="@Model.DayOfBirth.ToShortDateString()"
-                                           onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                                        <input type="text" class="form-control" name="request.DayOfBirth" value="@Model.DayOfBirth.ToShortDateString()"
+                                           onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" placeholder="@Model.DayOfBirth.ToShortDateString()">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -115,7 +115,7 @@
                                     <div class="col-sm-9 text-secondary">
 
                                         <select type="text" class="form-control" name="request.CityName" value="@Model.CityName">
-                                            <option value="" selected disabled hidden>@Model.CityName</option>
+                                            <option value="@Model.CityName" selected >@Model.CityName</option>
                                             @foreach (var city in ViewBag.Cities)
                                             {
                                                 <option value="@city.CityName">@city.CityName</option>
